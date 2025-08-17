@@ -33,3 +33,5 @@ The project aims to provide a user-friendly platform for hospital staff and admi
 - Develop individual modules in Odoo  
 - Implement workflows and integrate features  
 - Continuous testing and documentation updates
+## Instructions for Commit & Push
+Please follow the steps in [GitHub_Instructions.pdf](GitHub_Instructions.pdf) to create your branch, commit changes, and submit a Pull Request.

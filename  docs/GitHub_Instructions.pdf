@@ -1,0 +1,21 @@
+# GitHub Instructions for HMS Core Modules 
+## 1. Clone the Repository 
+git clone https://github.com/aliaa200411/the-healing-hms 
+cd  the-healing-hms
+
+## 2. Create a Branch for Your Task 
+git checkout -b feature/<Your Module Task name>
+
+## 3. Make Your Changes
+ Develop your assigned task (modle ,list, Form, etc.).
+ Add any necessary files.
+## 4. Stage and Commit Changes 
+ git add .
+ git commit -m "Implemented <task_name> module with required views and fields"
+## 5. Push Your Branch to GitHub
+  git push origin <your_branch_name>
+## 6. Create a Pull Request (PR)
+Go to the GitHub repository.
+Click Compare & pull request on your branch.
+Add a meaningful description of your work.
+Submit the PR for review 

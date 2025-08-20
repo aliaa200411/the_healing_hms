@@ -38,15 +38,15 @@ The project aims to provide a user-friendly platform for hospital staff and admi
 
 ### 1. XMind Diagram
 **Description:** This diagram shows the overall system structure, modules, and their relationships.  
-![XMind Diagram](docs/xmind_diagram.png)  
+![XMind Diagram](/home/aliaa/odoo/addons/the-healing-hms/docs/xmind_diagram.png)  
 [Open Diagram Website](https://xmind.ai/share/tJiUEGEF)
 
 ### 2. Database ERD
 **Description:** This diagram illustrates the database schema, tables, and their relationships.  
-![Database ERD](docs/DB_digram.png)  
+![Database ERD](/home/aliaa/odoo/addons/the-healing-hms/ docs/DB_digram.png)  
 [Open Database ERD Website](https://www.drawdb.app/editor?shareId=c7e2748cc6e388448c9ae9a72163d3cf)
 
 ## Instructions for Commit & Push
-Please follow the steps in ![GitHub_Instructions.pdf](https://raw.githubusercontent.com/aliaa200411/the_healing_hms/refs/heads/main/GitHub_Instructions.pdf) to create your branch, commit changes, and submit a Pull Request.
+Please follow the steps in ![GitHub_Instructions.pdf](https://raw.githubusercontent.com/aliaa200411/the_healing_hms/refs/heads/main/%20docs/GitHub_Instructions.pdf) to create your branch, commit changes, and submit a Pull Request.
 
 

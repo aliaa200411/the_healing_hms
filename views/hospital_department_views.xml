@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ================== List View ================== -->
+    <record id="view_hospital_department_list" model="ir.ui.view">
+        <field name="name">hospital.department.list</field>
+        <field name="model">hospital.department</field>
+        <field name="arch" type="xml">
+            <list string="Hospital Departments">
+                <field name="sequence" readonly="1"/>
+                <field name="name"/>
+                <field name="head_doctor_id"/>
+                <field name="head_doctor_phone"/>
+                <field name="doctor_count"/>
+                <field name="room_count"/>
+                <field name="total_capacity"/>
+                <field name="floor"/>
+                <field name="wing"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ================== Form View ================== -->
+    <record id="view_hospital_department_form" model="ir.ui.view">
+        <field name="name">hospital.department.form</field>
+        <field name="model">hospital.department</field>
+        <field name="arch" type="xml">
+            <form string="Hospital Department">
+                <header>
+                    <button name="action_open_doctors" type="object" string="Doctors" class="btn-primary"/>
+                    <button name="action_open_rooms" type="object" string="Rooms" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="sequence" readonly="1"/>
+                        <field name="name"/>
+                        <field name="phone"/>
+                        <field name="head_doctor_id"/>
+                        <field name="head_doctor_phone" readonly="1"/>
+                        <field name="floor"/>
+                        <field name="wing"/>
+                        <field name="description"/>
+                    </group>
+                    <notebook>
+                        <page string="Doctors">
+                            <field name="doctor_ids">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="specialization_id"/>
+                                    <field name="phone"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Rooms">
+                            <field name="room_ids">
+                                <list editable="bottom">
+                                    <field name="room_number"/>
+                                    <field name="floor"/>
+                                    <field name="wing"/>
+                                    <field name="capacity"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ================== Doctor Views ================== -->
+    <record id="view_hospital_doctor_list" model="ir.ui.view">
+        <field name="name">hospital.doctor.list</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <list string="Doctors">
+                <field name="name"/>
+                <field name="specialization_id"/>
+                <field name="phone"/>
+                <field name="department_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hospital_doctor_form" model="ir.ui.view">
+        <field name="name">hospital.doctor.form</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form string="Doctor">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="specialization_id"/>
+                        <field name="phone"/>
+                        <field name="department_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ================== Room Views ================== -->
+      <record id="view_hospital_room_form" model="ir.ui.view">
+        <field name="name">hospital.room.form</field>
+        <field name="model">hospital.room</field>
+        <field name="arch" type="xml">
+            <form string="Room">
+                <sheet>
+                    <group string="Room Details">
+                        <field name="department_id"/>
+                        <field name="room_number"/>
+                        <field name="room_type" required="1"/>
+                        <field name="capacity" readonly="1"/>
+                    </group>
+                    <group string="Location &amp; Status">
+                        <field name="state"/>
+                        <field name="floor"/>
+                        <field name="wing"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ================== Action + Sequence + Menu ================== -->
+    <record id="action_hospital_department" model="ir.actions.act_window">
+        <field name="name">Hospital Departments</field>
+        <field name="res_model">hospital.department</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="seq_hospital_department" model="ir.sequence">
+        <field name="name">Hospital Department</field>
+        <field name="code">hospital.department</field>
+        <field name="prefix">DPT-</field>
+        <field name="padding">5</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+    </record>
+
+    <menuitem id="menu_hospital_root" name="Hospital"/>
+    <menuitem id="menu_hospital_department" parent="menu_hospital_root" action="action_hospital_department" name="Departments"/>
+
+</odoo>

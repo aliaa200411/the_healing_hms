@@ -13,11 +13,11 @@
     "author": "The Healing Coders (Aliaa, Mariam, Lama)",
     "depends": ["base"],
     "data": [
-        
+        'security/ir.model.access.csv',
+       
         
     ],
       
     "installable": True,
     "application": True,
-    "auto_install": False,
 }

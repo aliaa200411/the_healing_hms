@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_hospital_doctor,Access Hospital Doctor,model_hospital_doctor,base.group_user,1,1,1,1
 access_hospital_patient,Access Hospital Patient,model_hospital_patient,base.group_user,1,1,1,1
@@ -6,3 +7,8 @@ access_hospital_room,Access Hospital Room,model_hospital_room,base.group_user,1,
 access_hospital_bed,Access Hospital Bed,model_hospital_bed,base.group_user,1,1,1,1
 access_hospital_booking,Access Hospital Booking,model_hospital_booking,base.group_user,1,1,1,1
 access_hospital_specialization,Access Hospital Specialization,model_hospital_specialization,base.group_user,1,1,1,1
+=======
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hospital_patient,Access.hospital.patient,model_hospital_patient,base.group_user,1,1,1,1
+access_hospital_appointment,Access.hospital.appointment,model_hospital_appointment,base.group_user,1,1,1,1
+>>>>>>> upstream/main

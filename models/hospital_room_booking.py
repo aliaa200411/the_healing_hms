@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
@@ -65,6 +64,25 @@ class HospitalBooking(models.Model):
                 raise ValidationError("Please enter a positive number of hours.")
             if rec.price_type == 'day' and (rec.days is None or rec.days <= 0):
                 raise ValidationError("Please enter a positive number of days.")
+
+    # 🔹 إضافة تحقق يمنع الحجز إذا الأسرة كلها محجوزة
+    @api.constrains('room_id', 'bed_id', 'date_from', 'date_to')
+    def _check_room_availability(self):
+        for rec in self:
+            if not rec.room_id:
+                continue
+            total_beds = len(rec.room_id.bed_ids)
+            # عدد الحجز المؤكد ضمن نفس التواريخ
+            booked_beds = len(rec.room_id.bed_ids.filtered(
+                lambda b: any(
+                    booking.state in ['confirmed', 'invoiced'] and
+                    (booking.date_from <= rec.date_to and booking.date_to >= rec.date_from)
+                    for booking in b.booking_ids
+                    if booking.id != rec.id  # نتجنب الحجز الحالي أثناء التعديل
+                )
+            ))
+            if booked_beds >= total_beds:
+                raise ValidationError(_("Cannot book this room: all beds are already booked for the selected period."))
 
     def _update_room_state(self, room):
         total_beds = len(room.bed_ids)

@@ -1,10 +1,9 @@
 <odoo>
-    <!-- Action لإضافة مريض -->
-    <record id="action_add_patient" model="ir.actions.act_window">
-        <field name="name">Add Patient</field>
+    <!-- Action لفتح السجل الطبي -->
+    <record id="action_hospital_patient" model="ir.actions.act_window">
+        <field name="name">Medical Record</field>
         <field name="res_model">hospital.patient</field>
-        <field name="view_mode">list,form</field>
-        <field name="target">new</field>
+        <field name="view_mode">list,form</field> <!-- list بدل tree -->
     </record>
 
     <!-- Action الأطباء -->
@@ -54,8 +53,9 @@
                         <page string="Patients">
                             <field name="patient_ids">
                                 <list editable="bottom">
-                                    <field name="name"/>
-                                    <field name="age"/>
+                                    <field name="first_name"/>
+                                    <field name="last_name"/>
+                                    <field name="dob"/>
                                     <field name="gender"/>
                                     <field name="diagnosis"/>
                                     <button name="%(action_hospital_patient)d" type="action" string="Medical Record" class="btn-primary"/>

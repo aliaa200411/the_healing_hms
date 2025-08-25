@@ -57,7 +57,6 @@ class HospitalBilling(models.Model):
             amount_untaxed = 0.0
             amount_tax = 0.0
             for line in bill.line_ids:
-                # احسب الضرائب بواسطة compute_all إذا فيه ضرائب، وإلا الحساب العادي
                 if line.tax_ids:
                     taxes_res = Tax.browse(line.tax_ids.ids).compute_all(
                         line.price_unit,
@@ -75,7 +74,6 @@ class HospitalBilling(models.Model):
             bill.amount_tax = amount_tax
             bill.amount_total = amount_untaxed + amount_tax
 
-    # أزرار الحالة
     def action_confirm(self):
         for rec in self:
             if not rec.line_ids:
@@ -104,7 +102,8 @@ class HospitalBilling(models.Model):
             rec.state = 'cancel'
 
     def print_report(self):
-        return self.env.ref('hospital_departments.hospital_billing_report_action').report_action(self)
+        # External ID
+        return self.env.ref('the_healing_hms.hospital_billing_report_action').report_action(self)
 
 
 class HospitalBillingLine(models.Model):
@@ -124,8 +123,6 @@ class HospitalBillingLine(models.Model):
     price_unit = fields.Monetary(string='Unit Price')
     currency_id = fields.Many2one(related='billing_id.currency_id', store=True, readonly=True)
     tax_ids = fields.Many2many('account.tax', string='Taxes', domain=[('type_tax_use', '=', 'sale')])
-
-    # الحقل الجديد اللي كان ناقص
     price_subtotal = fields.Monetary(string='Subtotal', compute='_compute_subtotal', store=True)
 
     @api.depends('price_unit', 'quantity', 'tax_ids')
@@ -147,7 +144,5 @@ class HospitalBillingLine(models.Model):
         for line in self:
             if line.product_id:
                 line.name = line.product_id.display_name
-                # خذ سعر البيع الافتراضي
                 line.price_unit = line.product_id.list_price
-                # ممكن كمان تورّث الضرائب الافتراضية للمنتج
                 line.tax_ids = line.product_id.taxes_id

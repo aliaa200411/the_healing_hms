@@ -9,3 +9,4 @@ access_hospital_specialization,Access Hospital Specialization,model_hospital_spe
 access_hospital_staff,Access Hospital Staff,model_hospital_staff,base.group_user,1,1,1,1
 access_hospital_billing,Access Hospital Billing,model_hospital_billing,base.group_user,1,1,1,1
 access_hospital_billing_line,Access Hospital Billing Line,model_hospital_billing_line,base.group_user,1,1,1,1
+access_hospital_appointment,Access Hospital Appointment,model_hospital_appointment,base.group_user,1,1,1,1

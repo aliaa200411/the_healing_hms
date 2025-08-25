@@ -44,4 +44,31 @@
               parent="menu_hospital_rooms" 
               action="action_hospital_booking"/>
 
+
+    <!-- ================== Doctors ================== -->
+    <record id="action_doctor" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">hospital.doctor</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="menu_hospital_doctors" 
+              name="Doctor" 
+              parent="menu_hospital_root" 
+              action="action_doctor"/>
+
+
+    <!-- ================== Staff ================== -->
+        <record id="action_staff" model="ir.actions.act_window">
+                <field name="name">Staff</field>
+                <field name="res_model">hospital.staff</field>
+                <field name="view_mode">list,form</field>
+        </record>
+    
+        <menuitem id="menu_hospital_staff" 
+              name="Staff" 
+              parent="menu_hospital_root" 
+              action="action_staff"/>
+
+
 </odoo>

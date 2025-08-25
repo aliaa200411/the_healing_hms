@@ -8,3 +8,4 @@ from . import hospital_room_booking
 from . import medical_record
 from . import staff
 from . import billing
+from . import appointment

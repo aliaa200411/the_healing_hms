@@ -22,7 +22,6 @@ class HospitalDepartment(models.Model):
     doctor_count = fields.Integer(string="Number of Doctors", compute='_compute_doctor_count', store=True)
     room_count = fields.Integer(string="Number of Rooms", compute='_compute_room_count', store=True)
     total_capacity = fields.Integer(string="Total Capacity", compute='_compute_total_capacity', store=True)
-    head_doctor_phone = fields.Char(string="Head Doctor Phone", compute='_compute_head_doctor_phone', store=True)
 
     # ===== علاقات الغرف =====
     room_ids = fields.One2many('hospital.room', 'department_id', string="Rooms")
@@ -48,7 +47,7 @@ class HospitalDepartment(models.Model):
         for rec in self:
             rec.total_capacity = sum(room.capacity for room in rec.room_ids)
 
-# ===== التسلسل التلقائي =====
+    # ===== التسلسل التلقائي =====
     @api.model
     def create(self, vals):
         if isinstance(vals, list):  # لو القائمة جايه من editable list
@@ -60,7 +59,6 @@ class HospitalDepartment(models.Model):
                 vals['sequence'] = self.env['ir.sequence'].next_by_code('hospital.department') or 'New'
         return super().create(vals)
 
-
     # ===== أزرار الفوتر =====
     def action_open_doctors(self):
         self.ensure_one()
@@ -69,8 +67,10 @@ class HospitalDepartment(models.Model):
             'type': 'ir.actions.act_window',
             'res_model': 'hospital.doctor',
             'view_mode': 'list,form',
-            'views': [(self.env.ref('hospital_departments.view_hospital_doctor_list').id, 'list'),
-                      (self.env.ref('hospital_departments.view_hospital_doctor_form').id, 'form')],
+            'views': [
+                (self.env.ref('the_healing_hms.view_hospital_doctor_list').id, 'list'),
+                (self.env.ref('the_healing_hms.view_hospital_doctor_form').id, 'form')
+            ],
             'domain': [('department_id', '=', self.id)],
             'context': {'default_department_id': self.id},
         }
@@ -82,8 +82,10 @@ class HospitalDepartment(models.Model):
             'type': 'ir.actions.act_window',
             'res_model': 'hospital.room',
             'view_mode': 'list,form',
-            'views': [(self.env.ref('hospital_departments.view_hospital_room_list').id, 'list'),
-                      (self.env.ref('hospital_departments.view_hospital_room_form').id, 'form')],
+            'views': [
+                (self.env.ref('the_healing_hms.view_hospital_room_list').id, 'list'),
+                (self.env.ref('the_healing_hms.view_hospital_room_form').id, 'form')
+            ],
             'domain': [('department_id', '=', self.id)],
             'context': {'default_department_id': self.id},
         }

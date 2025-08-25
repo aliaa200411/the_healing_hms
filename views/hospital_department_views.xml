@@ -10,7 +10,6 @@
                 <field name="sequence" readonly="1"/>
                 <field name="name"/>
                 <field name="head_doctor_id"/>
-                <field name="head_doctor_phone" readonly="1"/>
                 <field name="doctor_count"/>
                 <field name="room_count"/>
                 <field name="total_capacity"/>
@@ -36,7 +35,6 @@
                         <field name="name"/>
                         <field name="phone"/>
                         <field name="head_doctor_id"/>
-                        <field name="head_doctor_phone" readonly="1"/>
                         <field name="floor"/>
                         <field name="wing"/>
                         <field name="description"/>

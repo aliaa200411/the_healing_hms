@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Sequence for Pharmacy Orders -->
+    <record id="seq_hospital_pharmacy_order" model="ir.sequence">
+        <field name="name">Pharmacy Order</field>
+        <field name="code">hospital.pharmacy.order</field>
+        <field name="prefix">PHO/</field>
+        <field name="padding">4</field>
+    </record>
+
+    <!-- Sequence for Medicines -->
+    <record id="seq_hospital_medicine" model="ir.sequence">
+        <field name="name">Hospital Medicine</field>
+        <field name="code">hospital.medicine</field>
+        <field name="prefix">MED/</field>
+        <field name="padding">4</field>
+    </record>
+
+    <!-- Sequence for Pharmacists -->
+    <record id="seq_hospital_pharmacist" model="ir.sequence">
+        <field name="name">Hospital Pharmacist</field>
+        <field name="code">hospital.pharmacist</field>
+        <field name="prefix">PHR/</field>
+        <field name="padding">3</field>
+    </record>
+</odoo>

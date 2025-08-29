@@ -26,6 +26,21 @@ class Appointment(models.Model):
         ('cancelled', 'Cancelled'),
     ], default='draft', string="Status")
 
+    # ----------- أزرار التحكم في الظهور -----------
+    show_confirm = fields.Boolean(compute='_compute_show_buttons')
+    show_done = fields.Boolean(compute='_compute_show_buttons')
+    show_cancel = fields.Boolean(compute='_compute_show_buttons')
+    show_draft = fields.Boolean(compute='_compute_show_buttons')
+
+    @api.depends('state')
+    def _compute_show_buttons(self):
+        for rec in self:
+            rec.show_confirm = rec.state == 'draft'
+            rec.show_done = rec.state == 'confirmed'
+            rec.show_cancel = rec.state == 'done'
+            rec.show_draft = rec.state == 'cancelled'
+
+    # ----------- Constraints ----------
     @api.constrains('doctor_id', 'appointment_date', 'state')
     def _check_doctor_availability(self):
         for record in self:
@@ -42,6 +57,7 @@ class Appointment(models.Model):
                         % record.doctor_id.name
                     ))
 
+    # ----------- Actions ----------
     def action_confirm(self):
         for rec in self:
             rec.state = 'confirmed'
@@ -63,7 +79,7 @@ class Appointment(models.Model):
     def create(self, vals):
         rec = super(Appointment, self).create(vals)
         if rec.doctor_id and rec.patient_id:
-            # إضافة البيشنت لقائمة الدكتور إذا مش موجود
+            # إضافة المريض لقائمة الدكتور إذا مش موجود
             if rec.patient_id.id not in rec.doctor_id.patient_ids.ids:
                 rec.doctor_id.write({
                     'patient_ids': [(4, rec.patient_id.id)]

@@ -17,6 +17,7 @@ class HospitalDepartment(models.Model):
     phone = fields.Char(string="Phone", size=20)
     floor = fields.Char(string="Floor")
     wing = fields.Char(string="Wing")
+    head_doctor_phone = fields.Char(string="Head Doctor Phone")
 
     # ===== حقول محسوبة =====
     doctor_count = fields.Integer(string="Number of Doctors", compute='_compute_doctor_count', store=True)

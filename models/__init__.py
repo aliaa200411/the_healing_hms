@@ -9,3 +9,6 @@ from . import medical_record
 from . import staff
 from . import billing
 from . import appointment
+from . import blood_bag
+from . import donor
+from . import transfusion

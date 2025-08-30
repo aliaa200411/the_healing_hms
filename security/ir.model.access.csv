@@ -10,3 +10,6 @@ access_hospital_staff,Access Hospital Staff,model_hospital_staff,base.group_user
 access_hospital_billing,Access Hospital Billing,model_hospital_billing,base.group_user,1,1,1,1
 access_hospital_billing_line,Access Hospital Billing Line,model_hospital_billing_line,base.group_user,1,1,1,1
 access_hospital_appointment,Access Hospital Appointment,model_hospital_appointment,base.group_user,1,1,1,1
+access_blood_bag,Access Blood Bag,model_blood_bank_bag,base.group_user,1,1,1,1
+access_blood_donor,Access Blood Donor,model_blood_bank_donor,base.group_user,1,1,1,1
+access_blood_transfusion,Access Blood Transfusion,model_blood_bank_transfusion,base.group_user,1,1,1,1

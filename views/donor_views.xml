@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Donor list view -->
+    <record id="the_healing_hms.view_blood_donor_list" model="ir.ui.view">
+        <field name="name">blood.bank.donor.list</field>
+        <field name="model">blood.bank.donor</field>
+        <field name="arch" type="xml">
+            <list string="Blood Donors">
+                <field name="partner_id" string="Donor's Name"/>
+                <field name="gender" string="Gender"/>
+                <field name="blood_type" string="Blood Type"/>
+                <field name="rh" string="Rh Factor"/>
+                <field name="weight" string="Weight (kg)"/>
+                <field name="hemoglobin_level" string="Hemoglobin (g/dL)"/>
+                <field name="last_donation_date" string="Last Donation Date"/>
+                <field name="yearly_donation_count" string="Donations This Year"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Donor form view -->
+    <record id="the_healing_hms.view_blood_donor_form" model="ir.ui.view">
+        <field name="name">blood.bank.donor.form</field>
+        <field name="model">blood.bank.donor</field>
+        <field name="arch" type="xml">
+            <form string="Blood Donor">
+                <sheet>
+                    <group>
+                        <field name="partner_id" string="Donor's Name"/>
+                        <field name="gender" string="Gender"/>
+                        <field name="blood_type" string="Blood Type"/>
+                        <field name="rh" string="Rh Factor"/>
+                        <field name="weight" string="Weight (kg)"/>
+                        <field name="hemoglobin_level" string="Hemoglobin (g/dL)"/>
+                        <field name="is_pregnant" string="Pregnant" invisible="gender != 'female'"/>
+                        <field name="is_breastfeeding" string="Breastfeeding" invisible="gender != 'female'"/>
+                        <field name="last_donation_date" string="Last Donation Date"/>
+                        <field name="yearly_donation_count" string="Donations This Year" readonly="1"/>
+                        <field name="medical_notes" string="Medical Notes" colspan="2"/>
+                    </group>
+                    <notebook>
+                        <page string="Donation History">
+                            <field name="bag_ids">
+                                <list string="Donated Bags">
+                                    <field name="donation_date" string="Donation Date"/>
+                                    <field name="blood_type" string="Blood Type"/>
+                                    <field name="rh" string="Rh Factor"/>
+                                    <field name="status" string="Status"/>
+                                </list>
+                                <form string="Donation Details">
+                                    <sheet>
+                                        <group>
+                                            <field name="donation_date"/>
+                                            <field name="blood_type"/>
+                                            <field name="rh"/>
+                                            <field name="status"/>
+                                            <field name="expiry_date"/>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <footer>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Actions -->
+    <record id="action_blood_donor" model="ir.actions.act_window">
+        <field name="name">Blood Donors</field>
+        <field name="res_model">blood.bank.donor</field>
+        <field name="view_mode">list,form</field>
+        <field name="views" eval="[
+            (ref('the_healing_hms.view_blood_donor_list'), 'list'),
+            (ref('the_healing_hms.view_blood_donor_form'), 'form')
+        ]"/>
+        <field name="help">Manage Blood Donor Registry</field>
+    </record>
+
+    
+</odoo>

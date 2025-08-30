@@ -2,7 +2,7 @@
 <odoo>
 
     <!-- ================== Main Menu ================== -->
-    <menuitem id="menu_hospital_root" name="Hospital"/>
+    <menuitem id="menu_hospital_root" name="Hospital" sequence="1"/>
 
     <!-- ================== Departments ================== -->
     <record id="action_hospital_department" model="ir.actions.act_window">
@@ -29,7 +29,6 @@
         <field name="view_mode">list,form</field>
     </record>
 
-    <!-- Rooms menu تحت Departments -->
     <menuitem id="menu_hospital_rooms" 
               name="Rooms" 
               parent="menu_hospital_department"/>
@@ -44,7 +43,6 @@
               parent="menu_hospital_rooms" 
               action="action_hospital_booking"/>
 
-
     <!-- ================== Doctors ================== -->
     <record id="action_doctor" model="ir.actions.act_window">
         <field name="name">Doctors</field>
@@ -53,22 +51,65 @@
     </record>
     
     <menuitem id="menu_hospital_doctors" 
-              name="Doctor" 
+              name="Doctors" 
               parent="menu_hospital_root" 
               action="action_doctor"/>
 
-
     <!-- ================== Staff ================== -->
-        <record id="action_staff" model="ir.actions.act_window">
-                <field name="name">Staff</field>
-                <field name="res_model">hospital.staff</field>
-                <field name="view_mode">list,form</field>
-        </record>
+    <record id="action_staff" model="ir.actions.act_window">
+        <field name="name">Staff</field>
+        <field name="res_model">hospital.staff</field>
+        <field name="view_mode">list,form</field>
+    </record>
     
-        <menuitem id="menu_hospital_staff" 
+    <menuitem id="menu_hospital_staff" 
               name="Staff" 
               parent="menu_hospital_root" 
               action="action_staff"/>
 
+    <!-- ================== Blood Bank ================== -->
+    <menuitem id="menu_blood_bank_root" 
+              name="Blood Bank" 
+              parent="menu_hospital_root" 
+              sequence="30"/>
+
+    <record id="action_blood_bag" model="ir.actions.act_window">
+        <field name="name">Blood Bags</field>
+        <field name="res_model">blood.bank.bag</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Manage Blood Bags in the Blood Bank</field>
+    </record>
+
+    <record id="action_blood_donor" model="ir.actions.act_window">
+        <field name="name">Donors</field>
+        <field name="res_model">blood.bank.donor</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Manage Donor Registry</field>
+    </record>
+
+    <record id="action_blood_transfusion" model="ir.actions.act_window">
+        <field name="name">Transfusions</field>
+        <field name="res_model">blood.bank.transfusion</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Manage Blood Transfusions</field>
+    </record>
+
+    <menuitem id="menu_blood_bag" 
+              name="Blood Bags" 
+              parent="menu_blood_bank_root" 
+              action="action_blood_bag" 
+              sequence="1"/>
+
+    <menuitem id="menu_blood_donor" 
+              name="Donors" 
+              parent="menu_blood_bank_root" 
+              action="action_blood_donor" 
+              sequence="2"/>
+
+    <menuitem id="menu_blood_transfusion" 
+              name="Transfusions" 
+              parent="menu_blood_bank_root" 
+              action="action_blood_transfusion" 
+              sequence="3"/>
 
 </odoo>

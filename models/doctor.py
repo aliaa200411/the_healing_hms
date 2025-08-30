@@ -17,7 +17,8 @@ class Doctor(models.Model):
     # بيانات الاتصال
     phone = fields.Char(string="Phone")
     user_id = fields.Many2one("res.users", string="User")
-    
+    name = fields.Char(string="Doctor Name", required=True)   # 👈 صححنا المسافة
+
     # التخصص والقسم
     specialization_id = fields.Many2one("hospital.specialization", string="Specialization")
     department_id = fields.Many2one("hospital.department", string="Department")

@@ -12,8 +12,8 @@ git checkout -b feature/<Your Module Task name>
 ## 4. Stage and Commit Changes 
  git add .
  git commit -m "Implemented <task_name> module with required views and fields"
-## 5. Push Your Branch to GitHub
-  git push origin <your_branch_name>
+## 5. Push -u origin <Your Branch> to GitHubgit 
+git push origin <your_branch_name>
 ## 6. Create a Pull Request (PR)
 Go to the GitHub repository.
 Click Compare & pull request on your branch.

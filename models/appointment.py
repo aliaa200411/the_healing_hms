@@ -19,26 +19,13 @@ class Appointment(models.Model):
     )
     appointment_date = fields.Datetime(string="Appointment Date", required=True)
     reason = fields.Text(string="Reason for Visit")
+
     state = fields.Selection([
         ('draft', 'Draft'),
         ('confirmed', 'Confirmed'),
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
-    ], default='draft', string="Status")
-
-    # ----------- أزرار التحكم في الظهور -----------
-    show_confirm = fields.Boolean(compute='_compute_show_buttons')
-    show_done = fields.Boolean(compute='_compute_show_buttons')
-    show_cancel = fields.Boolean(compute='_compute_show_buttons')
-    show_draft = fields.Boolean(compute='_compute_show_buttons')
-
-    @api.depends('state')
-    def _compute_show_buttons(self):
-        for rec in self:
-            rec.show_confirm = rec.state == 'draft'
-            rec.show_done = rec.state == 'confirmed'
-            rec.show_cancel = rec.state == 'done'
-            rec.show_draft = rec.state == 'cancelled'
+    ], default='draft', string="Status", tracking=True)
 
     # ----------- Constraints ----------
     @api.constrains('doctor_id', 'appointment_date', 'state')
@@ -64,10 +51,14 @@ class Appointment(models.Model):
 
     def action_done(self):
         for rec in self:
+            if rec.state != 'confirmed':
+                raise exceptions.ValidationError(_("Only confirmed appointments can be set as done."))
             rec.state = 'done'
 
     def action_cancel(self):
         for rec in self:
+            if rec.state == 'done':
+                raise exceptions.ValidationError(_("You cannot cancel an appointment that is already done."))
             rec.state = 'cancelled'
 
     def action_draft(self):

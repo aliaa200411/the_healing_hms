@@ -9,3 +9,4 @@ from . import medical_record
 from . import billing
 from . import Specialization
 from . import hospital_insurance
+from . import hospital_pharmacy

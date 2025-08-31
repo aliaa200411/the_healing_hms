@@ -16,22 +16,18 @@
                     </group>
                 </sheet>
                 <header>
-    <!-- يظهر Confirm فقط إذا كانت الحالة draft -->
     <button name="action_confirm" type="object" string="✅ Confirm"
         class="btn-primary"
         invisible="state != 'draft'"/>
 
-    <!-- يظهر Done فقط إذا كانت الحالة confirmed -->
     <button name="action_done" type="object" string="✅ Done"
         class="btn-success"
         invisible="state != 'confirmed'"/>
 
-    <!-- يظهر Cancel فقط إذا كانت الحالة draft أو confirmed -->
     <button name="action_cancel" type="object" string="❌ Cancel"
         class="btn-danger"
         invisible="not (state == 'draft' or state == 'confirmed')"/>
 
-    <!-- زر Draft يظهر فقط لو الحالة cancelled -->
     <button name="action_draft" type="object" string="🔄 Set to Draft"
         class="btn-secondary"
         invisible="state != 'cancelled'"/>
@@ -54,6 +50,4 @@
             </list>
         </field>
     </record>
-
-   
 </odoo>

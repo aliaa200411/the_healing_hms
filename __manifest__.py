@@ -25,6 +25,8 @@
         'data/specialization_sequence.xml',
         'data/staff_sequence.xml',
         'data/billing_sequence.xml',
+        'data/pharmacy_sequences.xml',
+        'views/hospital_pharmacy_views.xml',
         'reports/hospital_billing_report.xml',
         'views/appointment_views.xml',
         'views/patient.xml',

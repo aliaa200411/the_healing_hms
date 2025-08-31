@@ -27,14 +27,10 @@ class HospitalBilling(models.Model):
     )
     insurance_company_id = fields.Many2one(
         'hospital.insurance',
-        string="Insurance Company",
-        readonly=True,
-        related='patient_id.insurance_company'
+        string="Insurance Company"
     )
     insurance_discount = fields.Float(
-        string="Insurance (%)",
-        readonly=True,
-        related='patient_id.insurance_discount'
+        string="Insurance (%)"
     )
 
     currency_id = fields.Many2one(
@@ -48,12 +44,7 @@ class HospitalBilling(models.Model):
 
     amount_untaxed = fields.Monetary(string='Untaxed Amount', compute='_compute_amounts', store=True)
     amount_tax = fields.Monetary(string='Taxes', compute='_compute_amounts', store=True)
-    amount_discount = fields.Monetary(
-        string="Insurance Discount",
-        compute="_compute_discount",
-        store=True,
-        readonly=True
-    )
+    amount_discount = fields.Monetary(string="Insurance Discount", compute='_compute_amounts', store=True, readonly=True)
     amount_total = fields.Monetary(string='Total', compute='_compute_amounts', store=True)
 
     state = fields.Selection(
@@ -75,7 +66,7 @@ class HospitalBilling(models.Model):
     notes = fields.Text(string='Notes')
 
     # ---------------- Compute Methods ----------------
-    @api.depends('line_ids.price_unit', 'line_ids.quantity', 'line_ids.tax_ids')
+    @api.depends('line_ids.price_unit', 'line_ids.quantity', 'line_ids.tax_ids', 'insurance_discount')
     def _compute_amounts(self):
         Tax = self.env['account.tax']
         for bill in self:
@@ -96,15 +87,12 @@ class HospitalBilling(models.Model):
                     line.price_subtotal = subtotal
                     amount_untaxed += subtotal
 
+            discount = (amount_untaxed * bill.insurance_discount / 100.0) if bill.insurance_discount else 0.0
+
             bill.amount_untaxed = amount_untaxed
             bill.amount_tax = amount_tax
-            bill.amount_total = amount_untaxed + amount_tax - bill.amount_discount
-
-    @api.depends('amount_untaxed', 'insurance_discount')
-    def _compute_discount(self):
-        for bill in self:
-            bill.amount_discount = (bill.amount_untaxed * bill.insurance_discount / 100.0)
-            bill.amount_total = (bill.amount_untaxed - bill.amount_discount) + bill.amount_tax
+            bill.amount_discount = discount
+            bill.amount_total = (amount_untaxed - discount) + amount_tax
 
     # ---------------- Actions ----------------
     def action_confirm(self):

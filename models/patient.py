@@ -5,7 +5,7 @@ class Patient(models.Model):
     _name = "hospital.patient"
     _description = "Hospital Patient"
 
-    # Basic Info
+    # ==== Basic Info ====
     patient_code = fields.Char(string="Patient Code", copy=False, readonly=True, index=True)
     first_name = fields.Char(string="First Name", required=True)
     last_name = fields.Char(string="Last Name", required=True)
@@ -25,22 +25,21 @@ class Patient(models.Model):
     allergies = fields.Text(string="Allergies")
     address = fields.Char(string="Address")
 
-    # Relationships
+    # ==== Relationships ====
     appointment_ids = fields.One2many("hospital.appointment", "patient_id", string="Appointments")
     diagnosis = fields.Text(string='Diagnosis')
     doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
-    partner_id = fields.Many2one('res.partner', string='Related Partner', required=True)
+    partner_id = fields.Many2one('res.partner', string='Related Partner')
 
-    # Insurance Fields
+    # ==== Insurance Fields ====
     has_insurance = fields.Boolean(
         string="Has Insurance?",
         compute="_compute_has_insurance",
         store=True
     )
     insurance_company = fields.Many2one(
-        'res.partner',
-        string="Insurance Company",
-        domain=[('is_insurance', '=', True)]
+        'hospital.insurance',  # تم التعديل هنا
+        string="Insurance Company"
     )
     insurance_coverage = fields.Float(
         string="Coverage (%)",
@@ -53,7 +52,7 @@ class Patient(models.Model):
         store=True
     )
 
-    # ==== COMPUTES ====
+    # ==== COMPUTE METHODS ====
     @api.depends('first_name', 'last_name')
     def _compute_name(self):
         for rec in self:
@@ -83,7 +82,7 @@ class Patient(models.Model):
                 if patient.insurance_coverage > 0:
                     patient.insurance_discount = patient.insurance_coverage
                 else:
-                    # إذا ما في تغطية يدوية، ناخذ النسبة من الشريك (شركة التأمين)
+                    # إذا ما في تغطية يدوية، ناخذ النسبة من شركة التأمين
                     patient.insurance_discount = getattr(
                         patient.insurance_company, 'discount_percentage', 0.0
                     )

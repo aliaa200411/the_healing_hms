@@ -51,12 +51,10 @@
                     </group>
 
                     <!-- Insurance Information -->
-                                <group string="Insurance Info" invisible="1">
-                        <field name="insurance_company_id" readonly="1"/>
-                        <field name="insurance_discount" readonly="1"/>
+                    <group string="Insurance Info">
+                        <field name="insurance_company_id"/>
+                        <field name="insurance_discount"/>
                     </group>
-
-
 
                     <!-- Totals -->
                     <group string="Amounts">

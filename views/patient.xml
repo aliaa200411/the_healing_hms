@@ -28,6 +28,7 @@
                         <field name="first_name" help="Enter the first name"/>
                         <field name="last_name" help="Enter the last name"/>
                         <field name="dob" widget="date" options="{'datepicker': {'max_date': 'today'}}"/>
+                         <field name="age" readonly="1"/>
                         <field name="gender" widget="radio"/>
                         <field name="blood_type" widget="selection"/>
                     </group>

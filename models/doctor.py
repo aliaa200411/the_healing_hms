@@ -36,7 +36,7 @@ class Doctor(models.Model):
         "doctor_id",         # الحقل المرتبط في موديل المرضى
         string="Patients"
     )
-
+   
     # حساب عدد المرضى تلقائيًا
     patient_count = fields.Integer(
         string="Number of Patients",

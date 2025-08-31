@@ -1,5 +1,4 @@
-<odoo>
-    <!-- QWeb Template -->
+    <odoo>
     <template id="report_medical_record_view">
         <t t-call="web.external_layout">
             <div class="header" style="text-align:center; border-bottom:2px solid #2E86C1; padding-bottom:5px;">
@@ -11,14 +10,13 @@
                 <div class="page" style="margin-top:20px;">
                     <h1 style="text-align:center; color:#2E86C1;">Patient Medical Record 🧑‍⚕️</h1>
                     <hr/>
-                    
                     <h2 style="color:#1F618D;">Patient Info</h2>
                     <table style="width:100%; border-collapse: collapse;">
                         <tr>
                             <td><strong>Patient Code:</strong></td>
                             <td><t t-esc="o.patient_code"/></td>
                             <td><strong>Full Name:</strong></td>
-                            <td><t t-esc="o.name"/></td>
+                            <td><t t-esc="o.first_name"/> <t t-esc="o.last_name"/></td>
                         </tr>
                         <tr>
                             <td><strong>Date of Birth:</strong></td>
@@ -69,18 +67,17 @@
             </t>
 
             <div class="footer" style="text-align:center; border-top:2px solid #2E86C1; padding-top:5px; font-size:0.85em; color:#555;">
-                Printed on <t t-esc="datetime.datetime.now().strftime('%Y-%m-%d %H:%M')"/> | Page <span class="page"/>
+                Printed on <t t-esc="time.strftime('%Y-%m-%d %H:%M')"/> | Page <span class="page"/>
             </div>
         </t>
     </template>
+    <record id="action_report_medical_record" model="ir.actions.report">
+    <field name="name">Print Patient Info</field>
+    <field name="model">hospital.patient</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">hospital.report_medical_record_view</field>
+    <field name="report_file">hospital.report_medical_record_view</field>
+    <field name="print_report_name">'Patient_Info_' + object.first_name + '_' + object.last_name</field>
+    </record>
 
-    <!-- Report Action -->
-    <report
-        id="action_report_medical_record"
-        model="hospital.patient"
-        string="Medical Record"
-        report_type="qweb-pdf"
-        name="hospital.report_medical_record_view"
-        print_report_name="'Medical Record - %s' % (object.first_name + ' ' + object.last_name)"
-    />
-</odoo>
+    </odoo>

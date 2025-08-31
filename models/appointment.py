@@ -69,10 +69,5 @@ class Appointment(models.Model):
     @api.model
     def create(self, vals):
         rec = super(Appointment, self).create(vals)
-        if rec.doctor_id and rec.patient_id:
-            # إضافة المريض لقائمة الدكتور إذا مش موجود
-            if rec.patient_id.id not in rec.doctor_id.patient_ids.ids:
-                rec.doctor_id.write({
-                    'patient_ids': [(4, rec.patient_id.id)]
-                })
-        return rec
+
+  

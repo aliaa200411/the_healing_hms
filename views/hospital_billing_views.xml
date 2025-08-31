@@ -11,6 +11,8 @@
                 <field name="patient_id"/>
                 <field name="doctor_id"/>
                 <field name="date"/>
+                <field name="insurance_company_id"/>
+                <field name="insurance_discount"/>
                 <field name="amount_total"/>
                 <field name="state"/>
                 <field name="payment_method"/>
@@ -30,11 +32,10 @@
                     <button name="action_reset_to_draft" type="object" string="Reset to Draft"/>
                     <button name="action_cancel" type="object" string="Cancel" class="btn-secondary"/>
                     <button name="print_report" type="object" string="Print Invoice" class="btn-primary"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,paid,cancel,report"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,paid,cancel"/>
                 </header>
 
                 <sheet>
-                    <div class="oe_button_box" name="button_box"/>
                     <group>
                         <group>
                             <field name="name" readonly="1"/>
@@ -49,6 +50,22 @@
                         </group>
                     </group>
 
+                    <!-- Insurance Information -->
+                                <group string="Insurance Info" invisible="1">
+                        <field name="insurance_company_id" readonly="1"/>
+                        <field name="insurance_discount" readonly="1"/>
+                    </group>
+
+
+
+                    <!-- Totals -->
+                    <group string="Amounts">
+                        <field name="amount_untaxed" readonly="1"/>
+                        <field name="amount_tax" readonly="1"/>
+                        <field name="amount_discount" readonly="1"/>
+                        <field name="amount_total" readonly="1"/>
+                    </group>
+
                     <notebook>
                         <page string="Bill Lines">
                             <field name="line_ids">
@@ -58,6 +75,7 @@
                                     <field name="quantity"/>
                                     <field name="price_unit"/>
                                     <field name="tax_ids"/>
+                                    <field name="price_subtotal" readonly="1"/>
                                 </list>
                             </field>
                         </page>
@@ -67,14 +85,6 @@
                         </page>
                     </notebook>
 
-                    <group>
-                        <group/>
-                        <group>
-                            <field name="amount_untaxed" readonly="1"/>
-                            <field name="amount_tax" readonly="1"/>
-                            <field name="amount_total" readonly="1" class="oe_subtotal_footer_separator"/>
-                        </group>
-                    </group>
                 </sheet>
             </form>
         </field>
@@ -92,7 +102,7 @@
         </field>
     </record>
 
-    <!-- Menus (تظهر تحت Hospital جنب Staff) -->
+    <!-- Menus -->
     <menuitem id="menu_hospital_accounting" name="Accounting" parent="menu_hospital_root" sequence="60"/>
     <menuitem id="menu_hospital_billing" name="Patient Bills" parent="menu_hospital_accounting" action="action_hospital_billing" sequence="10"/>
 

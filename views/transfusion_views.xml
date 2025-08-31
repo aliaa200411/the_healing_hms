@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Sequence for Blood Transfusion Requests -->
+    <!-- Sequence -->
     <record id="seq_blood_transfusion" model="ir.sequence">
         <field name="name">Blood Transfusion</field>
         <field name="code">blood.bank.transfusion</field>
@@ -10,16 +10,12 @@
         <field name="company_id" eval="False"/>
     </record>
 
-    <!-- Tree View -->
+    <!-- List View -->
     <record id="view_blood_transfusion_list" model="ir.ui.view">
         <field name="name">blood.bank.transfusion.list</field>
         <field name="model">blood.bank.transfusion</field>
         <field name="arch" type="xml">
-            <list string="Transfusion Requests"
-                  decoration-success="request_status == 'available'"
-                  decoration-warning="request_status == 'waiting'"
-                  decoration-info="request_status == 'pending'"
-                  decoration-muted="request_status == 'done'">
+            <list string="Transfusion Requests">
                 <field name="name"/>
                 <field name="patient_id"/>
                 <field name="blood_type"/>
@@ -43,8 +39,13 @@
                         <field name="patient_id" required="1"/>
                         <field name="blood_type" required="1"/>
                         <field name="rh" required="1"/>
-                        <field name="request_status" readonly="1"/>
-                        <field name="bag_id" readonly="1"/>
+                        <field name="bag_id" 
+                               domain="[('blood_type','=',blood_type),
+                                        ('rh','=',rh),
+                                        ('status','=','available')]"/>
+                        <field name="request_status"/>
+
+                        
                     </group>
 
                     <notebook>
@@ -52,29 +53,6 @@
                             <field name="notes"/>
                         </page>
                     </notebook>
-
-                    <footer>
-    <!-- زر التحقق من توافر الكيس -->
-    <button name="action_check_availability"
-            type="object"
-            string="Check Availability"
-            class="btn-primary"
-            invisible="request_status != 'pending'"/>
-
-    <!-- زر إنهاء العملية وتغيير حالة الكيس -->
-    <button name="action_mark_used"
-            type="object"
-            string="Mark Completed"
-            class="btn-success"
-            invisible="request_status != 'available'"/>
-
-    <!-- زر إغلاق الفورم -->
-    <button string="Close" 
-            class="btn-secondary" 
-            special="cancel"/>
-</footer>
-
-
                 </sheet>
             </form>
         </field>

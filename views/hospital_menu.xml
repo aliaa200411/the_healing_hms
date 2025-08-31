@@ -4,6 +4,51 @@
     <!-- ================== Main Menu ================== -->
     <menuitem id="menu_hospital_root" name="Hospital" sequence="1"/>
 
+    <!-- ================== Reception Menu ================== -->
+    <menuitem id="menu_hospital_reception"
+              name="Reception"
+              parent="menu_hospital_root"
+              sequence="5"/>
+
+    <!-- Appointment Action -->
+    <record id="action_hospital_appointment" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_hospital_appointment"
+              name="Appointments"
+              parent="menu_hospital_reception"
+              action="action_hospital_appointment"
+              sequence="1"/>
+
+    <!-- Room List Action -->
+    <record id="action_hospital_room" model="ir.actions.act_window">
+        <field name="name">Room List</field>
+        <field name="res_model">hospital.room</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_hospital_room_list"
+              name="Room List"
+              parent="menu_hospital_reception"
+              action="action_hospital_room"
+              sequence="2"/>
+
+    <!-- Room Booking Action -->
+    <record id="action_hospital_booking" model="ir.actions.act_window">
+        <field name="name">Room Bookings</field>
+        <field name="res_model">hospital.booking</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_hospital_room_booking"
+              name="Room Bookings"
+              parent="menu_hospital_reception"
+              action="action_hospital_booking"
+              sequence="3"/>
+
     <!-- ================== Departments ================== -->
     <record id="action_hospital_department" model="ir.actions.act_window">
         <field name="name">Departments</field>
@@ -15,33 +60,6 @@
               name="Departments" 
               parent="menu_hospital_root" 
               action="action_hospital_department"/>
-
-    <!-- ================== Rooms ================== -->
-    <record id="action_hospital_room" model="ir.actions.act_window">
-        <field name="name">Rooms</field>
-        <field name="res_model">hospital.room</field>
-        <field name="view_mode">list,form</field>
-    </record>
-
-    <record id="action_hospital_booking" model="ir.actions.act_window">
-        <field name="name">Room Bookings</field>
-        <field name="res_model">hospital.booking</field>
-        <field name="view_mode">list,form</field>
-    </record>
-
-    <menuitem id="menu_hospital_rooms" 
-              name="Rooms" 
-              parent="menu_hospital_department"/>
-
-    <menuitem id="menu_hospital_room_list" 
-              name="Room List" 
-              parent="menu_hospital_rooms" 
-              action="action_hospital_room"/>
-
-    <menuitem id="menu_hospital_room_booking" 
-              name="Room Bookings" 
-              parent="menu_hospital_rooms" 
-              action="action_hospital_booking"/>
 
     <!-- ================== Doctors ================== -->
     <record id="action_doctor" model="ir.actions.act_window">
@@ -110,6 +128,51 @@
               name="Transfusions" 
               parent="menu_blood_bank_root" 
               action="action_blood_transfusion" 
+              sequence="3"/>
+
+    <!-- ================== Emergency Department ================== -->
+    <record id="action_ambulance" model="ir.actions.act_window">
+        <field name="name">Ambulances</field>
+        <field name="res_model">healing_hms.ambulance</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help">Manage Ambulances and their status</field>
+    </record>
+
+    <record id="action_driver" model="ir.actions.act_window">
+        <field name="name">Drivers</field>
+        <field name="res_model">healing_hms.emergency_driver</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help">Manage Ambulance Drivers</field>
+    </record>
+
+    <record id="action_ambulance_request" model="ir.actions.act_window">
+        <field name="name">Ambulance Requests</field>
+        <field name="res_model">emergency.ambulance.request</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help">Manage Ambulance Requests</field>
+    </record>
+
+    <menuitem id="menu_emergency_root"
+              name="Emergency Department"
+              parent="menu_hospital_root"
+              sequence="40"/>
+
+    <menuitem id="menu_emergency_ambulance"
+              name="Ambulances"
+              parent="menu_emergency_root"
+              action="action_ambulance"
+              sequence="1"/>
+
+    <menuitem id="menu_emergency_driver"
+              name="Drivers"
+              parent="menu_emergency_root"
+              action="action_driver"
+              sequence="2"/>
+
+    <menuitem id="menu_emergency_request"
+              name="Requests"
+              parent="menu_emergency_root"
+              action="action_ambulance_request"
               sequence="3"/>
 
 </odoo>

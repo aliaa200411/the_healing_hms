@@ -1,5 +1,6 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+from datetime import datetime
 
 class HospitalBooking(models.Model):
     _name = 'hospital.booking'
@@ -7,18 +8,25 @@ class HospitalBooking(models.Model):
 
     patient_id = fields.Many2one('hospital.patient', string="Patient", required=True)
     partner_id = fields.Many2one('res.partner', string="Customer", related='patient_id.partner_id', store=True, readonly=True)
-
     department_id = fields.Many2one('hospital.department', string="Department", required=True)
-    room_id = fields.Many2one('hospital.room', string="Room", required=True)
-    bed_id = fields.Many2one('hospital.bed', string="Bed")
+
+    room_id = fields.Many2one('hospital.room', readonly=True)
+    bed_id = fields.Many2one('hospital.bed', readonly=True)
 
     date_from = fields.Datetime(string="From", required=True)
     date_to = fields.Datetime(string="To", required=True)
+
+    # حقلين مساعدين للعرض حسب النوع
+    date_from_day = fields.Date(string="From (Day)", compute='_compute_temp_dates', store=False)
+    date_to_day = fields.Date(string="To (Day)", compute='_compute_temp_dates', store=False)
+    datetime_from_hour = fields.Datetime(string="From (Hour)", compute='_compute_temp_dates', store=False)
+    datetime_to_hour = fields.Datetime(string="To (Hour)", compute='_compute_temp_dates', store=False)
 
     price_type = fields.Selection([
         ('hour', 'Per Hour'),
         ('day', 'Per Day')
     ], string="Price Type", required=True, default='hour')
+
     hours = fields.Float(string="Hours")
     days = fields.Integer(string="Days")
     price = fields.Float(string="Total Price", readonly=True)
@@ -31,6 +39,28 @@ class HospitalBooking(models.Model):
     ], string="Status", default='draft')
 
     notes = fields.Text(string="Notes")
+
+    # 🔹 تحديث الحقول المساعدة للعرض حسب النوع
+    @api.onchange('price_type', 'date_from', 'date_to')
+    def _compute_temp_dates(self):
+        for rec in self:
+            if rec.price_type == 'day':
+                rec.date_from_day = rec.date_from.date() if rec.date_from else False
+                rec.date_to_day = rec.date_to.date() if rec.date_to else False
+            else:
+                rec.datetime_from_hour = rec.date_from
+                rec.datetime_to_hour = rec.date_to
+
+    @api.onchange('department_id')
+    def _onchange_department_id(self):
+        for rec in self:
+            rec.room_id = False
+            rec.bed_id = False
+            if rec.department_id:
+                available_rooms = self.env['hospital.room'].search([('department_id', '=', rec.department_id.id)], limit=1)
+                if available_rooms:
+                    rec.room_id = available_rooms[0]
+                    rec.bed_id = available_rooms[0].bed_ids[:1] if available_rooms[0].bed_ids else False
 
     @api.onchange('price_type', 'hours', 'days', 'date_from', 'date_to', 'room_id')
     def _onchange_price(self):
@@ -65,20 +95,18 @@ class HospitalBooking(models.Model):
             if rec.price_type == 'day' and (rec.days is None or rec.days <= 0):
                 raise ValidationError("Please enter a positive number of days.")
 
-    # 🔹 إضافة تحقق يمنع الحجز إذا الأسرة كلها محجوزة
     @api.constrains('room_id', 'bed_id', 'date_from', 'date_to')
     def _check_room_availability(self):
         for rec in self:
             if not rec.room_id:
                 continue
             total_beds = len(rec.room_id.bed_ids)
-            # عدد الحجز المؤكد ضمن نفس التواريخ
             booked_beds = len(rec.room_id.bed_ids.filtered(
                 lambda b: any(
                     booking.state in ['confirmed', 'invoiced'] and
                     (booking.date_from <= rec.date_to and booking.date_to >= rec.date_from)
                     for booking in b.booking_ids
-                    if booking.id != rec.id  # نتجنب الحجز الحالي أثناء التعديل
+                    if booking.id != rec.id
                 )
             ))
             if booked_beds >= total_beds:
@@ -103,6 +131,10 @@ class HospitalBooking(models.Model):
                 self._update_room_state(rec.room_id)
 
     def action_confirm(self):
+        for rec in self:
+            # تحقق من الحقول قبل التفعيل
+            if not rec.patient_id or not rec.department_id or not rec.room_id:
+                raise ValidationError(_("Please fill all required fields before confirming the booking."))
         self.write({'state': 'confirmed'})
         for rec in self:
             if rec.room_id:

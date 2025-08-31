@@ -33,7 +33,9 @@
         'views/blood_bag_views.xml',
         'views/donor_views.xml',
         'views/transfusion_views.xml',
-
+        'views/ambulance_views.xml',
+        'views/driver_views.xml',
+        'views/ambulance_request_views.xml',
         # Sequences
         'data/doctor_sequence.xml',
         'data/specialization_sequence.xml',
@@ -42,6 +44,7 @@
 
         # Reports
         'reports/hospital_billing_report.xml',
+        
     ],
     "installable": True,
     "application": True,

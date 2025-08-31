@@ -45,8 +45,4 @@
         <field name="view_mode">list,form</field>
     </record>
 
-    <menuitem id="menu_hospital_appointments" 
-              name="Appointments" 
-              parent="menu_hospital_root" 
-              action="action_appointment"/>
 </odoo>

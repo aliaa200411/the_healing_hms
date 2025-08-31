@@ -12,3 +12,8 @@ from . import appointment
 from . import blood_bag
 from . import donor
 from . import transfusion
+from . import ambulance
+from . import driver
+from . import ambulance_request
+
+

@@ -3,7 +3,7 @@
     <record id="action_medical_record" model="ir.actions.act_window">
         <field name="name">Medical Records</field>
         <field name="res_model">hospital.medical.record</field>
-        <field name="view_mode">list,form</field>  <!-- list بدلاً من tree -->
+        <field name="view_mode">list,form</field>  
     </record>
 
     <!-- Menu -->

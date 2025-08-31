@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from odoo import models, fields, api
 
 class HospitalRoom(models.Model):
@@ -48,6 +47,14 @@ class HospitalRoom(models.Model):
             ))
             room.available_beds = total_beds - booked_beds
             room.state = 'occupied' if booked_beds == total_beds else 'available'
+    @api.onchange('department_id')
+    def _onchange_department(self):
+        if self.department_id:
+            self.floor = self.department_id.floor
+            self.wing = self.department_id.wing
+        else:
+            self.floor = False
+            self.wing = False        
 
     def action_open_bookings(self):
         return {

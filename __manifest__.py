@@ -29,9 +29,17 @@
         'views/hospital_pharmacy_views.xml',
         'reports/hospital_billing_report.xml',
         'views/appointment_views.xml',
+        'views/patient.xml',
+        'reports/medical_record_template.xml',
+        'views/insurance_views.xml',
+        'views/blood_bag_views.xml',
+        'views/donor_views.xml',
+        'views/transfusion_views.xml',
+        'views/ambulance_views.xml',
+        'views/driver_views.xml',
+        'views/ambulance_request_views.xml',
 ],
     'installable': True,
     'application': True,
     'license': 'LGPL-3',
 }
-

@@ -10,6 +10,8 @@
                 <field name="patient_id"/>
                 <field name="doctor_id"/>
                 <field name="date"/>
+                <field name="insurance_company_id"/>
+                <field name="insurance_discount"/>
                 <field name="amount_total"/>
                 <field name="state"/>
                 <field name="payment_method"/>
@@ -58,6 +60,20 @@
                         </group>
                     </group>
 
+                    <!-- Insurance Information -->
+                    <group string="Insurance Info">
+                        <field name="insurance_company_id"/>
+                        <field name="insurance_discount"/>
+                    </group>
+
+                    <!-- Totals -->
+                    <group string="Amounts">
+                        <field name="amount_untaxed" readonly="1"/>
+                        <field name="amount_tax" readonly="1"/>
+                        <field name="amount_discount" readonly="1"/>
+                        <field name="amount_total" readonly="1"/>
+                    </group>
+
                     <notebook>
                         <page string="Bill Lines">
                             <field name="line_ids">
@@ -67,6 +83,7 @@
                                     <field name="quantity"/>
                                     <field name="price_unit"/>
                                     <field name="tax_ids"/>
+                                    <field name="price_subtotal" readonly="1"/>
                                 </list>
                             </field>
                         </page>
@@ -76,14 +93,6 @@
                         </page>
                     </notebook>
 
-                    <group>
-                        <group/>
-                        <group>
-                            <field name="amount_untaxed" readonly="1"/>
-                            <field name="amount_tax" readonly="1"/>
-                            <field name="amount_total" readonly="1" class="oe_subtotal_footer_separator"/>
-                        </group>
-                    </group>
                 </sheet>
             </form>
         </field>

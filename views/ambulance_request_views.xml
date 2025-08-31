@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- ================== Ambulance Request Form View ================== -->
+    <record id="view_ambulance_request_form" model="ir.ui.view">
+        <field name="name">emergency.ambulance.request.form</field>
+        <field name="model">emergency.ambulance.request</field>
+        <field name="arch" type="xml">
+            <form string="Ambulance Request">
+                <header>
+                    <!-- زر Complete يظهر فقط إذا كانت الحالة assigned -->
+                    <button name="action_complete" string="Complete" type="object"
+                            class="btn-success"
+                            invisible="status != 'assigned'"/>
+                    
+                    <!-- زر Cancel يظهر فقط إذا كانت الحالة assigned -->
+                    <button name="action_cancel" string="Cancel" type="object"
+                            class="btn-danger"
+                            invisible="status != 'assigned'"/>
+                    
+                    <!-- حالة statusbar -->
+                    <field name="status" widget="statusbar"
+                           statusbar_visible="pending,assigned,completed,cancelled"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <field name="patient_name"/>
+                        <field name="patient_location"/>
+                        <field name="requested_time"/>
+                        <field name="assigned_ambulance_id"
+                               domain="[('status','=','available')]"/>
+                        <field name="assigned_driver_id"
+                               domain="[('ambulance_id','=',assigned_ambulance_id),('status','=','available')]"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ================== Ambulance Request List View ================== -->
+    <record id="view_ambulance_request_list" model="ir.ui.view">
+        <field name="name">emergency.ambulance.request.list</field>
+        <field name="model">emergency.ambulance.request</field>
+        <field name="arch" type="xml">
+            <list string="Ambulance Requests">
+                <field name="patient_name"/>
+                <field name="patient_location"/>
+                <field name="requested_time"/>
+                <field name="assigned_ambulance_id"/>
+                <field name="assigned_driver_id"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ================== Action ================== -->
+    <record id="action_ambulance_request" model="ir.actions.act_window">
+        <field name="name">Ambulance Requests</field>
+        <field name="res_model">emergency.ambulance.request</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Manage Emergency Ambulance Requests</field>
+    </record>
+
+</odoo>

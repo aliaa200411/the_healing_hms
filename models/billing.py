@@ -18,6 +18,21 @@ class HospitalBilling(models.Model):
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True, tracking=True)
     doctor_id = fields.Many2one('hospital.doctor', string='Doctor', tracking=True)
     date = fields.Datetime(string='Bill Date', default=fields.Datetime.now, tracking=True)
+
+    # -------- Insurance fields --------
+    has_insurance = fields.Boolean(
+        string="Has Insurance?",
+        related='patient_id.has_insurance',
+        readonly=True
+    )
+    insurance_company_id = fields.Many2one(
+        'hospital.insurance',
+        string="Insurance Company"
+    )
+    insurance_discount = fields.Float(
+        string="Insurance (%)"
+    )
+
     currency_id = fields.Many2one(
         'res.currency',
         string='Currency',
@@ -27,6 +42,7 @@ class HospitalBilling(models.Model):
     line_ids = fields.One2many('hospital.billing.line', 'billing_id', string='Bill Lines', copy=True)
     amount_untaxed = fields.Monetary(string='Untaxed Amount', compute='_compute_amounts', store=True)
     amount_tax = fields.Monetary(string='Taxes', compute='_compute_amounts', store=True)
+    amount_discount = fields.Monetary(string="Insurance Discount", compute='_compute_amounts', store=True, readonly=True)
     amount_total = fields.Monetary(string='Total', compute='_compute_amounts', store=True)
     state = fields.Selection(
         [('draft', 'Draft'),
@@ -45,7 +61,8 @@ class HospitalBilling(models.Model):
     payment_date = fields.Datetime(string='Payment Date')
     notes = fields.Text(string='Notes')
 
-    @api.depends('line_ids.price_unit', 'line_ids.quantity', 'line_ids.tax_ids')
+    # ---------------- Compute Methods ----------------
+    @api.depends('line_ids.price_unit', 'line_ids.quantity', 'line_ids.tax_ids', 'insurance_discount')
     def _compute_amounts(self):
         Tax = self.env['account.tax']
         for bill in self:
@@ -65,10 +82,15 @@ class HospitalBilling(models.Model):
                     subtotal = (line.price_unit or 0.0) * (line.quantity or 0.0)
                     line.price_subtotal = subtotal
                     amount_untaxed += subtotal
+
+            discount = (amount_untaxed * bill.insurance_discount / 100.0) if bill.insurance_discount else 0.0
+
             bill.amount_untaxed = amount_untaxed
             bill.amount_tax = amount_tax
-            bill.amount_total = amount_untaxed + amount_tax
+            bill.amount_discount = discount
+            bill.amount_total = (amount_untaxed - discount) + amount_tax
 
+    # ---------------- Actions ----------------
     def action_confirm(self):
         for rec in self:
             if not rec.line_ids:
@@ -99,7 +121,24 @@ class HospitalBilling(models.Model):
     def print_report(self):
         return self.env.ref('the_healing_hms.hospital_billing_report_action').report_action(self)
 
+    # ---------------- Onchange ----------------
+    @api.onchange('patient_id')
+    def _onchange_patient_id(self):
+        if self.patient_id and self.patient_id.has_insurance:
+            self.insurance_company_id = self.patient_id.insurance_company
+            self.insurance_discount = self.patient_id.insurance_discount
+        else:
+            self.insurance_company_id = False
+            self.insurance_discount = 0.0
 
+    @api.onchange('payment_method')
+    def _onchange_payment_method(self):
+        if self.payment_method == 'insurance' and not self.patient_id.has_insurance:
+            self.payment_method = False
+            return {'warning': {'title': "Warning", 'message': "This patient does not have insurance!"}}
+
+
+# ---------------- Hospital Billing Line ----------------
 class HospitalBillingLine(models.Model):
     _name = 'hospital.billing.line'
     _description = 'Hospital Billing Line'

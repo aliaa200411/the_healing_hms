@@ -10,3 +10,10 @@ from . import staff
 from . import billing
 from . import appointment
 from . import hospital_pharmacy
+from . import hospital_insurance
+from . import ambulance
+from . import ambulance_request
+from . import driver
+from . import donor
+from . import blood_bag
+from . import transfusion

@@ -1,97 +1,77 @@
 <odoo>
-    <!-- Tree View (قائمة المرضى) -->
+    <!-- Tree View (List of Patients) -->
     <record id="view_patient_tree" model="ir.ui.view">
         <field name="name">hospital.patient.list</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <list string="Patients 🏥">
                 <field name="patient_code"/>
-                <field name="name"/> <!-- الاسم الكامل -->
+                <field name="first_name"/>
+                <field name="last_name"/>
                 <field name="phone"/>
                 <field name="gender"/>
                 <field name="dob"/>
+                <field name="age" readonly="1"/>
                 <field name="blood_type"/>
             </list>
         </field>
     </record>
 
-    <!-- Form View (نموذج المريض) -->
+    <!-- Form View (Patient Form) -->
     <record id="view_patient_form" model="ir.ui.view">
         <field name="name">hospital.patient.form</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form string="Patient 🧑‍⚕️">
                 <sheet>
-                    <group>
-                        <group>
-                            <field name="first_name"/>
-                            <field name="last_name"/>
-                            <field name="dob"/>
-                            <field name="gender"/>
-                            <field name="blood_type"/>
-                        </group>
-                        <group>
-                            <field name="phone"/>
-                            <field name="email"/>
-                            <field name="address"/>
-                            <field name="nationality"/>
-                        </group>
+                    <group string="Personal Information" col="2">
+                        <field name="first_name" help="Enter the first name"/>
+                        <field name="last_name" help="Enter the last name"/>
+                        <field name="dob" widget="date" options="{'datepicker': {'max_date': 'today'}}"/>
+                         <field name="age" readonly="1"/>
+                        <field name="gender" widget="radio"/>
+                        <field name="blood_type" widget="selection"/>
                     </group>
+
+                    <group string="Contact And Demographics" col="2">
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="address" help="Street, City, Country"/>
+                        <field name="nationality"/>
+                    </group>
+                    <group string="Insurance Information" col="2">
+                                    <field name="has_insurance"/>
+                                    <field name="insurance_company"/>
+                                    <field name="insurance_coverage" readonly="1"/>
+                                    <field name="insurance_discount" readonly="1"/>
+                                </group>
+
                     <notebook>
                         <page string="Medical Info 💊">
-                            <field name="allergies"/>
-                            <field name="diagnosis"/>
+                            <group>
+                                <field name="allergies" help="Allergies if any"/>
+                                <field name="diagnosis" help="Diagnosis details"/>
+                            </group>
                         </page>
+
                         <page string="Appointments 📅">
                             <field name="appointment_ids">
-                                <list string="Appointments 📅">
+                                <list string="Appointments">
                                     <field name="appointment_date"/>
-                                    <field name="state"/>
+                                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done,cancel"/>
                                 </list>
                             </field>
                         </page>
                     </notebook>
                 </sheet>
-                <footer>
-                <button name="action_print_medical_record"
-                        string="Print Medical Record 📝"
-                        type="object"
-                        class="btn-primary"/>
 
-              </footer>
+                <header>
+                    <button name="action_print_medical_record"
+                            string="🖨 Print Medical Record"
+                            type="object"
+                            class="btn-primary"/>
+                </header>
             </form>
         </field>
     </record>
-
-    <!-- Search View -->
-    <record id="view_patient_search" model="ir.ui.view">
-        <field name="name">hospital.patient.search</field>
-        <field name="model">hospital.patient</field>
-        <field name="arch" type="xml">
-            <search string="Search Patients 🔍">
-                <field name="patient_code"/>
-                <field name="name"/> 
-                <field name="phone"/>
-                <filter string="Male ♂️" name="male" domain="[('gender','=','male')]"/>
-                <filter string="Female ♀️" name="female" domain="[('gender','=','female')]"/>
-                <filter string="With Allergies ⚠️" name="allergies" domain="[('allergies','!=',False)]"/>
-            </search>
-        </field>
-    </record>
-
-    <!-- Action -->
-    <record id="action_patient" model="ir.actions.act_window">
-        <field name="name">Patients 🏥</field>
-        <field name="res_model">hospital.patient</field>
-        <field name="view_mode">list,form</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                Add a new patient record here 📝.
-            </p>
-        </field>
-    </record>
-
-    <!-- Menu Items -->
-    <menuitem id="menu_hms_patient" name="🧑‍⚕️ Patients" parent="menu_hospital_root"/>
-    <menuitem id="menu_hms_patient_action" parent="menu_hms_patient" action="action_patient"/>
 </odoo>

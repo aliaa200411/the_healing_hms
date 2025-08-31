@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Sequence -->
+    <record id="seq_blood_transfusion" model="ir.sequence">
+        <field name="name">Blood Transfusion</field>
+        <field name="code">blood.bank.transfusion</field>
+        <field name="prefix">TRF/%(year)s/</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <!-- List View -->
+    <record id="view_blood_transfusion_list" model="ir.ui.view">
+        <field name="name">blood.bank.transfusion.list</field>
+        <field name="model">blood.bank.transfusion</field>
+        <field name="arch" type="xml">
+            <list string="Transfusion Requests">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="blood_type"/>
+                <field name="rh"/>
+                <field name="request_status"/>
+                <field name="bag_id"/>
+                <field name="create_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_blood_transfusion_form" model="ir.ui.view">
+        <field name="name">blood.bank.transfusion.form</field>
+        <field name="model">blood.bank.transfusion</field>
+        <field name="arch" type="xml">
+            <form string="Blood Transfusion Request">
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="patient_id" required="1"/>
+                        <field name="blood_type" required="1"/>
+                        <field name="rh" required="1"/>
+                        <field name="bag_id" 
+                               domain="[('blood_type','=',blood_type),
+                                        ('rh','=',rh),
+                                        ('status','=','available')]"/>
+                        <field name="request_status"/>
+
+                        
+                    </group>
+
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_blood_transfusion" model="ir.actions.act_window">
+        <field name="name">Transfusion Requests</field>
+        <field name="res_model">blood.bank.transfusion</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Manage Blood Transfusion Requests</field>
+    </record>
+
+</odoo>

@@ -9,22 +9,24 @@
             <field name="view_mode">list,form</field>
         </record>
 
-        <record id="view_hospital_booking_list" model="ir.ui.view">
+        <!-- Tree View -->
+        <record id="view_hospital_booking_tree" model="ir.ui.view">
             <field name="name">hospital.booking.list</field>
             <field name="model">hospital.booking</field>
             <field name="arch" type="xml">
-                <list string="Room Bookings">
+                <list>
+                    <field name="patient_id"/>
+                    <field name="partner_id"/>
                     <field name="department_id"/>
                     <field name="room_id"/>
-                    <field name="bed_id"/> 
-                    <field name="patient_id"/>
-                    <field name="price_type"/>
-                    <field name="hours"/>
-                    <field name="days"/>
+                    <field name="room_type"/>
+                    <field name="bed_id"/>
                     <field name="date_from"/>
                     <field name="date_to"/>
-                    <field name="state"/>
+                    <field name="days"/>
+                    <field name="daily_price"/>
                     <field name="price"/>
+                    <field name="state"/>
                 </list>
             </field>
         </record>
@@ -35,36 +37,58 @@
             <field name="model">hospital.booking</field>
             <field name="arch" type="xml">
                 <form string="Room Booking">
-                    <header>
-                        <field name="state" widget="statusbar"/>
-                        <button name="action_draft" type="object" string="Draft"/>
-                        <button name="action_confirm" type="object" string="Confirm"/>
-                        <button name="action_create_invoice" type="object" string="Create Invoice" class="btn-primary"/>
-                        <button name="action_cancel" type="object" string="Cancel"/>
-                    </header>
-
                     <sheet>
                         <group>
-                            <group>
-                                <field name="department_id"/>
-                                <field name="room_id"/>
-                                <field name="bed_id"/>
-                               <field name="patient_id"/>
-                            </group>
-                            <group>
-                                <field name="price_type"/>
-                                <field name="hours"/>
-                                <field name="days"/>
-                                <field name="price" readonly="1"/>
-                                <field name="date_from"/>
-                                <field name="date_to"/>
-                                <field name="notes"/>
-                            </group>
+                            <field name="patient_id"/>
+                            <field name="partner_id" readonly="1"/>
                         </group>
+
+                        <group>
+                            <field name="department_id"/>
+                            <field name="room_id"/>
+                            <field name="room_type" readonly="1"/>
+                            <field name="bed_id"/>
+                        </group>
+
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+
+                        <group>
+                            <field name="days" readonly="1"/>
+                            <field name="daily_price" readonly="1"/>
+                            <field name="price" readonly="1"/>
+                        </group>
+
+                        <group>
+                            <field name="notes"/>
+                        </group>
+
+                        <group>
+                            <field name="state" readonly="1"/>
+                        </group>
+
+                        <footer>
+                            <!-- أزرار بدون استخدام states أو attrs -->
+                            <button name="action_draft" type="object" string="Set to Draft"
+                                    class="btn-secondary"
+                                    modifiers="{'invisible': [('state','not in', ['confirmed','invoiced'])]}"/>
+                            <button name="action_confirm" type="object" string="Confirm Booking"
+                                    class="btn-primary"
+                                    modifiers="{'invisible': [('state','!=','draft')]}"/>
+                            <button name="action_create_invoice" type="object" string="Create Invoice"
+                                    class="btn-success"
+                                    modifiers="{'invisible': [('state','!=','confirmed')]}"/>
+                        </footer>
                     </sheet>
                 </form>
             </field>
         </record>
 
     </data>
+
+
+
+    
 </odoo>

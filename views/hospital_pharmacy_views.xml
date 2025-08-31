@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ======================= -->
+    <!-- Medicine Categories -->
+    <!-- ======================= -->
+    <record id="view_hospital_pharmacy_category_list" model="ir.ui.view">
+        <field name="name">hospital.pharmacy.category.list</field>
+        <field name="model">hospital.pharmacy.category</field>
+        <field name="arch" type="xml">
+            <list string="Medicine Categories">
+                <field name="name"/>
+                <field name="description"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hospital_pharmacy_category_form" model="ir.ui.view">
+        <field name="name">hospital.pharmacy.category.form</field>
+        <field name="model">hospital.pharmacy.category</field>
+        <field name="arch" type="xml">
+            <form string="Medicine Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ======================= -->
+    <!-- Medicines -->
+    <!-- ======================= -->
+    <record id="view_hospital_medicine_list" model="ir.ui.view">
+        <field name="name">hospital.medicine.list</field>
+        <field name="model">hospital.medicine</field>
+        <field name="arch" type="xml">
+            <list string="Medicines">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="quantity_available"/>
+                <field name="price_unit"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hospital_medicine_form" model="ir.ui.view">
+        <field name="name">hospital.medicine.form</field>
+        <field name="model">hospital.medicine</field>
+        <field name="arch" type="xml">
+            <form string="Medicine">
+                <sheet>
+                    <group>
+                        <field name="code" readonly="1"/>
+                        <field name="name"/>
+                        <field name="category_id"/>
+                        <field name="quantity_available"/>
+                        <field name="price_unit"/>
+                        <field name="currency_id"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ======================= -->
+    <!-- Pharmacists -->
+    <!-- ======================= -->
+    <record id="view_hospital_pharmacist_list" model="ir.ui.view">
+        <field name="name">hospital.pharmacist.list</field>
+        <field name="model">hospital.pharmacist</field>
+        <field name="arch" type="xml">
+            <list string="Pharmacists">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hospital_pharmacist_form" model="ir.ui.view">
+        <field name="name">hospital.pharmacist.form</field>
+        <field name="model">hospital.pharmacist</field>
+        <field name="arch" type="xml">
+            <form string="Pharmacist">
+                <sheet>
+                    <group>
+                        <field name="code" readonly="1"/>
+                        <field name="name"/>
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ======================= -->
+    <!-- Pharmacy Orders -->
+    <!-- ======================= -->
+    <record id="view_hospital_pharmacy_order_list" model="ir.ui.view">
+        <field name="name">hospital.pharmacy.order.list</field>
+        <field name="model">hospital.pharmacy.order</field>
+        <field name="arch" type="xml">
+            <list string="Pharmacy Orders">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="pharmacist_id"/>
+                <field name="date"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_hospital_pharmacy_order_form" model="ir.ui.view">
+        <field name="name">hospital.pharmacy.order.form</field>
+        <field name="model">hospital.pharmacy.order</field>
+        <field name="arch" type="xml">
+            <form string="Pharmacy Order">
+                <header>
+                    <button name="action_dispense" type="object" string="Dispense" class="btn-primary" confirm="Are you sure to dispense?"/>
+                    <button name="action_cancel" type="object" string="Cancel" class="btn-secondary" confirm="Cancel this order?"/>
+                    <field name="state" widget="statusbar" options="{'clickable': True}" statusbar_visible="draft,dispensed,cancel"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="patient_id"/>
+                        <field name="doctor_id"/>
+                        <field name="pharmacist_id"/>
+                        <field name="date"/>
+                    </group>
+                    <notebook>
+                        <page string="Medicines">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="medicine_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price_unit"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

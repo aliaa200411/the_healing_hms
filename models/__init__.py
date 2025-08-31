@@ -9,3 +9,4 @@ from . import medical_record
 from . import staff
 from . import billing
 from . import appointment
+from . import hospital_pharmacy

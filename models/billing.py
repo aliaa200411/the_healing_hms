@@ -18,20 +18,16 @@ class HospitalBilling(models.Model):
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True, tracking=True)
     doctor_id = fields.Many2one('hospital.doctor', string='Doctor', tracking=True)
     date = fields.Datetime(string='Bill Date', default=fields.Datetime.now, tracking=True)
-
     currency_id = fields.Many2one(
         'res.currency',
         string='Currency',
         required=True,
         default=lambda self: self.env.company.currency_id.id
     )
-
     line_ids = fields.One2many('hospital.billing.line', 'billing_id', string='Bill Lines', copy=True)
-
     amount_untaxed = fields.Monetary(string='Untaxed Amount', compute='_compute_amounts', store=True)
     amount_tax = fields.Monetary(string='Taxes', compute='_compute_amounts', store=True)
     amount_total = fields.Monetary(string='Total', compute='_compute_amounts', store=True)
-
     state = fields.Selection(
         [('draft', 'Draft'),
          ('confirmed', 'Confirmed'),
@@ -39,7 +35,6 @@ class HospitalBilling(models.Model):
          ('cancel', 'Cancelled')],
         default='draft', tracking=True
     )
-
     payment_method = fields.Selection(
         [('cash', 'Cash'),
          ('card', 'Card'),
@@ -82,8 +77,8 @@ class HospitalBilling(models.Model):
 
     def action_mark_paid(self):
         for rec in self:
-            if rec.state not in ('confirmed', 'draft'):
-                raise UserError(_("Only draft/confirmed bills can be marked as paid."))
+            if rec.state != 'confirmed':
+                raise UserError(_("Only confirmed bills can be marked as paid."))
             if not rec.payment_method:
                 raise UserError(_("Please select a Payment Method first."))
             rec.payment_date = fields.Datetime.now()
@@ -102,7 +97,6 @@ class HospitalBilling(models.Model):
             rec.state = 'cancel'
 
     def print_report(self):
-        # External ID
         return self.env.ref('the_healing_hms.hospital_billing_report_action').report_action(self)
 
 

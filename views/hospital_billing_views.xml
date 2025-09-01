@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- List View -->
+    <record id="view_hospital_billing_list" model="ir.ui.view">
+        <field name="name">hospital.billing.list</field>
+        <field name="model">hospital.billing</field>
+        <field name="arch" type="xml">
+            <list string="Patient Bills">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="date"/>
+                <field name="insurance_company_id"/>
+                <field name="insurance_discount"/>
+                <field name="amount_total"/>
+                <field name="state"/>
+                <field name="payment_method"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_hospital_billing_form" model="ir.ui.view">
+        <field name="name">hospital.billing.form</field>
+        <field name="model">hospital.billing</field>
+        <field name="arch" type="xml">
+            <form string="Patient Bill">
+                <header>
+                    <!-- Confirm button: Visible in draft state -->
+                    <button name="action_confirm" type="object" string="Confirm" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <!-- Cancel button: Visible in draft and confirmed states -->
+                    <button name="action_cancel" type="object" string="Cancel" class="btn-secondary"
+                            invisible="state not in ['draft', 'confirmed']"/>
+                    <!-- Mark as Paid button: Visible in confirmed state -->
+                    <button name="action_mark_paid" type="object" string="Mark as Paid" class="btn-success"
+                            invisible="state != 'confirmed'"/>
+                    <!-- Reset to Draft button: Visible in confirmed and paid states -->
+                    <button name="action_reset_to_draft" type="object" string="Reset to Draft"
+                            invisible="state not in ['confirmed', 'paid']"/>
+                    <!-- Print Invoice button: Visible in paid state -->
+                    <button name="print_report" type="object" string="Print Invoice" class="btn-primary"
+                            invisible="state != 'paid'"/>
+                    <!-- Statusbar to show the current state -->
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,paid,cancel"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="date"/>
+                            <field name="patient_id"/>
+                            <field name="doctor_id"/>
+                        </group>
+                        <group>
+                            <field name="currency_id"/>
+                            <field name="payment_method"/>
+                            <field name="payment_date" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <!-- Insurance Information -->
+                    <group string="Insurance Info">
+                        <field name="insurance_company_id"/>
+                        <field name="insurance_discount"/>
+                    </group>
+
+                    <!-- Totals -->
+                    <group string="Amounts">
+                        <field name="amount_untaxed" readonly="1"/>
+                        <field name="amount_tax" readonly="1"/>
+                        <field name="amount_discount" readonly="1"/>
+                        <field name="amount_total" readonly="1"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Bill Lines">
+                            <field name="line_ids">
+                                <list string="Bill Lines" editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="name"/>
+                                    <field name="quantity"/>
+                                    <field name="price_unit"/>
+                                    <field name="tax_ids"/>
+                                    <field name="price_subtotal" readonly="1"/>
+                                </list>
+                            </field>
+                        </page>
+
+                        <page string="Notes">
+                            <field name="notes" placeholder="Any notes or additional info..."/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_hospital_billing" model="ir.actions.act_window">
+        <field name="name">Patient Bills</field>
+        <field name="res_model">hospital.billing</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create patient bills and register payments.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menus -->
+    <menuitem id="menu_hospital_accounting" name="Accounting" parent="menu_hospital_root" sequence="60"/>
+    <menuitem id="menu_hospital_billing" name="Patient Bills" parent="menu_hospital_accounting" action="action_hospital_billing" sequence="10"/>
+
+</odoo>

@@ -16,32 +16,230 @@
               parent="menu_hospital_root" 
               action="action_hospital_department"/>
 
-    <!-- ================== Rooms ================== -->
+    <!-- ================== Reception ================== -->
+    <menuitem id="menu_hospital_reception"
+              name="Reception"
+              parent="menu_hospital_root"
+              sequence="5"/>
+
+    <!-- Appointment Action -->
+    <record id="action_hospital_appointment" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_hospital_appointment"
+              name="Appointments"
+              parent="menu_hospital_reception"
+              action="action_hospital_appointment"
+              sequence="1"/>
+
+    <!-- Room List Action -->
     <record id="action_hospital_room" model="ir.actions.act_window">
-        <field name="name">Rooms</field>
+        <field name="name">Room List</field>
         <field name="res_model">hospital.room</field>
         <field name="view_mode">list,form</field>
     </record>
 
+    <menuitem id="menu_hospital_room_list"
+              name="Room List"
+              parent="menu_hospital_reception"
+              action="action_hospital_room"
+              sequence="2"/>
+
+    <!-- Room Booking Action -->
     <record id="action_hospital_booking" model="ir.actions.act_window">
         <field name="name">Room Bookings</field>
         <field name="res_model">hospital.booking</field>
         <field name="view_mode">list,form</field>
     </record>
 
-    <!-- Rooms menu تحت Departments -->
-    <menuitem id="menu_hospital_rooms" 
-              name="Rooms" 
-              parent="menu_hospital_department"/>
+    <menuitem id="menu_hospital_room_booking"
+              name="Room Bookings"
+              parent="menu_hospital_reception"
+              action="action_hospital_booking"
+              sequence="3"/>
 
-    <menuitem id="menu_hospital_room_list" 
-              name="Room List" 
-              parent="menu_hospital_rooms" 
-              action="action_hospital_room"/>
+    <!-- ================== Doctors ================== -->
+    <record id="action_doctor" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">hospital.doctor</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="menu_hospital_doctors" 
+              name="Doctors" 
+              parent="menu_hospital_root" 
+              action="action_doctor"/>
 
-    <menuitem id="menu_hospital_room_booking" 
-              name="Room Bookings" 
-              parent="menu_hospital_rooms" 
-              action="action_hospital_booking"/>
+    <!-- ================== Staff ================== -->
+    <record id="action_staff" model="ir.actions.act_window">
+        <field name="name">Staff</field>
+        <field name="res_model">hospital.staff</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="menu_hospital_staff" 
+              name="Staff" 
+              parent="menu_hospital_root" 
+              action="action_staff"/>
+
+    <!-- ================== Pharmacy ================== -->
+    <record id="action_hospital_medicine" model="ir.actions.act_window">
+        <field name="name">Medicines</field>
+        <field name="res_model">hospital.medicine</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_hospital_pharmacist" model="ir.actions.act_window">
+        <field name="name">Pharmacists</field>
+        <field name="res_model">hospital.pharmacist</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_hospital_pharmacy_order" model="ir.actions.act_window">
+        <field name="name">Pharmacy Orders</field>
+        <field name="res_model">hospital.pharmacy.order</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_hospital_pharmacy" 
+              name="Pharmacy" 
+              parent="menu_hospital_root"/>
+
+    <menuitem id="menu_hospital_medicines" 
+              name="Medicines" 
+              parent="menu_hospital_pharmacy" 
+              action="action_hospital_medicine"/>
+
+    <menuitem id="menu_hospital_orders" 
+              name="Pharmacy Orders" 
+              parent="menu_hospital_pharmacy" 
+              action="action_hospital_pharmacy_order"/>
+
+    <menuitem id="menu_hospital_pharmacists" 
+              name="Pharmacists" 
+              parent="menu_hospital_pharmacy" 
+              action="action_hospital_pharmacist"/>
+
+    <!-- ================== Patients ================== -->
+    <record id="action_patient" model="ir.actions.act_window">
+        <field name="name">Patients 🏥</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new patient record here 📝.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_hms_patient_action" 
+              parent="menu_hospital_root" 
+              action="action_patient"/>
+
+    <!-- ================== Insurance ================== -->
+    <record id="action_insurance" model="ir.actions.act_window">
+        <field name="name">Insurance Companies</field>
+        <field name="res_model">hospital.insurance</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_hospital_insurance" 
+              name="Insurance Companies"
+              parent="menu_hospital_root" 
+              action="action_insurance" 
+              sequence="20"/>
+
+    <!-- ================== Emergency Department ================== -->
+    <record id="action_ambulance" model="ir.actions.act_window">
+        <field name="name">Ambulances</field>
+        <field name="res_model">healing_hms.ambulance</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help">Manage Ambulances and their status</field>
+    </record>
+
+    <record id="action_driver" model="ir.actions.act_window">
+        <field name="name">Drivers</field>
+        <field name="res_model">healing_hms.emergency_driver</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help">Manage Ambulance Drivers</field>
+    </record>
+
+    <record id="action_ambulance_request" model="ir.actions.act_window">
+        <field name="name">Ambulance Requests</field>
+        <field name="res_model">emergency.ambulance.request</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help">Manage Ambulance Requests</field>
+    </record>
+
+    <menuitem id="menu_emergency_root"
+              name="Emergency Department"
+              parent="menu_hospital_root"
+              sequence="40"/>
+
+    <menuitem id="menu_emergency_ambulance"
+              name="Ambulances"
+              parent="menu_emergency_root"
+              action="action_ambulance"
+              sequence="1"/>
+
+    <menuitem id="menu_emergency_driver"
+              name="Drivers"
+              parent="menu_emergency_root"
+              action="action_driver"
+              sequence="2"/>
+
+    <menuitem id="menu_emergency_request"
+              name="Requests"
+              parent="menu_emergency_root"
+              action="action_ambulance_request"
+              sequence="3"/>
+
+    <!-- ================== Blood Bank ================== -->
+    <menuitem id="menu_blood_bank_root" 
+              name="Blood Bank" 
+              parent="menu_hospital_root" 
+              sequence="30"/>
+
+    <record id="action_blood_bag" model="ir.actions.act_window">
+        <field name="name">Blood Bags</field>
+        <field name="res_model">blood.bank.bag</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Manage Blood Bags in the Blood Bank</field>
+    </record>
+
+    <record id="action_blood_donor" model="ir.actions.act_window">
+        <field name="name">Donors</field>
+        <field name="res_model">blood.bank.donor</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Manage Donor Registry</field>
+    </record>
+
+    <record id="action_blood_transfusion" model="ir.actions.act_window">
+        <field name="name">Transfusions</field>
+        <field name="res_model">blood.bank.transfusion</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Manage Blood Transfusions</field>
+    </record>
+
+    <menuitem id="menu_blood_bag" 
+              name="Blood Bags" 
+              parent="menu_blood_bank_root" 
+              action="action_blood_bag" 
+              sequence="1"/>
+
+    <menuitem id="menu_blood_donor" 
+              name="Donors" 
+              parent="menu_blood_bank_root" 
+              action="action_blood_donor" 
+              sequence="2"/>
+
+    <menuitem id="menu_blood_transfusion" 
+              name="Transfusions" 
+              parent="menu_blood_bank_root" 
+              action="action_blood_transfusion" 
+              sequence="3"/>
 
 </odoo>

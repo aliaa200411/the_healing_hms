@@ -5,5 +5,10 @@ class HospitalSpecialization(models.Model):
     _name = 'hospital.specialization'
     _description = 'Doctor Specialization'
 
-    name = fields.Char(string="Specialization Name", required=True)
-    code = fields.Char(string="Code")  
+    code = fields.Char(
+        string="Specialization ID",
+        required=True,
+        copy=False,
+        readonly=True,
+        default=lambda self: self.env['ir.sequence'].next_by_code('hospital.specialization') or 'NEW')
+    name = fields.Char(string="Name", required=True)

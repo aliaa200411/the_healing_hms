@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ==================== Blood Donor List View ==================== -->
+    <record id="view_blood_donor_list" model="ir.ui.view">
+        <field name="name">blood.bank.donor.list</field>
+        <field name="model">blood.bank.donor</field>
+        <field name="arch" type="xml">
+            <list string="Blood Donors">
+                <field name="partner_id"/>
+                <field name="gender"/>
+                <field name="blood_type"/>
+                <field name="rh"/>
+                <field name="hemoglobin_level"/>
+                <field name="weight"/>
+                <button string="Donate" type="object" name="button_donate" class="btn-primary"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ==================== Blood Donor Form View ==================== -->
+    <record id="view_blood_donor_form" model="ir.ui.view">
+        <field name="name">blood.bank.donor.form</field>
+        <field name="model">blood.bank.donor</field>
+        <field name="arch" type="xml">
+            <form string="Blood Donor">
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="gender"/>
+                        <field name="blood_type"/>
+                        <field name="rh"/>
+                        <field name="hemoglobin_level"/>
+                        <field name="weight"/>
+                    </group>
+
+                    <group>
+                        <field name="medical_notes"/>
+                    </group>
+
+                    <footer>
+                        <button string="Donate" type="object" name="button_donate" class="btn-primary"/>
+                        <button string="Close" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ==================== Blood Donor Action ==================== -->
+    <record id="action_blood_donor" model="ir.actions.act_window">
+        <field name="name">Blood Donors</field>
+        <field name="res_model">blood.bank.donor</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

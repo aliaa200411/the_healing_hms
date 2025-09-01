@@ -1,0 +1,63 @@
+<odoo>
+    <!-- ================== Sequence ================== -->
+    <record id="seq_ambulance" model="ir.sequence">
+        <field name="name">Ambulance Sequence</field>
+        <field name="code">healing_hms.ambulance</field>
+        <field name="prefix">AMB</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <!-- ================== Tree View ================== -->
+    <record id="view_ambulance_list" model="ir.ui.view">
+        <field name="name">healing_hms.ambulance.list</field>
+        <field name="model">healing_hms.ambulance</field>
+        <field name="arch" type="xml">
+            <list string="Ambulances">
+                <field name="name"/>
+                <field name="license_plate"/>
+                <field name="status"/>
+                <field name="capacity"/>
+                <field name="last_maintenance_date"/>
+                <field name="next_maintenance_date"/>
+                <field name="driver_ids" widget="many2many_tags"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ================== Form View ================== -->
+    <record id="view_ambulance_form" model="ir.ui.view">
+        <field name="name">healing_hms.ambulance.form</field>
+        <field name="model">healing_hms.ambulance</field>
+        <field name="arch" type="xml">
+            <form string="Ambulance">
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="license_plate"/>
+                        <field name="status"/>
+                        <field name="capacity"/>
+                        <field name="last_maintenance_date"/>
+                        <field name="next_maintenance_date" readonly="1"/>
+                        <field name="driver_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ================== Action ================== -->
+    <record id="action_ambulance" model="ir.actions.act_window">
+        <field name="name">Ambulances</field>
+        <field name="res_model">healing_hms.ambulance</field>
+        <field name="view_mode">list,form</field>
+        <field name="help">Manage Ambulances and their status</field>
+    </record>
+
+    <!-- ================== Menu ================== -->
+    <menuitem id="menu_emergency_ambulance"
+              name="Ambulances"
+              parent="menu_emergency_root"
+              action="action_ambulance"
+              sequence="1"/>
+</odoo>

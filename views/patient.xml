@@ -1,0 +1,77 @@
+<odoo>
+    <!-- Tree View (List of Patients) -->
+    <record id="view_patient_tree" model="ir.ui.view">
+        <field name="name">hospital.patient.list</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <list string="Patients 🏥">
+                <field name="patient_code"/>
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="phone"/>
+                <field name="gender"/>
+                <field name="dob"/>
+                <field name="age" readonly="1"/>
+                <field name="blood_type"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View (Patient Form) -->
+    <record id="view_patient_form" model="ir.ui.view">
+        <field name="name">hospital.patient.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient 🧑‍⚕️">
+                <sheet>
+                    <group string="Personal Information" col="2">
+                        <field name="first_name" help="Enter the first name"/>
+                        <field name="last_name" help="Enter the last name"/>
+                        <field name="dob" widget="date" options="{'datepicker': {'max_date': 'today'}}"/>
+                         <field name="age" readonly="1"/>
+                        <field name="gender" widget="radio"/>
+                        <field name="blood_type" widget="selection"/>
+                    </group>
+
+                    <group string="Contact And Demographics" col="2">
+                        <field name="phone"/>
+                        <field name="email"/>
+                        <field name="address" help="Street, City, Country"/>
+                        <field name="nationality"/>
+                    </group>
+                    <group string="Insurance Information" col="2">
+                                    <field name="has_insurance"/>
+                                    <field name="insurance_company"/>
+                                    <field name="insurance_coverage" readonly="1"/>
+                                    <field name="insurance_discount" readonly="1"/>
+                                </group>
+
+                    <notebook>
+                        <page string="Medical Info 💊">
+                            <group>
+                                <field name="allergies" help="Allergies if any"/>
+                                <field name="diagnosis" help="Diagnosis details"/>
+                            </group>
+                        </page>
+
+                        <page string="Appointments 📅">
+                            <field name="appointment_ids">
+                                <list string="Appointments">
+                                    <field name="appointment_date"/>
+                                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done,cancel"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+
+                <header>
+                    <button name="action_print_medical_record"
+                            string="🖨 Print Medical Record"
+                            type="object"
+                            class="btn-primary"/>
+                </header>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -21,4 +21,7 @@ access_blood_donor,Access Blood Donor,model_blood_bank_donor,base.group_user,1,1
 access_blood_transfusion,Access Blood Transfusion,model_blood_bank_transfusion,base.group_user,1,1,1,1
 access_emergency_ambulance,Access Emergency Ambulance,model_healing_hms_ambulance,base.group_user,1,1,1,1
 access_emergency_driver,Access Emergency Driver,model_healing_hms_emergency_driver,base.group_user,1,1,1,1
+access_hospital_prescription,Access Hospital Prescription,model_hospital_prescription,base.group_user,1,1,1,1
+access_prescription_line,Access Prescription Line,model_hospital_prescription_line,base.group_user,1,1,1,1
 access_emergency_ambulance_request,Access Emergency Ambulance Request,model_emergency_ambulance_request,base.group_user,1,1,1,1
+access_patient_history_wizard,Access Patient History Wizard,model_patient_history_wizard,base.group_user,1,1,1,1

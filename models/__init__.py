@@ -5,7 +5,6 @@ from . import patient
 from . import hospital_room
 from . import Specialization
 from . import hospital_room_booking
-from . import medical_record
 from . import staff
 from . import billing
 from . import appointment
@@ -17,3 +16,5 @@ from . import driver
 from . import donor
 from . import blood_bag
 from . import transfusion
+from . import prescription
+from . import patient_history_wizard

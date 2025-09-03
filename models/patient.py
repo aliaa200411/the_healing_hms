@@ -1,4 +1,4 @@
-# models/patient.py
+# -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
 
 class Patient(models.Model):
@@ -30,6 +30,7 @@ class Patient(models.Model):
     diagnosis = fields.Text(string='Diagnosis')
     doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
     partner_id = fields.Many2one('res.partner', string='Related Partner')
+    prescription_ids = fields.One2many("hospital.prescription", "patient_id", string="Prescriptions")
 
     # ==== Insurance Fields ====
     has_insurance = fields.Boolean(
@@ -37,10 +38,13 @@ class Patient(models.Model):
         compute="_compute_has_insurance",
         store=True
     )
-    insurance_company = fields.Many2one(
-        'hospital.insurance',  # تم التعديل هنا
-        string="Insurance Company"
+    billing_ids = fields.One2many(
+    'hospital.billing',   # اسم الموديل تبع الفواتير
+    'patient_id',         # الحقل الموجود بموديل الفواتير اللي بيربط المريض
+    string="Billings"
     )
+
+    insurance_company = fields.Many2one('hospital.insurance', string="Insurance Company")
     insurance_coverage = fields.Float(
         string="Coverage (%)",
         default=0.0,
@@ -52,6 +56,7 @@ class Patient(models.Model):
         store=True
     )
 
+    
     # ==== COMPUTE METHODS ====
     @api.depends('first_name', 'last_name')
     def _compute_name(self):
@@ -78,11 +83,9 @@ class Patient(models.Model):
     def _compute_insurance_discount(self):
         for patient in self:
             if patient.has_insurance and patient.insurance_company:
-                # إذا المستخدم أدخل نسبة تغطية يدوية نستعملها
                 if patient.insurance_coverage > 0:
                     patient.insurance_discount = patient.insurance_coverage
                 else:
-                    # إذا ما في تغطية يدوية، ناخذ النسبة من شركة التأمين
                     patient.insurance_discount = getattr(
                         patient.insurance_company, 'discount_percentage', 0.0
                     )
@@ -92,11 +95,50 @@ class Patient(models.Model):
     # ==== OVERRIDE CREATE ====
     @api.model_create_multi
     def create(self, vals_list):
-        for vals in vals_list:
-            if not vals.get('patient_code'):
-                vals['patient_code'] = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
-        return super(Patient, self).create(vals_list)
+        patients = super(Patient, self).create(vals_list)
+        for patient in patients:
+            # توليد patient_code إذا غير موجود
+            if not patient.patient_code:
+                patient.patient_code = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
+           
+        return patients
 
-    # ==== ACTIONS ====
-    def action_print_medical_record(self):
-        return self.env.ref('the_healing_hms.action_report_medical_record').report_action(self)
+    # ==== Smart Button: View Prescriptions ====
+    def action_view_prescriptions(self):
+        self.ensure_one()
+        return {
+            'name': _('Prescriptions'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'hospital.prescription',
+            'view_mode': 'list,form',
+            'domain': [('patient_id', '=', self.id)],  # فقط وصفات المريض الحالي
+            'target': 'current',
+            'context': {'default_patient_id': self.id},
+        }
+
+    # ==== Smart Button: Create Prescription ====
+    def action_create_prescription(self):
+        self.ensure_one()
+        return {
+            'name': _('New Prescription'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'hospital.prescription',
+            'view_mode': 'form',
+            'target': 'current',
+            'context': {
+                'default_doctor_id': self.doctor_id.id,
+                'default_patient_id': self.id,
+            },
+        }
+
+    # ==== Smart Button: View Patient History (Wizard) ====
+    def action_view_patient_history(self):
+        self.ensure_one()
+        return {
+            'name': _('Patient History'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'patient.history.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {'default_patient_id': self.id},
+        }

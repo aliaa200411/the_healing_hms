@@ -18,7 +18,7 @@ class BloodDonor(models.Model):
     is_pregnant = fields.Selection([('yes', 'Yes'), ('no', 'No')], string='Pregnant', default='no')
     is_breastfeeding = fields.Selection([('yes', 'Yes'), ('no', 'No')], string='Breastfeeding', default='no')
     medical_notes = fields.Text(string='Medical Notes')
-
+    prescription_ids = fields.One2many("hospital.prescription", "doctor_id", string="Prescriptions")
     show_female_fields = fields.Boolean(compute='_compute_show_female_fields', store=False)
 
     @api.depends('gender')

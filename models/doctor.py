@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 class Doctor(models.Model):
     _name = "hospital.doctor"
@@ -13,6 +13,9 @@ class Doctor(models.Model):
         readonly=True,
         default=lambda self: self.env['ir.sequence'].next_by_code('hospital.doctor') or 'NEW'
     )
+
+    name = fields.Char(string="Doctor Name", required=True)
+
 
     # بيانات الاتصال
     phone = fields.Char(string="Phone")

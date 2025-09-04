@@ -3,7 +3,7 @@
     <record id="action_hospital_patient" model="ir.actions.act_window">
         <field name="name">Medical Record</field>
         <field name="res_model">hospital.patient</field>
-        <field name="view_mode">list,form</field> <!-- list بدل tree -->
+        <field name="view_mode">list,form</field>
     </record>
 
     <!-- Action الأطباء -->
@@ -39,6 +39,7 @@
                 <sheet>
                     <group>
                         <field name="doctor_id"/>
+                         <field name="name"/>
                         <field name="user_id"/>
                         <field name="specialization_id"/>
                         <field name="department_id"/>
@@ -51,6 +52,7 @@
 
                     <notebook>
                         <page string="Patients">
+                            <!-- Smart Buttons فوق الجدول -->
                             <field name="patient_ids">
                                 <list editable="bottom">
                                     <field name="first_name"/>
@@ -58,7 +60,21 @@
                                     <field name="dob"/>
                                     <field name="gender"/>
                                     <field name="diagnosis"/>
-                                    <button name="%(action_hospital_patient)d" type="action" string="Medical Record" class="btn-primary"/>
+                                    <field name="age"/>
+                                    <!-- الرابط لفتح السجل الطبي لكل مريض -->
+                                <button name="action_view_patient_history" 
+                                            type="object" 
+                                            string=" View Patient History" 
+                                            class="btn-secondary"/>
+
+                                <button name="action_view_prescriptions"
+                                        type="object"
+                                        string="View My Prescriptions"
+                                        class="oe_highlight"/>
+                                <button name="action_create_prescription"
+                                        type="object"
+                                        string="Create New Prescription"
+                                        class="btn-primary"/>
                                 </list>
                             </field>
                         </page>

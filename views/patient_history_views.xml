@@ -1,0 +1,77 @@
+<odoo>
+    <record id="view_patient_history_wizard" model="ir.ui.view">
+        <field name="name">patient.history.wizard.form</field>
+        <field name="model">patient.history.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Patient History">
+                <sheet>
+                    <group>
+                        <field name="patient_id" readonly="1"/>
+                    </group>
+
+                    <group string="Patient Information">
+                        <field name="first_name" readonly="1"/>
+                        <field name="last_name" readonly="1"/>
+                        <field name="age" readonly="1"/>
+                        <field name="gender" readonly="1"/>
+                        <field name="phone" readonly="1"/>
+                        <field name="email" readonly="1"/>
+                        <field name="address" readonly="1"/>
+                        <field name="blood_type" readonly="1"/>
+                        <field name="doctor_id" readonly="1"/>
+                    </group>
+                    <group string="Medical Details">
+                        <field name="diagnosis" readonly="1"/>
+                        <field name="allergies" readonly="1"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Prescriptions">
+                            <field name="prescription_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="doctor_id"/>
+                                    <field name="date"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Invoices">
+                            <field name="billing_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="amount_total"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Appointments">
+                            <field name="appointment_ids" readonly="1">
+                                <list>
+                                    <field name="patient_id"/>
+                                    <field name="doctor_id"/>
+                                    <field name="appointment_date"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Insurance">
+                            <group>
+                                <field name="has_insurance" readonly="1"/>
+                                <field name="insurance_company" readonly="1"/>
+                                <field name="insurance_coverage" readonly="1"/>
+                                <field name="insurance_discount" readonly="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+
+                </sheet>
+                <footer>
+                    <button string="🖨 Print History" type="object" name="action_print_history" class="btn-secondary"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

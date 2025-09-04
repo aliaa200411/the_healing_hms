@@ -16,19 +16,19 @@
                     </group>
                 </sheet>
                 <header>
-    <button name="action_confirm" type="object" string="✅ Confirm"
+    <button name="action_confirm" type="object" string=" Confirm"
         class="btn-primary"
         invisible="state != 'draft'"/>
 
-    <button name="action_done" type="object" string="✅ Done"
+    <button name="action_done" type="object" string=" Done"
         class="btn-success"
         invisible="state != 'confirmed'"/>
 
-    <button name="action_cancel" type="object" string="❌ Cancel"
+    <button name="action_cancel" type="object" string=" Cancel"
         class="btn-danger"
         invisible="not (state == 'draft' or state == 'confirmed')"/>
 
-    <button name="action_draft" type="object" string="🔄 Set to Draft"
+    <button name="action_draft" type="object" string=" Set to Draft"
         class="btn-secondary"
         invisible="state != 'cancelled'"/>
 </header>

@@ -30,15 +30,33 @@ class Patient(models.Model):
     # ==== Relationships ====
     appointment_ids = fields.One2many("hospital.appointment", "patient_id", string="Appointments")
     diagnosis = fields.Text(string='Diagnosis')
-    doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
+    doctor_id = fields.Many2one('hospital.staff', string="Doctor", domain=[('job_title','=','doctor')])
     partner_id = fields.Many2one('res.partner', string='Related Partner')
+    prescription_ids = fields.One2many("hospital.prescription", "patient_id", string="Prescriptions")
 
     # ==== Insurance Fields ====
-    has_insurance = fields.Boolean(string="Has Insurance?", compute="_compute_has_insurance", store=True)
     insurance_company = fields.Many2one('hospital.insurance', string="Insurance Company")
+    insurance_coverage = fields.Float(
+        string="Coverage (%)",
+        default=0.0,
+        help="Percentage of insurance coverage"
+    )
+    insurance_discount = fields.Float(
+        string="Insurance Discount (%)",
+        compute="_compute_insurance_discount",
+        store=True
+    )
+    has_insurance = fields.Boolean(
+        string="Has Insurance?",
+        compute="_compute_has_insurance",
+        store=True
+    )
 
-    insurance_coverage = fields.Float(string="Coverage (%)", default=0.0)
-    insurance_discount = fields.Float(string="Insurance Discount (%)", compute="_compute_insurance_discount", store=True)
+    billing_ids = fields.One2many(
+        'hospital.billing',   # اسم الموديل تبع الفواتير
+        'patient_id',         # الحقل الموجود بموديل الفواتير اللي بيربط المريض
+        string="Billings"
+    )
 
     # ==== COMPUTE METHODS ====
     @api.depends('first_name', 'last_name')
@@ -71,13 +89,22 @@ class Patient(models.Model):
             else:
                 patient.insurance_discount = 0.0
 
+    @api.depends('appointment_ids')
+    def _compute_total_count(self):
+        for rec in self:
+            rec.total_count = len(rec.appointment_ids)
+
     # ==== OVERRIDE CREATE ====
     @api.model_create_multi
     def create(self, vals_list):
-        records = super(Patient, self).create(vals_list)
-        for rec in records:
-            self.env['hospital.patient.dashboard'].update_patient_dashboard(rec)
-        return records
+        patients = super(Patient, self).create(vals_list)
+        for patient in patients:
+            # توليد patient_code إذا غير موجود
+            if not patient.patient_code:
+                patient.patient_code = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
+            # تحديث الداشبورد
+            self.env['hospital.patient.dashboard'].update_patient_dashboard(patient)
+        return patients
 
     # ==== OVERRIDE WRITE ====
     def write(self, vals):
@@ -97,8 +124,42 @@ class Patient(models.Model):
     def action_print_medical_record(self):
         return self.env.ref('the_healing_hms.action_report_medical_record').report_action(self)
 
-    # ==== COMPUTE TOTAL COUNT (EXAMPLE FIELD) ====
-    @api.depends('appointment_ids')
-    def _compute_total_count(self):
-        for rec in self:
-            rec.total_count = len(rec.appointment_ids)
+    # ==== Smart Button: View Prescriptions ====
+    def action_view_prescriptions(self):
+        self.ensure_one()
+        return {
+            'name': _('Prescriptions'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'hospital.prescription',
+            'view_mode': 'list,form',
+            'domain': [('patient_id', '=', self.id)],  # فقط وصفات المريض الحالي
+            'target': 'current',
+            'context': {'default_patient_id': self.id},
+        }
+
+    # ==== Smart Button: Create Prescription ====
+    def action_create_prescription(self):
+        self.ensure_one()
+        return {
+            'name': _('New Prescription'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'hospital.prescription',
+            'view_mode': 'form',
+            'target': 'current',
+            'context': {
+                'default_doctor_id': self.doctor_id.id,
+                'default_patient_id': self.id,
+            },
+        }
+
+    # ==== Smart Button: View Patient History (Wizard) ====
+    def action_view_patient_history(self):
+        self.ensure_one()
+        return {
+            'name': _('Patient History'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'patient.history.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {'default_patient_id': self.id},
+        }

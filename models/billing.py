@@ -17,7 +17,8 @@ class HospitalBilling(models.Model):
         tracking=True
     )
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True, tracking=True)
-    doctor_id = fields.Many2one('hospital.doctor', string='Doctor', tracking=True)
+    doctor_id = fields.Many2one('hospital.staff', string='Doctor', domain="[('job_title','=','doctor')]", tracking=True)
+    booking_id = fields.Many2one('hospital.booking', string="Room Booking")  # ربط الحجز
     date = fields.Datetime(string='Bill Date', default=fields.Datetime.now, tracking=True)
     has_insurance = fields.Boolean(string="Has Insurance?", related='patient_id.has_insurance', readonly=True)
     insurance_company_id = fields.Many2one('hospital.insurance', string="Insurance Company")
@@ -28,7 +29,7 @@ class HospitalBilling(models.Model):
     amount_tax = fields.Monetary(string='Taxes', compute='_compute_amounts', store=True)
     amount_discount = fields.Monetary(string="Insurance Discount", compute='_compute_amounts', store=True, readonly=True)
     amount_total = fields.Monetary(string='Total', compute='_compute_amounts', store=True)
-    state = fields.Selection([('draft', 'Draft'), ('confirmed', 'Confirmed'), ('paid', 'Paid'), ('cancel', 'Cancelled')], default='draft', tracking=True)
+    state = fields.Selection([('draft', 'Draft'), ('confirmed', 'Confirmed'), ('paid', 'Paid'), ('cancelled', 'Cancelled')], default='draft', tracking=True)
     payment_method = fields.Selection([('cash', 'Cash'), ('card', 'Card'), ('transfer', 'Bank Transfer'), ('insurance', 'Insurance')], string='Payment Method')
     payment_date = fields.Datetime(string='Payment Date')
     notes = fields.Text(string='Notes')
@@ -38,22 +39,14 @@ class HospitalBilling(models.Model):
         for bill in self:
             amount_untaxed = 0.0
             amount_tax = 0.0
-            
             for line in bill.line_ids:
                 if line.tax_ids:
-                    taxes_res = line.tax_ids.compute_all(
-                        line.price_unit,
-                        currency=bill.currency_id,
-                        quantity=line.quantity
-                    )
+                    taxes_res = line.tax_ids.compute_all(line.price_unit, currency=bill.currency_id, quantity=line.quantity)
                     amount_untaxed += taxes_res['total_excluded']
                     amount_tax += taxes_res['total_included'] - taxes_res['total_excluded']
                 else:
-                    subtotal = (line.price_unit or 0.0) * (line.quantity or 0.0)
-                    amount_untaxed += subtotal
-            
+                    amount_untaxed += (line.price_unit or 0.0) * (line.quantity or 0.0)
             discount = (amount_untaxed * bill.insurance_discount / 100.0) if bill.insurance_discount else 0.0
-            
             bill.amount_untaxed = amount_untaxed
             bill.amount_tax = amount_tax
             bill.amount_discount = discount
@@ -104,6 +97,7 @@ class HospitalBilling(models.Model):
             self.payment_method = False
             return {'warning': {'title': "Warning", 'message': "This patient does not have insurance!"}}
 
+
 # ---------------- Hospital Billing Line ----------------
 class HospitalBillingLine(models.Model):
     _name = 'hospital.billing.line'
@@ -119,16 +113,13 @@ class HospitalBillingLine(models.Model):
     currency_id = fields.Many2one(related='billing_id.currency_id', store=True, readonly=True)
     tax_ids = fields.Many2many('account.tax', string='Taxes', domain=[('type_tax_use', '=', 'sale')])
     price_subtotal = fields.Monetary(string='Subtotal', compute='_compute_subtotal', store=True)
+    lab_request_id = fields.Many2one('hospital.lab.request', string='Lab Request')
 
     @api.depends('price_unit', 'quantity', 'tax_ids')
     def _compute_subtotal(self):
         for line in self:
             if line.tax_ids:
-                taxes_res = line.tax_ids.compute_all(
-                    line.price_unit,
-                    currency=line.currency_id,
-                    quantity=line.quantity
-                )
+                taxes_res = line.tax_ids.compute_all(line.price_unit, currency=line.currency_id, quantity=line.quantity)
                 line.price_subtotal = taxes_res['total_excluded']
             else:
                 line.price_subtotal = (line.price_unit or 0.0) * (line.quantity or 0.0)
@@ -148,21 +139,10 @@ class HospitalBillingLine(models.Model):
                 line.name = line.medicine_id.name
                 line.price_unit = line.medicine_id.price_unit
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        records = super().create(vals_list)
-        self.env['hospital.medicine.dashboard'].create_dashboard_records()
-        return records
-
-    def write(self, vals):
-        res = super().write(vals)
+    def create(self, vals):
+        res = super().create(vals)
         self.env['hospital.medicine.dashboard'].create_dashboard_records()
         return res
-    @api.model_create_multi
-    def create(self, vals_list):
-        records = super().create(vals_list)
-        self.env['hospital.medicine.dashboard'].create_dashboard_records()
-        return records
 
     def write(self, vals):
         res = super().write(vals)
@@ -172,4 +152,4 @@ class HospitalBillingLine(models.Model):
     def unlink(self):
         res = super().unlink()
         self.env['hospital.medicine.dashboard'].create_dashboard_records()
-        return res    
+        return res

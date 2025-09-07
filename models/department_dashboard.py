@@ -32,11 +32,12 @@ class HospitalDepartmentDashboard(models.Model):
         for rec in self:
             dep = rec.department_id
             if dep:
-                total_doctors = len(dep.doctor_ids)
+                doctors = [d for d in dep.doctor_ids if d.job_title == 'doctor']
+                total_doctors = len(doctors)
                 total_rooms = len(dep.room_ids)
                 occupied_rooms = len([r for r in dep.room_ids if r.state == 'occupied'])
                 available_rooms = total_rooms - occupied_rooms
-                doctor_available = len([d for d in dep.doctor_ids if d.is_available])
+                doctor_available = len([d for d in doctors if d.is_available])
                 doctor_busy = total_doctors - doctor_available
                 month_label = datetime.today().strftime("%B %Y")
 
@@ -60,13 +61,22 @@ class HospitalDepartment(models.Model):
     sequence = fields.Char(string="Serial Number", store=True, readonly=True)
     name = fields.Char(string="Department Name", required=True)
     description = fields.Text(string="Description")
-    head_doctor_id = fields.Many2one('hospital.doctor', string="Head Doctor")
+    head_doctor_id = fields.Many2one(
+        'hospital.staff', 
+        string="Head Doctor", 
+        domain=[('job_title', '=', 'doctor')]
+    )
     phone = fields.Char(string="Phone", size=20)
     floor = fields.Char(string="Floor")
     wing = fields.Char(string="Wing")
 
     # ===== Relations =====
-    doctor_ids = fields.One2many('hospital.doctor', 'department_id', string="Doctors")
+    doctor_ids = fields.One2many(
+        'hospital.staff', 
+        'department_id', 
+        string="Doctors", 
+        domain=[('job_title', '=', 'doctor')]
+    )
     room_ids = fields.One2many('hospital.room', 'department_id', string="Rooms")
 
     # ===== Computed Fields =====
@@ -77,7 +87,7 @@ class HospitalDepartment(models.Model):
     @api.depends('doctor_ids')
     def _compute_doctor_count(self):
         for rec in self:
-            rec.doctor_count = len(rec.doctor_ids)
+            rec.doctor_count = len([d for d in rec.doctor_ids if d.job_title == 'doctor'])
 
     @api.depends('room_ids')
     def _compute_room_count(self):
@@ -119,13 +129,13 @@ class HospitalDepartment(models.Model):
         return {
             'name': 'Doctors',
             'type': 'ir.actions.act_window',
-            'res_model': 'hospital.doctor',
+            'res_model': 'hospital.staff',
             'view_mode': 'list,form',
             'views': [
                 (self.env.ref('the_healing_hms.view_hospital_doctor_list').id, 'list'),
                 (self.env.ref('the_healing_hms.view_hospital_doctor_form').id, 'form')
             ],
-            'domain': [('department_id', '=', self.id)],
+            'domain': [('department_id', '=', self.id), ('job_title', '=', 'doctor')],
             'context': {'default_department_id': self.id},
         }
 

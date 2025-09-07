@@ -1,0 +1,137 @@
+<odoo>
+    <!-- QWeb Report Template for Patient History -->
+    <template id="report_patient_history_view">
+        <t t-call="web.external_layout">
+            <main class="page">
+                <!-- Header -->
+                <div style="text-align:center; border-bottom:2px solid #2E86C1; padding-bottom:10px; margin-bottom:20px;">
+                    <h1 style="margin:0; color:#2E86C1; font-size:28px;"> The Healing Hospital</h1>
+                    <p style="margin:0; font-size:16px; color:#2E86C1;">Patient History Report</p>
+                </div>
+
+                <t t-foreach="docs" t-as="wiz">
+                    <!-- Patient Info -->
+                    <div style="margin-bottom:30px;">
+                        <h2 style="color:#1F618D; border-bottom:1px solid #ccc; padding-bottom:5px;">Patient Info </h2>
+                        <table style="width:100%; border-collapse: collapse; margin-top:10px;">
+                            <tr>
+                                <td><strong>Patient Code:</strong></td>
+                                <td><t t-esc="wiz.patient_id.patient_code"/></td>
+                                <td><strong>Full Name:</strong></td>
+                                <td><t t-esc="wiz.patient_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>DOB:</strong></td>
+                                <td><t t-esc="wiz.patient_id.dob or 'N/A'"/></td>
+                                <td><strong>Gender:</strong></td>
+                                <td><t t-esc="wiz.patient_id.gender or 'N/A'"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Blood Type:</strong></td>
+                                <td><t t-esc="wiz.patient_id.blood_type or 'N/A'"/></td>
+                                <td><strong>Phone:</strong></td>
+                                <td><t t-esc="wiz.patient_id.phone or 'N/A'"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email:</strong></td>
+                                <td><t t-esc="wiz.patient_id.email or 'N/A'"/></td>
+                                <td><strong>Address:</strong></td>
+                                <td><t t-esc="wiz.patient_id.address or 'N/A'"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nationality:</strong></td>
+                                <td colspan="3"><t t-esc="wiz.patient_id.nationality or 'N/A'"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Doctor:</strong></td>
+                                <td colspan="3"><t t-esc="wiz.patient_id.doctor_id.display_name or 'N/A'"/></td>
+                            </tr>
+                        </table>
+
+                        <!-- Prescriptions -->
+                        <h2 style="color:#1F618D; border-bottom:1px solid #ccc; padding-bottom:5px; margin-top:20px;">Prescriptions </h2>
+                        <t t-foreach="wiz.patient_id.prescription_ids" t-as="presc">
+                            <div style="margin-bottom:15px; padding:10px; border:1px solid #ccc; border-radius:5px; background:#FDFEFE;">
+                                <p><strong>Prescription:</strong> <t t-esc="presc.name or 'N/A'"/></p>
+                                <p><strong>Date:</strong> <t t-esc="presc.date or 'N/A'"/></p>
+                                <p><strong>Doctor:</strong> <t t-esc="presc.doctor_id.display_name or 'N/A'"/></p>
+                                <table style="width:100%; border:1px solid #ccc; border-collapse: collapse; margin-top:5px;">
+                                    <thead style="background-color:#D6EAF8;">
+                                        <tr>
+                                            <th style="border:1px solid #ccc; padding:5px;">Medicine</th>
+                                            <th style="border:1px solid #ccc; padding:5px;">Form</th>
+                                            <th style="border:1px solid #ccc; padding:5px;">Dosage</th>
+                                            <th style="border:1px solid #ccc; padding:5px;">Times/Day</th>
+                                            <th style="border:1px solid #ccc; padding:5px;">Duration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="presc.line_ids" t-as="line">
+                                            <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.medicine_id.name or 'N/A'"/></td>
+                                            <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.medicine_form or 'N/A'"/></td>
+                                            <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.dosage or 'N/A'"/></td>
+                                            <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.times_per_day or 'N/A'"/></td>
+                                            <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.duration or 'N/A'"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </t>
+
+                        <!-- Lab Results -->
+                        <h2 style="color:#1F618D; border-bottom:1px solid #ccc; padding-bottom:5px; margin-top:20px;">Lab Results</h2>
+                        <t t-foreach="wiz.lab_result_ids" t-as="lab">
+                            <div style="margin-bottom:15px; padding:10px; border:1px solid #ccc; border-radius:5px; background:#FDF5E6;">
+                                <p><strong>Lab Test:</strong> <t t-esc="lab.test_name or 'N/A'"/></p>
+                                <p><strong>Request Date:</strong> <t t-esc="lab.request_date or 'N/A'"/></p>
+                                <p><strong>Doctor:</strong> <t t-esc="lab.doctor_name or 'N/A'"/></p>
+
+                                <table style="width:100%; border:1px solid #ccc; border-collapse: collapse; margin-top:5px;">
+                                    <thead style="background-color:#FDEBD0;">
+                                        <tr>
+                                            <th style="border:1px solid #ccc; padding:5px;">Test</th>
+                                            <th style="border:1px solid #ccc; padding:5px;">Result</th>
+                                            <th style="border:1px solid #ccc; padding:5px;">Unit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="lab.result_line_ids" t-as="line">
+                                            <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.test_name or 'N/A'"/></td>
+                                            <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.result_value or 'N/A'"/></td>
+                                            <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.unit or 'N/A'"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </t>
+
+                        <!-- Appointments -->
+                        <h2 style="color:#1F618D; border-bottom:1px solid #ccc; padding-bottom:5px; margin-top:20px;">Appointments </h2>
+                        <t t-foreach="wiz.patient_id.appointment_ids" t-as="app">
+                            <div style="margin-bottom:15px; padding:10px; border:1px solid #ccc; border-radius:5px; background:#E8F8F5;">
+                                <p><strong>Date And Time:</strong> <t t-esc="app.appointment_date or 'N/A'"/></p>
+                                <p><strong>Doctor:</strong> <t t-esc="app.doctor_id.display_name or 'N/A'"/></p>
+                                <p><strong>Status:</strong> <t t-esc="app.state or 'N/A'"/></p>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+
+                <!-- Footer -->
+                <div style="text-align:center; border-top:2px solid #2E86C1; padding-top:10px; font-size:0.85em; color:#555;">
+                    Printed on <t t-esc="time.strftime('%Y-%m-%d %H:%M')"/> | Page <span class="page"/>
+                </div>
+            </main>
+        </t>
+    </template>
+
+    <!-- Report Action -->
+   <record id="action_report_patient_history" model="ir.actions.report">
+    <field name="name">Patient History</field>
+    <field name="model">patient.history.wizard</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">the_healing_hms.report_patient_history_view</field>
+    <field name="print_report_name">'Patient_History_%s' % (object.patient_id.name)</field>
+</record>
+
+</odoo>

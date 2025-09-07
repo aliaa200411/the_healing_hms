@@ -1,66 +1,86 @@
 <odoo>
+    <!-- Search View -->
+    <record id="view_hospital_staff_search" model="ir.ui.view">
+        <field name="name">hospital.staff.search</field>
+        <field name="model">hospital.staff</field>
+        <field name="arch" type="xml">
+            <search string="Search Staff">
+                <field name="name"/>
+                <field name="job_title"/>
+                <!-- Quick Filters -->
+                <filter name="filter_receptionist" string="Receptionists" domain="[('job_title','=','receptionist')]"/>
+                <filter name="filter_accountant" string="Accountants" domain="[('job_title','=','accountant')]"/>
+                <filter name="filter_doctor" string="Doctors" domain="[('job_title','=','doctor')]"/>
+                <filter name="filter_nurse" string="Nurses" domain="[('job_title','=','nurse')]"/>
+                <filter name="filter_pharmacist" string="Pharmacists" domain="[('job_title','=','pharmacist')]"/>
+                <filter name="filter_driver" string="Ambulance Drivers" domain="[('job_title','=','ambulance')]"/>
+            </search>
+        </field>
+    </record>
 
-    <!-- Staff Action -->
-    <record id="action_staff" model="ir.actions.act_window">
+    <!-- Action Staff -->
+    <record id="action_hospital_staff" model="ir.actions.act_window">
         <field name="name">Staff</field>
         <field name="res_model">hospital.staff</field>
         <field name="view_mode">list,form</field>
     </record>
 
-    <record id="action_hospital_patient" model="ir.actions.act_window">
-        <field name="name">Patients</field>
-        <field name="res_model">hospital.patient</field>
-        <field name="view_mode">list,form</field>
-    </record>
-
-    <!-- Staff List View -->
-    <record id="view_staff_list" model="ir.ui.view">
+    <!-- List View -->
+    <record id="view_hospital_staff_list" model="ir.ui.view">
         <field name="name">hospital.staff.list</field>
         <field name="model">hospital.staff</field>
+        <field name="priority" eval="20"/>
         <field name="arch" type="xml">
             <list string="Hospital Staff">
                 <field name="staff_id"/>
-                <field name="user_id"/>
+                <field name="name"/>
+                <field name="job_title"/>
                 <field name="department_id"/>
-                <field name="position"/>
-                <field name="hire_date"/>
+                <field name="phone"/>
+                <field name="email"/>
             </list>
         </field>
     </record>
 
-    <!-- Staff Form View -->
-    <record id="view_staff_form" model="ir.ui.view">
+    <!-- Form View -->
+    <record id="view_hospital_staff_form" model="ir.ui.view">
         <field name="name">hospital.staff.form</field>
         <field name="model">hospital.staff</field>
         <field name="arch" type="xml">
-            <form string="Staff">
+            <form string="Hospital Staff">
                 <sheet>
                     <group>
-                        <field name="staff_id"/>
+                        <field name="staff_id" readonly="1"/>
+                        <field name="name"/>
+                        <field name="job_title"/>
                         <field name="user_id"/>
                         <field name="department_id"/>
-                        <field name="position"/>
+                    </group>
+                    <group>
+                        <field name="phone"/>
+                        <field name="email"/>
                         <field name="hire_date"/>
                         <field name="salary"/>
-                        <field name="is_active"/>
+                        <field name="active"/>
                     </group>
 
-                    <notebook>
-                        <page string="Patients">
-                            <field name="patient_ids">
-                                <list editable="bottom">
-                                    <field name="name"/>
-                                    <field name="doctor_id" string="Doctor"/> <!-- هاد العمود الجديد -->
-                                    <field name="age"/>
-                                    <field name="gender"/>
-                                    <button name="%(action_hospital_patient)d" type="action" string="Medical Record" class="btn-primary"/>
-                                </list>
-                            </field>
-                        </page>
-                    </notebook>
+                    <!-- Doctor Fields -->
+                    <group>
+                        <field name="specialization_id" invisible="job_title != 'doctor'"/>
+                        <field name="experience_years" invisible="job_title != 'doctor'"/>
+                        <field name="working_hours" invisible="job_title != 'doctor'"/>
+                        <field name="is_available" invisible="job_title != 'doctor'"/>
+                        <field name="patient_ids" invisible="job_title != 'doctor'"/>
+                        <field name="patient_count" invisible="job_title != 'doctor'"/>
+                    </group>
+
+                    <!-- Ambulance Driver Fields -->
+                    <group>
+                        <field name="ambulance_id" invisible="job_title != 'ambulance'"/>
+                        <field name="status" invisible="job_title != 'ambulance'"/>
+                    </group>
                 </sheet>
             </form>
         </field>
     </record>
-
 </odoo>

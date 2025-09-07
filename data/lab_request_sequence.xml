@@ -1,0 +1,9 @@
+<odoo>
+    <record id="seq_lab_request" model="ir.sequence">
+        <field name="name">Lab Request</field>
+        <field name="code">hospital.lab.request</field>
+        <field name="prefix">LR/</field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+    </record>
+</odoo>

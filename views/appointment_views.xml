@@ -4,35 +4,34 @@
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
             <form string="Appointment">
+                <header>
+                    <button name="action_confirm" type="object" string=" Confirm"
+                        class="btn-primary"
+                        invisible="state != 'draft'"/>
+
+                    <button name="action_done" type="object" string=" Done"
+                        class="btn-success"
+                        invisible="state != 'confirmed'"/>
+
+                    <button name="action_cancel" type="object" string=" Cancel"
+                        class="btn-danger"
+                        invisible="not (state == 'draft' or state == 'confirmed')"/>
+
+                    <button name="action_draft" type="object" string=" Set to Draft"
+                        class="btn-secondary"
+                        invisible="state != 'cancelled'"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="patient_id" 
                                options="{'no_open': False, 'no_create': False, 'create': True}" 
                                placeholder="Select or create a patient"/>
                         <field name="department_id"/>
-                        <field name="doctor_id"/>
+                        <field name="doctor_id" domain="[('job_title','=','doctor')]"/>
                         <field name="appointment_date"/>
                         <field name="reason"/>
                     </group>
                 </sheet>
-                <header>
-    <button name="action_confirm" type="object" string="✅ Confirm"
-        class="btn-primary"
-        invisible="state != 'draft'"/>
-
-    <button name="action_done" type="object" string="✅ Done"
-        class="btn-success"
-        invisible="state != 'confirmed'"/>
-
-    <button name="action_cancel" type="object" string="❌ Cancel"
-        class="btn-danger"
-        invisible="not (state == 'draft' or state == 'confirmed')"/>
-
-    <button name="action_draft" type="object" string="🔄 Set to Draft"
-        class="btn-secondary"
-        invisible="state != 'cancelled'"/>
-</header>
-
             </form>
         </field>
     </record>

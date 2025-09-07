@@ -20,7 +20,6 @@ class HospitalBooking(models.Model):
     date_from = fields.Datetime(string="From", required=True)
     date_to = fields.Datetime(string="To", required=True)
 
-    # days محسوب تلقائياً ويصبح readonly
     days = fields.Integer(string="Days", readonly=True)
     price = fields.Float(string="Total Price", readonly=True)
 
@@ -40,16 +39,12 @@ class HospitalBooking(models.Model):
             if not rec.room_id:
                 rec.days = 0
                 continue
-
             price_per_day = getattr(rec.room_id, 'price_per_day', 15)
-
             if rec.date_from and rec.date_to:
                 delta = rec.date_to - rec.date_from
-                # حساب الأيام مع +1 إذا يوجد فرق بالوقت
                 rec.days = delta.days + (1 if delta.seconds > 0 else 0)
             else:
                 rec.days = 0
-
             rec.price = rec.days * price_per_day
 
     @api.constrains('days')
@@ -61,7 +56,7 @@ class HospitalBooking(models.Model):
     def _update_room_state(self, room):
         total_beds = len(room.bed_ids)
         booked_beds = len(room.bed_ids.filtered(
-            lambda b: any(booking.state in ['confirmed', 'done'] for booking in b.booking_ids)
+            lambda b: any(booking.state in ['confirmed', 'invoiced'] for booking in b.booking_ids)
         ))
         if booked_beds >= total_beds:
             room.state = 'unavailable'
@@ -122,27 +117,31 @@ class HospitalBooking(models.Model):
                 booking.patient_id.partner_id = partner
                 booking.partner_id = partner
 
-            quantity = booking.days
-            price_unit = getattr(booking.room_id, 'price_per_day', 15)
+            billing = self.env['hospital.billing'].search([
+                ('patient_id', '=', booking.patient_id.id),
+                ('state', '=', 'draft')
+            ], limit=1)
 
-            invoice = self.env['account.move'].create({
-                'move_type': 'out_invoice',
-                'partner_id': booking.partner_id.id,
-                'invoice_date': fields.Date.today(),
-                'invoice_line_ids': [(0, 0, {
-                    'name': f"Room {booking.room_id.room_number} Booking for {booking.patient_id.name}",
-                    'quantity': quantity,
-                    'price_unit': price_unit,
-                })],
+            if not billing:
+                billing = self.env['hospital.billing'].create({
+                    'patient_id': booking.patient_id.id,
+                    'doctor_id': False,
+                    'booking_id': booking.id,
+                })
+
+            self.env['hospital.billing.line'].create({
+                'billing_id': billing.id,
+                'name': f"Room {booking.room_id.room_number} Booking for {booking.patient_id.name}",
+                'quantity': 1,
+                'price_unit': booking.price,
             })
-            booking.write({'state': 'invoiced'})
 
-        self._update_dashboard()
+            booking.state = 'invoiced'
 
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Invoice',
-            'res_model': 'account.move',
+            'name': 'Billing',
+            'res_model': 'hospital.billing',
             'view_mode': 'form',
-            'res_id': invoice.id,
+            'res_id': billing.id,
         }

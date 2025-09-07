@@ -67,40 +67,6 @@
         </field>
     </record>
 
-    <!-- ======================= -->
-    <!-- Pharmacists -->
-    <!-- ======================= -->
-    <record id="view_hospital_pharmacist_list" model="ir.ui.view">
-        <field name="name">hospital.pharmacist.list</field>
-        <field name="model">hospital.pharmacist</field>
-        <field name="arch" type="xml">
-            <list string="Pharmacists">
-                <field name="code"/>
-                <field name="name"/>
-                <field name="phone"/>
-                <field name="email"/>
-                <field name="active"/>
-            </list>
-        </field>
-    </record>
-
-    <record id="view_hospital_pharmacist_form" model="ir.ui.view">
-        <field name="name">hospital.pharmacist.form</field>
-        <field name="model">hospital.pharmacist</field>
-        <field name="arch" type="xml">
-            <form string="Pharmacist">
-                <sheet>
-                    <group>
-                        <field name="code" readonly="1"/>
-                        <field name="name"/>
-                        <field name="phone"/>
-                        <field name="email"/>
-                        <field name="active"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
 
     <!-- ======================= -->
     <!-- Pharmacy Orders -->
@@ -112,8 +78,8 @@
             <list string="Pharmacy Orders">
                 <field name="name"/>
                 <field name="patient_id"/>
-                <field name="doctor_id"/>
-                <field name="pharmacist_id"/>
+                <field name="doctor_id" domain="[('job_title','=','doctor')]"/>
+                <field name="pharmacist_id" domain="[('job_title','=','pharmacist')]"/>
                 <field name="date"/>
                 <field name="state"/>
             </list>
@@ -134,8 +100,8 @@
                     <group>
                         <field name="name" readonly="1"/>
                         <field name="patient_id"/>
-                        <field name="doctor_id"/>
-                        <field name="pharmacist_id"/>
+                        <field name="pharmacist_id" domain="[('job_title','=','pharmacist')]"/>
+                        <field name="doctor_id" domain="[('job_title','=','doctor')]"/>
                         <field name="date"/>
                     </group>
                     <notebook>

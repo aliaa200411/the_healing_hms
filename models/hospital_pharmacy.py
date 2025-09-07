@@ -37,25 +37,24 @@ class HospitalMedicine(models.Model):
         default=lambda self: self.env.company.currency_id.id
     )
     description = fields.Text(string="Notes")
+    product_id = fields.Many2one('product.product', string='Product')
 
-# ==========================
-# 3. الصيدلي
-# ==========================
-class HospitalPharmacist(models.Model):
-    _name = 'hospital.pharmacist'
-    _description = 'Hospital Pharmacist'
-    _order = 'name'
 
-    name = fields.Char(string="Pharmacist Name", required=True)
-    code = fields.Char(
-        string="Pharmacist Code",
-        readonly=True,
-        copy=False,
-        default=lambda self: self.env['ir.sequence'].next_by_code('hospital.pharmacist') or _('New')
-    )
-    phone = fields.Char(string="Phone")
-    email = fields.Char(string="Email")
-    active = fields.Boolean(string="Active", default=True)
+    @api.model
+    def create(self, vals):
+        record = super().create(vals)
+        # إنشاء منتج تلقائي وربطه
+        product = self.env['product.product'].create({
+            'name': record.name,
+            'list_price': record.price_unit,
+            'type': 'consu',
+            'sale_ok': True,
+            'purchase_ok': True,
+        })
+        record.product_id = product.id
+        return record
+
+
 
 # ==========================
 # 4. أوامر الصيدلية
@@ -73,8 +72,22 @@ class HospitalPharmacyOrder(models.Model):
         default=lambda self: self.env['ir.sequence'].next_by_code('hospital.pharmacy.order') or _('New')
     )
     patient_id = fields.Many2one('hospital.patient', string="Patient", required=True, tracking=True)
-    doctor_id = fields.Many2one('hospital.doctor', string="Prescribed By", tracking=True)
-    pharmacist_id = fields.Many2one('hospital.pharmacist', string="Pharmacist", required=True, tracking=True)
+
+    doctor_id = fields.Many2one(
+        'hospital.staff',
+        string="Prescribed By",
+        tracking=True,
+        domain=[('job_title', '=', 'doctor')]
+    )
+
+    pharmacist_id = fields.Many2one(
+        'hospital.staff',
+        string="Pharmacist",
+        required=True,
+        tracking=True,
+        domain=[('job_title', '=', 'pharmacist')]
+    )
+
     date = fields.Datetime(string="Prescription Date", default=fields.Datetime.now)
     line_ids = fields.One2many('hospital.pharmacy.order.line', 'order_id', string="Medicines")
     state = fields.Selection(

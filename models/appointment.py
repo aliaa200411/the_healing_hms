@@ -12,11 +12,12 @@ class Appointment(models.Model):
     )
     department_id = fields.Many2one("hospital.department", string="Department", required=True)
     doctor_id = fields.Many2one(
-        "hospital.doctor",
+        "hospital.staff",
         string="Doctor",
         required=True,
-        domain="[('department_id', '=', department_id)]"
+        domain="[('job_title','=','doctor'), ('department_id', '=', department_id)]"
     )
+
     appointment_date = fields.Datetime(string="Appointment Date", required=True)
     reason = fields.Text(string="Reason for Visit")
 
@@ -69,9 +70,9 @@ class Appointment(models.Model):
     def create(self, vals):
         rec = super(Appointment, self).create(vals)
         if rec.doctor_id and rec.patient_id:
-            # إضافة البيشنت لقائمة الدكتور إذا مش موجود
             if rec.patient_id.id not in rec.doctor_id.patient_ids.ids:
                 rec.doctor_id.write({
                     'patient_ids': [(4, rec.patient_id.id)]
                 })
+
         return rec

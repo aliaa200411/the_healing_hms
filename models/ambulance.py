@@ -26,10 +26,12 @@ class Ambulance(models.Model):
     last_maintenance_date = fields.Date(string='Last Maintenance', required=True)
     next_maintenance_date = fields.Date(string='Next Maintenance', readonly=True)
 
+    # بدل driver_ids على emergency_driver → نجيبهم من staff
     driver_ids = fields.One2many(
-        'healing_hms.emergency_driver',  # رابط السائقين
-        'ambulance_id', 
-        string='Drivers'
+        'hospital.staff',
+        'ambulance_id',  # نفس الحقل الموجود بالستاف
+        string='Drivers',
+        domain=[('job_title', '=', 'ambulance')]
     )
 
     _sql_constraints = [

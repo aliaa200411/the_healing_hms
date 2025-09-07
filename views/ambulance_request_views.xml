@@ -30,7 +30,7 @@
                         <field name="assigned_ambulance_id"
                                domain="[('status','=','available')]"/>
                         <field name="assigned_driver_id"
-                               domain="[('ambulance_id','=',assigned_ambulance_id),('status','=','available')]"/>
+                               domain="[('ambulance_id','=',assigned_ambulance_id),('status','=','available'),('job_title','=','ambulance')]"/>
                         <field name="notes"/>
                     </group>
                 </sheet>
@@ -48,7 +48,8 @@
                 <field name="patient_location"/>
                 <field name="requested_time"/>
                 <field name="assigned_ambulance_id"/>
-                <field name="assigned_driver_id"/>
+                <field name="assigned_driver_id"
+                    domain="[('ambulance_id','=',assigned_ambulance_id),('status','=','available'),('job_title','=','ambulance')]"/>
                 <field name="status"/>
             </list>
         </field>

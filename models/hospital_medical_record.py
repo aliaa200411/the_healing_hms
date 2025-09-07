@@ -6,7 +6,12 @@ class HospitalMedicalRecord(models.Model):
     _description = 'Medical Record'
 
     patient_id = fields.Many2one('hospital.patient', string="Patient", required=True)
-    doctor_id = fields.Many2one('hospital.doctor', string="Doctor", required=True)
+    doctor_id = fields.Many2one(
+        'hospital.staff',
+        string="Doctor",
+        required=True,
+        domain=[('job_title','=','doctor')]
+    )
     record_date = fields.Date(string="Record Date", required=True)
     diagnosis = fields.Text(string="Diagnosis")
     treatments = fields.Text(string="Treatments / Procedures")

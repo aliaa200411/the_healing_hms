@@ -12,8 +12,8 @@ class HospitalDepartment(models.Model):
     # ===== بيانات أساسية =====
     name = fields.Char(string="Department Name", required=True)
     description = fields.Text(string="Description")
-    head_doctor_id = fields.Many2one('hospital.doctor', string="Head Doctor")
-    doctor_ids = fields.One2many('hospital.doctor', 'department_id', string="Doctors")
+    head_doctor_id = fields.Many2one('hospital.staff', string="Head Doctor", domain=[('job_title','=','doctor')])
+    doctor_ids = fields.One2many('hospital.staff', 'department_id', string="Doctors", domain=[('job_title','=','doctor')])
     phone = fields.Char(string="Phone", size=20)
     floor = fields.Char(string="Floor")
     wing = fields.Char(string="Wing")
@@ -65,15 +65,16 @@ class HospitalDepartment(models.Model):
         return {
             'name': 'Doctors',
             'type': 'ir.actions.act_window',
-            'res_model': 'hospital.doctor',
+            'res_model': 'hospital.staff',
             'view_mode': 'list,form',
             'views': [
                 (self.env.ref('the_healing_hms.view_hospital_doctor_list').id, 'list'),
                 (self.env.ref('the_healing_hms.view_hospital_doctor_form').id, 'form')
             ],
-            'domain': [('department_id', '=', self.id)],
+            'domain': [('department_id', '=', self.id), ('job_title', '=', 'doctor')],
             'context': {'default_department_id': self.id},
         }
+
 
     def action_open_rooms(self):
         self.ensure_one()

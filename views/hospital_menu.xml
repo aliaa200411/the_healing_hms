@@ -61,40 +61,23 @@
               action="action_hospital_booking"
               sequence="3"/>
 
-    <!-- ================== Doctors ================== -->
-    <record id="action_doctor" model="ir.actions.act_window">
-        <field name="name">Doctors</field>
-        <field name="res_model">hospital.doctor</field>
-        <field name="view_mode">list,form</field>
-    </record>
-    
-    <menuitem id="menu_hospital_doctors" 
-              name="Doctors" 
-              parent="menu_hospital_root" 
-              action="action_doctor"/>
-
-    <!-- ================== Staff ================== -->
-    <record id="action_staff" model="ir.actions.act_window">
+   <!-- ================== Staff ================== -->
+    <record id="action_hospital_staff" model="ir.actions.act_window">
         <field name="name">Staff</field>
         <field name="res_model">hospital.staff</field>
         <field name="view_mode">list,form</field>
     </record>
-    
+
     <menuitem id="menu_hospital_staff" 
-              name="Staff" 
-              parent="menu_hospital_root" 
-              action="action_staff"/>
+            name="Staff" 
+            parent="menu_hospital_root" 
+            action="action_hospital_staff"/>
+
 
     <!-- ================== Pharmacy ================== -->
     <record id="action_hospital_medicine" model="ir.actions.act_window">
         <field name="name">Medicines</field>
         <field name="res_model">hospital.medicine</field>
-        <field name="view_mode">list,form</field>
-    </record>
-
-    <record id="action_hospital_pharmacist" model="ir.actions.act_window">
-        <field name="name">Pharmacists</field>
-        <field name="res_model">hospital.pharmacist</field>
         <field name="view_mode">list,form</field>
     </record>
 
@@ -117,11 +100,6 @@
               name="Pharmacy Orders" 
               parent="menu_hospital_pharmacy" 
               action="action_hospital_pharmacy_order"/>
-
-    <menuitem id="menu_hospital_pharmacists" 
-              name="Pharmacists" 
-              parent="menu_hospital_pharmacy" 
-              action="action_hospital_pharmacist"/>
 
     <!-- ================== Patients ================== -->
     <record id="action_patient" model="ir.actions.act_window">
@@ -160,12 +138,6 @@
         <field name="help">Manage Ambulances and their status</field>
     </record>
 
-    <record id="action_driver" model="ir.actions.act_window">
-        <field name="name">Drivers</field>
-        <field name="res_model">healing_hms.emergency_driver</field>
-        <field name="view_mode">tree,form</field>
-        <field name="help">Manage Ambulance Drivers</field>
-    </record>
 
     <record id="action_ambulance_request" model="ir.actions.act_window">
         <field name="name">Ambulance Requests</field>
@@ -184,12 +156,6 @@
               parent="menu_emergency_root"
               action="action_ambulance"
               sequence="1"/>
-
-    <menuitem id="menu_emergency_driver"
-              name="Drivers"
-              parent="menu_emergency_root"
-              action="action_driver"
-              sequence="2"/>
 
     <menuitem id="menu_emergency_request"
               name="Requests"
@@ -242,4 +208,55 @@
               action="action_blood_transfusion" 
               sequence="3"/>
 
+
+    
+    <!-- ================== Hospital Lab Root Menu ================== -->
+    <menuitem id="menu_hospital_lab_root" 
+              name="Laboratory" 
+              parent="menu_hospital_root" 
+              sequence="50"/>
+
+
+    <!-- Action -->
+    <record id="action_lab_test_type" model="ir.actions.act_window">
+        <field name="name">Lab Test Types</field>
+        <field name="res_model">hospital.lab.test.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_lab_request" model="ir.actions.act_window">
+        <field name="name">Lab Requests</field>
+        <field name="res_model">hospital.lab.request</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_lab_result" model="ir.actions.act_window">
+        <field name="name">Lab Results</field>
+        <field name="res_model">hospital.lab.result</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <!-- Lab Requests Menu -->
+    <menuitem id="menu_lab_request" 
+              name="Lab Requests" 
+              parent="menu_hospital_lab_root" 
+              action="action_lab_request" 
+              sequence="1"/>
+
+    <!-- Lab Results Menu -->
+    <menuitem id="menu_lab_results" 
+              name="Lab Results" 
+              parent="menu_hospital_lab_root" 
+              action="action_lab_result" 
+              sequence="2"/>
+
+    <!-- Lab Test Types Menu -->
+    <menuitem id="menu_lab_test_type" 
+              name="Lab Test Types" 
+              parent="menu_hospital_lab_root" 
+              action="action_lab_test_type" 
+              sequence="3"/>
 </odoo>

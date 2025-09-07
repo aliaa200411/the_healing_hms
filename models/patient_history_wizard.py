@@ -17,7 +17,11 @@ class PatientHistoryWizard(models.TransientModel):
     email = fields.Char(related='patient_id.email', string="Email", readonly=True)
     address = fields.Char(related='patient_id.address', string="Address", readonly=True)
     blood_type = fields.Selection(related='patient_id.blood_type', string="Blood Type", readonly=True)
-    doctor_id = fields.Many2one(related='patient_id.doctor_id', string='Doctor', readonly=True)
+    doctor_id = fields.Many2one(
+        'hospital.staff', 
+        string='Doctor',
+        domain=[('job_title', '=', 'doctor')]
+    )
     diagnosis = fields.Text(related='patient_id.diagnosis', string="Diagnosis", readonly=True)
     allergies = fields.Text(related='patient_id.allergies', string="Allergies", readonly=True)
     # ==== Related Insurance info ====
@@ -31,6 +35,13 @@ class PatientHistoryWizard(models.TransientModel):
     billing_ids = fields.One2many("hospital.billing", compute="_compute_history", string="Billing")
     appointment_ids = fields.One2many("hospital.appointment", compute="_compute_history", string="Appointments")
 
+
+    lab_result_ids = fields.One2many(
+        'hospital.lab.result', 
+        compute='_compute_history', 
+        string="Lab Results"
+    )
+
     # ==== Compute method to fill one2many fields ====
     @api.depends('patient_id')
     def _compute_history(self):
@@ -42,6 +53,7 @@ class PatientHistoryWizard(models.TransientModel):
 
                 wiz.diagnosis = wiz.patient_id.diagnosis
                 wiz.allergies = wiz.patient_id.allergies
+                wiz.lab_result_ids = self.env['hospital.lab.result'].search([('request_id.patient_id', '=', wiz.patient_id.id)])
             else:
                 wiz.prescription_ids = [(5, 0, 0)]
                 wiz.billing_ids = [(5, 0, 0)]

@@ -1,13 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <!-- Sequence for Staff -->
-        <record id="seq_hospital_staff" model="ir.sequence">
-            <field name="name">Hospital Staff</field>
-            <field name="code">hospital.staff</field>
-            <field name="prefix">STAFF/</field>
-            <field name="padding">4</field>
-            <field name="number_increment">1</field>
-        </record>
-    </data>
+    <record id="seq_hospital_manager" model="ir.sequence">
+        <field name="name">Manager Sequence</field>
+        <field name="code">hospital.staff.manager</field>
+        <field name="prefix">MGR-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+    </record>
+
+    <record id="seq_hospital_doctor" model="ir.sequence">
+        <field name="name">Doctor Sequence</field>
+        <field name="code">hospital.staff.doctor</field>
+        <field name="prefix">DOC-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+    </record>
+
+    <record id="seq_hospital_nurse" model="ir.sequence">
+        <field name="name">Nurse Sequence</field>
+        <field name="code">hospital.staff.nurse</field>
+        <field name="prefix">NUR-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+    </record>
+
+    <record id="seq_hospital_receptionist" model="ir.sequence">
+        <field name="name">Receptionist Sequence</field>
+        <field name="code">hospital.staff.receptionist</field>
+        <field name="prefix">REC-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+    </record>
+
+    <record id="seq_hospital_accountant" model="ir.sequence">
+        <field name="name">Accountant Sequence</field>
+        <field name="code">hospital.staff.accountant</field>
+        <field name="prefix">ACC-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+    </record>
+
+    <record id="seq_hospital_pharmacist" model="ir.sequence">
+        <field name="name">Pharmacist Sequence</field>
+        <field name="code">hospital.staff.pharmacist</field>
+        <field name="prefix">PHR-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+    </record>
+
+    <record id="seq_hospital_driver" model="ir.sequence">
+        <field name="name">Driver Sequence</field>
+        <field name="code">hospital.staff.driver</field>
+        <field name="prefix">DRV-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+    </record>
+    
+    <record id="seq_hospital_lab" model="ir.sequence">
+        <field name="name">Lab Technician Sequence</field>
+        <field name="code">hospital.staff.lab</field>
+        <field name="prefix">LAB-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1</field>
+    </record>
 </odoo>

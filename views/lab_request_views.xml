@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Lab Request Views -->
+    <record id="view_lab_request_list" model="ir.ui.view">
+        <field name="name">hospital.lab.request.list</field>
+        <field name="model">hospital.lab.request</field>
+        <field name="arch" type="xml">
+            <list string="Lab Requests">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="doctor_id" domain="[('job_title','=','doctor')]"/>
+                <field name="test_type_id"/>
+                <field name="price"/>
+                <field name="request_date"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_lab_request_form" model="ir.ui.view">
+        <field name="name">hospital.lab.request.form</field>
+        <field name="model">hospital.lab.request</field>
+        <field name="arch" type="xml">
+            <form string="Lab Request">
+                <header>
+                    <button name="action_collect_sample" type="object" string="Collect Sample" class="btn-primary" 
+                            invisible="state != 'draft'"/>
+                    <button name="action_send_to_lab" type="object" string="Send to Lab" class="btn-secondary" 
+                            invisible="state != 'sample_collected'"/>
+                    <button name="action_reset_to_draft" type="object" string="Reset to Draft" 
+                            invisible="state != 'cancelled'"/>
+                    <button name="action_cancel" type="object" string="Cancel" class="btn-danger" 
+                            invisible="state not in ['sample_collected','in_progress']"/>
+
+                    <button name="action_print_results" type="object" string="Print Results" class="btn-secondary"
+                                invisible="state != 'done'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,sample_collected,in_progress,done,cancelled"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="patient_id"/>
+                        <field name="doctor_id" domain="[('job_title','=','doctor')]"/>
+                        <field name="test_type_id"/>
+                        <field name="price" readonly="1"/>
+                        <field name="request_date"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_lab_request_search" model="ir.ui.view">
+        <field name="name">hospital.lab.request.search</field>
+        <field name="model">hospital.lab.request</field>
+        <field name="arch" type="xml">
+            <search string="Lab Requests">
+                <field name="patient_id" string="Patient"/>
+                <filter name="draft" string="Draft" domain="[('state','=','draft')]"/>
+                <filter name="sample_collected" string="Sample Collected" domain="[('state','=','sample_collected')]"/>
+                <filter name="in_progress" string="In Progress" domain="[('state','=','in_progress')]"/>
+                <filter name="done" string="Done" domain="[('state','=','done')]"/>
+                <filter name="cancelled" string="Cancelled" domain="[('state','=','cancelled')]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_lab_request" model="ir.actions.act_window">
+        <field name="name">Lab Requests</field>
+        <field name="res_model">hospital.lab.request</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_lab_request_search"/>
+    </record>
+</odoo>

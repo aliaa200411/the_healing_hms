@@ -16,12 +16,17 @@ class HospitalPrescription(models.Model):
     )
     patient_id = fields.Many2one('hospital.patient', string="Patient", required=True, tracking=True)
     doctor_id = fields.Many2one(
-        'hospital.doctor',
+        'hospital.staff',
         string="Doctor",
         required=True,
+        domain=[('job_title','=','doctor')],
         tracking=True,
-        default=lambda self: self.env['hospital.doctor'].search([('user_id','=',self.env.user.id)], limit=1).id
+        default=lambda self: self.env['hospital.staff'].search([
+            ('job_title','=','doctor'), 
+            ('user_id','=',self.env.user.id)
+        ], limit=1).id
     )
+
     date = fields.Datetime(string="Date", default=fields.Datetime.now)
     line_ids = fields.One2many('hospital.prescription.line', 'prescription_id', string="Medicines")
     state = fields.Selection([
@@ -49,13 +54,16 @@ class HospitalPrescription(models.Model):
     def create(self, vals):
         # التأكد أن الدكتور هو الذي يسجل الوصفة
         if 'doctor_id' not in vals:
-            doctor = self.env['hospital.doctor'].search([('user_id','=',self.env.user.id)], limit=1)
+            doctor = self.env['hospital.staff'].search([
+                ('job_title','=','doctor'), 
+                ('user_id','=',self.env.user.id)
+            ], limit=1)
             if doctor:
                 vals['doctor_id'] = doctor.id
             else:
                 raise AccessError("You must be a doctor to create a prescription.")
         return super().create(vals)
-
+         
     def write(self, vals):
         for rec in self:
             if rec.doctor_id.user_id != self.env.user:
@@ -68,8 +76,8 @@ class HospitalPrescriptionLine(models.Model):
     _description = "Prescription Line"
 
     prescription_id = fields.Many2one('hospital.prescription', string="Prescription", required=True, ondelete='cascade')
-    medicine_id = fields.Many2one('hospital.medicine', string="Medicine", required=True)
-
+    medicine_name = fields.Char(string="Medicine", required=True)
+    
     medicine_form = fields.Selection([
         ('tablet', 'Tablet / Capsule'),
         ('syrup', 'Syrup / Liquid'),

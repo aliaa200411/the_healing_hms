@@ -64,24 +64,28 @@ class HospitalStaff(models.Model):
 
     # ===== توليد Staff ID عند الإنشاء =====
     @api.model
-    def create(self, vals_list):
-        updated_vals_list = []
-        for vals in vals_list:
-            vals = self._update_staff_id(vals)
-            updated_vals_list.append(vals)
-        return super().create(updated_vals_list)
+    def create(self, vals):
+        vals = self._update_staff_id(vals)
+        return super().create(vals)
 
     # ===== توليد Staff ID عند تعديل job_title =====
     def write(self, vals):
-        if 'job_title' in vals and vals['job_title'] != self.job_title:
-            vals = self._update_staff_id(vals)
+        if 'job_title' in vals:
+            for rec in self:
+                updated_vals = rec._update_staff_id(vals.copy())
+                super(HospitalStaff, rec).write(updated_vals)
+            return True
         return super().write(vals)
 
     # ===== دالة مساعدة لتوليد Staff ID =====
     def _update_staff_id(self, vals):
+        if not isinstance(vals, dict):
+            vals = {}
+
         job_title = vals.get('job_title')
         if not job_title:
             return vals
+
         code_map = {
             'manager': 'hospital.staff.manager',
             'doctor': 'hospital.staff.doctor',
@@ -92,6 +96,7 @@ class HospitalStaff(models.Model):
             'ambulance': 'hospital.staff.driver',
             'lab': 'hospital.staff.lab',
         }
+
         seq_code = code_map.get(job_title)
         if seq_code:
             seq_obj = self.env['ir.sequence'].sudo().search([('code','=',seq_code)], limit=1)

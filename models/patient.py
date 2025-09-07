@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
+from datetime import datetime
 
 class Patient(models.Model):
     _name = "hospital.patient"
@@ -12,6 +13,7 @@ class Patient(models.Model):
     name = fields.Char(string="Full Name", compute="_compute_name", store=True)
     phone = fields.Char(string="Phone")
     email = fields.Char(string="Email")
+    total_count = fields.Integer(string="Total Count", compute="_compute_total_count", store=True)
     nationality = fields.Char(string="Nationality")
     dob = fields.Date(string="Date of Birth")
     age = fields.Integer(string="Age", compute="_compute_age", store=True)
@@ -33,17 +35,6 @@ class Patient(models.Model):
     prescription_ids = fields.One2many("hospital.prescription", "patient_id", string="Prescriptions")
 
     # ==== Insurance Fields ====
-    has_insurance = fields.Boolean(
-        string="Has Insurance?",
-        compute="_compute_has_insurance",
-        store=True
-    )
-    billing_ids = fields.One2many(
-    'hospital.billing',   # اسم الموديل تبع الفواتير
-    'patient_id',         # الحقل الموجود بموديل الفواتير اللي بيربط المريض
-    string="Billings"
-    )
-
     insurance_company = fields.Many2one('hospital.insurance', string="Insurance Company")
     insurance_coverage = fields.Float(
         string="Coverage (%)",
@@ -55,8 +46,18 @@ class Patient(models.Model):
         compute="_compute_insurance_discount",
         store=True
     )
+    has_insurance = fields.Boolean(
+        string="Has Insurance?",
+        compute="_compute_has_insurance",
+        store=True
+    )
 
-    
+    billing_ids = fields.One2many(
+        'hospital.billing',   # اسم الموديل تبع الفواتير
+        'patient_id',         # الحقل الموجود بموديل الفواتير اللي بيربط المريض
+        string="Billings"
+    )
+
     # ==== COMPUTE METHODS ====
     @api.depends('first_name', 'last_name')
     def _compute_name(self):
@@ -68,9 +69,7 @@ class Patient(models.Model):
         for rec in self:
             if rec.dob:
                 today = fields.Date.today()
-                rec.age = today.year - rec.dob.year - (
-                    (today.month, today.day) < (rec.dob.month, rec.dob.day)
-                )
+                rec.age = today.year - rec.dob.year - ((today.month, today.day) < (rec.dob.month, rec.dob.day))
             else:
                 rec.age = 0
 
@@ -86,11 +85,14 @@ class Patient(models.Model):
                 if patient.insurance_coverage > 0:
                     patient.insurance_discount = patient.insurance_coverage
                 else:
-                    patient.insurance_discount = getattr(
-                        patient.insurance_company, 'discount_percentage', 0.0
-                    )
+                    patient.insurance_discount = getattr(patient.insurance_company, 'discount_percentage', 0.0)
             else:
                 patient.insurance_discount = 0.0
+
+    @api.depends('appointment_ids')
+    def _compute_total_count(self):
+        for rec in self:
+            rec.total_count = len(rec.appointment_ids)
 
     # ==== OVERRIDE CREATE ====
     @api.model_create_multi
@@ -100,8 +102,27 @@ class Patient(models.Model):
             # توليد patient_code إذا غير موجود
             if not patient.patient_code:
                 patient.patient_code = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
-           
+            # تحديث الداشبورد
+            self.env['hospital.patient.dashboard'].update_patient_dashboard(patient)
         return patients
+
+    # ==== OVERRIDE WRITE ====
+    def write(self, vals):
+        res = super().write(vals)
+        for rec in self:
+            self.env['hospital.patient.dashboard'].update_patient_dashboard(rec)
+        return res
+
+    # ==== OVERRIDE UNLINK ====
+    def unlink(self):
+        for rec in self:
+            dash = self.env['hospital.patient.dashboard'].search([('patient_id','=',rec.id)])
+            dash.unlink()
+        return super().unlink()
+
+    # ==== ACTIONS ====
+    def action_print_medical_record(self):
+        return self.env.ref('the_healing_hms.action_report_medical_record').report_action(self)
 
     # ==== Smart Button: View Prescriptions ====
     def action_view_prescriptions(self):

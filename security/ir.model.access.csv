@@ -20,6 +20,12 @@ access_blood_bag,Access Blood Bag,model_blood_bank_bag,base.group_user,1,1,1,1
 access_blood_donor,Access Blood Donor,model_blood_bank_donor,base.group_user,1,1,1,1
 access_blood_transfusion,Access Blood Transfusion,model_blood_bank_transfusion,base.group_user,1,1,1,1
 access_emergency_ambulance,Access Emergency Ambulance,model_healing_hms_ambulance,base.group_user,1,1,1,1
+access_emergency_ambulance_request,Access Emergency Ambulance Request,model_emergency_ambulance_request,base.group_user,1,1,1,1
+access_hospital_room_dashboard,Access Hospital Room Dashboard,model_hospital_room_dashboard,base.group_user,1,1,1,1
+access_hospital_department_dashboard,Access Hospital Department Dashboard,model_hospital_department_dashboard,base.group_user,1,1,1,1
+access_hospital_medicine_dashboard,Access Medicine Dashboard,model_hospital_medicine_dashboard,base.group_user,1,1,1,1
+access_hospital_patient_dashboard,Access Hospital Patient Dashboard,model_hospital_patient_dashboard,base.group_user,1,1,1,1
+access_blood_bank_dashboard,Access Blood Bank Dashboard,model_blood_bank_dashboard,base.group_user,1,1,1,1
 access_hospital_prescription,Access Hospital Prescription,model_hospital_prescription,base.group_user,1,1,1,1
 access_prescription_line,Access Prescription Line,model_hospital_prescription_line,base.group_user,1,1,1,1
 access_emergency_ambulance_request,Access Emergency Ambulance Request,model_emergency_ambulance_request,base.group_user,1,1,1,1

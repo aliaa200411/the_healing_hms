@@ -47,14 +47,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr t-foreach="doc.line_ids" t-as="line">
-                                <td style="border:1px solid #bdc3c7; padding:6px;" t-esc="line.medicine_id.name or ''"/>
-                                <td style="border:1px solid #bdc3c7; padding:6px;" t-esc="line.medicine_form or ''"/>
-                                <td style="border:1px solid #bdc3c7; padding:6px;" t-esc="line.dosage or ''"/>
-                                <td style="border:1px solid #bdc3c7; padding:6px;" t-esc="line.times_per_day or ''"/>
-                                <td style="border:1px solid #bdc3c7; padding:6px;" t-esc="line.duration or ''"/>
-                            </tr>
-                        </tbody>
+    <tr t-foreach="doc.line_ids" t-as="line">
+        <td style="border:1px solid #bdc3c7; padding:6px;" t-esc="line.medicine_name or ''"/>
+        <td style="border:1px solid #bdc3c7; padding:6px;" t-esc="line.medicine_form or ''"/>
+        <td style="border:1px solid #bdc3c7; padding:6px;" t-esc="line.dosage or ''"/>
+        <td style="border:1px solid #bdc3c7; padding:6px;" t-esc="line.times_per_day or ''"/>
+        <td style="border:1px solid #bdc3c7; padding:6px;" t-esc="line.duration or ''"/>
+    </tr>
+</tbody>
+
                     </table>
                 </div>
 

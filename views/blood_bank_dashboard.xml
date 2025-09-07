@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   
+    <!-- ================== Kanban View ================== -->
+    <record id="view_blood_bank_dashboard_kanban" model="ir.ui.view">
+        <field name="name">blood.bank.dashboard.kanban</field>
+        <field name="model">blood.bank.dashboard</field>
+        <field name="arch" type="xml">
+            <kanban create="false" edit="false" delete="false">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record">
+                            <div><strong>Name:</strong> <field name="name"/></div>
+                            <div><strong>Total Bags:</strong> <field name="total_bags"/></div>
+                            <div><strong>Available Bags:</strong> <field name="available_bags"/></div>
+                            <div><strong>Used Bags:</strong> <field name="used_bags"/></div>
+                            <div><strong>Expired Bags:</strong> <field name="expired_bags"/></div>
+                            <div><strong>Most Needed:</strong> <field name="most_needed_blood_type"/></div>
+                            <div><strong>Month:</strong> <field name="month"/></div>
+                            <div><strong>A+:</strong> <field name="percent_A_pos"/>%</div>
+                            <div><strong>A-:</strong> <field name="percent_A_neg"/>%</div>
+                            <div><strong>B+:</strong> <field name="percent_B_pos"/>%</div>
+                            <div><strong>B-:</strong> <field name="percent_B_neg"/>%</div>
+                            <div><strong>AB+:</strong> <field name="percent_AB_pos"/>%</div>
+                            <div><strong>AB-:</strong> <field name="percent_AB_neg"/>%</div>
+                            <div><strong>O+:</strong> <field name="percent_O_pos"/>%</div>
+                            <div><strong>O-:</strong> <field name="percent_O_neg"/>%</div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ================== Pie Graph View for Blood Types ================== -->
+    <record id="view_blood_bank_dashboard_pie_graph" model="ir.ui.view">
+        <field name="name">blood.bank.dashboard.pie.graph</field>
+        <field name="model">blood.bank.dashboard</field>
+        <field name="arch" type="xml">
+            <graph string="Blood Types Distribution" type="pie">
+    <field name="name" type="row"/>
+    <field name="percent_A_pos" type="measure"/>
+    <field name="percent_A_neg" type="measure"/>
+    <field name="percent_B_pos" type="measure"/>
+    <field name="percent_B_neg" type="measure"/>
+    <field name="percent_AB_pos" type="measure"/>
+    <field name="percent_AB_neg" type="measure"/>
+    <field name="percent_O_pos" type="measure"/>
+    <field name="percent_O_neg" type="measure"/>
+</graph>
+
+        </field>
+    </record>
+
+    <!-- ================== List View ================== -->
+    <record id="view_blood_bank_dashboard_list" model="ir.ui.view">
+        <field name="name">blood.bank.dashboard.list</field>
+        <field name="model">blood.bank.dashboard</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" delete="false">
+                <field name="name"/>
+                <field name="total_bags"/>
+                <field name="available_bags"/>
+                <field name="used_bags"/>
+                <field name="expired_bags"/>
+                <field name="most_needed_blood_type"/>
+                <field name="month"/>
+                <field name="percent_A_pos"/>
+                <field name="percent_A_neg"/>
+                <field name="percent_B_pos"/>
+                <field name="percent_B_neg"/>
+                <field name="percent_AB_pos"/>
+                <field name="percent_AB_neg"/>
+                <field name="percent_O_pos"/>
+                <field name="percent_O_neg"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ================== Form View ================== -->
+    <record id="view_blood_bank_dashboard_form" model="ir.ui.view">
+        <field name="name">blood.bank.dashboard.form</field>
+        <field name="model">blood.bank.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Blood Bank Dashboard" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="total_bags"/>
+                        <field name="available_bags"/>
+                        <field name="used_bags"/>
+                        <field name="expired_bags"/>
+                        <field name="most_needed_blood_type"/>
+                        <field name="month"/>
+                        <field name="percent_A_pos"/>
+                        <field name="percent_A_neg"/>
+                        <field name="percent_B_pos"/>
+                        <field name="percent_B_neg"/>
+                        <field name="percent_AB_pos"/>
+                        <field name="percent_AB_neg"/>
+                        <field name="percent_O_pos"/>
+                        <field name="percent_O_neg"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

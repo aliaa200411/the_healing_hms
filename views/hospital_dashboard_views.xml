@@ -1,0 +1,98 @@
+<odoo>
+    <!-- ================== Root Menu ================== -->
+    <menuitem id="menu_hospital_dashboard_root" name="Hospital Dashboards" sequence="10"/>
+
+    <!-- ================== Patient Dashboard Action ================== -->
+    <record id="action_hospital_patient_dashboard" model="ir.actions.act_window">
+        <field name="name">Patient Dashboard</field>
+        <field name="res_model">hospital.patient.dashboard</field>
+        <field name="view_mode">kanban,graph,list,form</field>
+    </record>
+
+    <!-- ================== Patient Dashboard Menu ================== -->
+    <menuitem id="menu_hospital_patient_dashboard" 
+              name="Patient Dashboard" 
+              parent="menu_hospital_dashboard_root" 
+              action="action_hospital_patient_dashboard" 
+              sequence="4"/>
+
+    <!-- ================== Kanban View ================== -->
+    <record id="view_hospital_patient_dashboard_kanban" model="ir.ui.view">
+        <field name="name">hospital.patient.dashboard.kanban</field>
+        <field name="model">hospital.patient.dashboard</field>
+        <field name="arch" type="xml">
+            <kanban create="false" edit="false" delete="false">
+                <field name="patient_id"/>
+                <field name="age"/>
+<field name="gender" widget="selection"/>
+                <field name="blood_type"/>
+                <field name="has_insurance"/>
+                <field name="insurance_company"/>
+                <field name="month"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record">
+                            <div><strong>Patient:</strong> <field name="patient_id"/></div>
+                            <div><strong>Age:</strong> <field name="age"/></div>
+<div><strong>Gender:</strong> <field name="gender" widget="selection"/></div>
+                            <div><strong>Blood Type:</strong> <field name="blood_type"/></div>
+                            <div><strong>Insurance:</strong> <field name="has_insurance"/></div>
+                            <div><strong>Insurance Company:</strong> <field name="insurance_company"/></div>
+                            <div><strong>Month:</strong> <field name="month"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ================== Graph View ================== -->
+    <record id="view_hospital_patient_dashboard_graph" model="ir.ui.view">
+        <field name="name">hospital.patient.dashboard.graph</field>
+        <field name="model">hospital.patient.dashboard</field>
+        <field name="arch" type="xml">
+            <graph string="Patients Overview" type="bar">
+                <field name="gender" type="row"/>
+                <field name="has_insurance_int" type="measure" operator="sum"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ================== List View ================== -->
+    <record id="view_hospital_patient_dashboard_list" model="ir.ui.view">
+        <field name="name">hospital.patient.dashboard.list</field>
+        <field name="model">hospital.patient.dashboard</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" delete="false">
+                <field name="patient_id"/>
+                <field name="age"/>
+<field name="gender" widget="selection"/>
+                <field name="blood_type"/>
+                <field name="has_insurance"/>
+                <field name="insurance_company"/>
+                <field name="month"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ================== Form View ================== -->
+    <record id="view_hospital_patient_dashboard_form" model="ir.ui.view">
+        <field name="name">hospital.patient.dashboard.form</field>
+        <field name="model">hospital.patient.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Patient Dashboard" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="age"/>
+<field name="gender" widget="selection"/>
+                        <field name="blood_type"/>
+                        <field name="has_insurance"/>
+                        <field name="insurance_company"/>
+                        <field name="month"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

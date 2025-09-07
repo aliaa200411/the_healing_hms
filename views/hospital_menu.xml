@@ -209,6 +209,9 @@
               sequence="3"/>
 
 
+
+
+
     
     <!-- ================== Hospital Lab Root Menu ================== -->
     <menuitem id="menu_hospital_lab_root" 
@@ -260,3 +263,4 @@
               action="action_lab_test_type" 
               sequence="3"/>
 </odoo>
+

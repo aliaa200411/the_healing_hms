@@ -6,36 +6,36 @@ class HospitalDepartment(models.Model):
     _description = 'Hospital Department'
     _order = 'sequence, name'
 
-    # ===== الحقل التسلسلي =====
+    # ================== Fields ==================
     sequence = fields.Char(string="Serial Number", store=True, readonly=True)
-
-    # ===== بيانات أساسية =====
     name = fields.Char(string="Department Name", required=True)
     description = fields.Text(string="Description")
-    head_doctor_id = fields.Many2one('hospital.staff', string="Head Doctor", domain=[('job_title','=','doctor')])
-    doctor_ids = fields.One2many('hospital.staff', 'department_id', string="Doctors", domain=[('job_title','=','doctor')])
+    head_doctor_id = fields.Many2one(
+    'hospital.staff', 
+    string="Head Doctor", 
+    domain=[('job_title', '=', 'doctor')]
+)
+    doctor_ids = fields.One2many(
+    'hospital.staff', 
+    'department_id', 
+    string="Doctors", 
+    domain=[('job_title', '=', 'doctor')]
+)
     phone = fields.Char(string="Phone", size=20)
     floor = fields.Char(string="Floor")
     wing = fields.Char(string="Wing")
 
-    # ===== حقول محسوبة =====
+    room_ids = fields.One2many('hospital.room', 'department_id', string="Rooms")
+
     doctor_count = fields.Integer(string="Number of Doctors", compute='_compute_doctor_count', store=True)
     room_count = fields.Integer(string="Number of Rooms", compute='_compute_room_count', store=True)
     total_capacity = fields.Integer(string="Total Capacity", compute='_compute_total_capacity', store=True)
 
-    # ===== علاقات الغرف =====
-    room_ids = fields.One2many('hospital.room', 'department_id', string="Rooms")
-
-    # ===== حساب القيم =====
+    # ================== Compute Methods ==================
     @api.depends('doctor_ids')
     def _compute_doctor_count(self):
         for rec in self:
             rec.doctor_count = len(rec.doctor_ids)
-
-    @api.depends('head_doctor_id')
-    def _compute_head_doctor_phone(self):
-        for rec in self:
-            rec.head_doctor_phone = rec.head_doctor_id.phone if rec.head_doctor_id else ''
 
     @api.depends('room_ids')
     def _compute_room_count(self):
@@ -47,19 +47,30 @@ class HospitalDepartment(models.Model):
         for rec in self:
             rec.total_capacity = sum(room.capacity for room in rec.room_ids)
 
-    # ===== التسلسل التلقائي =====
+    # ================== Overrides ==================
     @api.model
     def create(self, vals):
-        if isinstance(vals, list):  # لو القائمة جايه من editable list
-            for v in vals:
-                if v.get('sequence', 'New') == 'New':
-                    v['sequence'] = self.env['ir.sequence'].next_by_code('hospital.department') or 'New'
-        else:  # لو dict واحد
-            if vals.get('sequence', 'New') == 'New':
-                vals['sequence'] = self.env['ir.sequence'].next_by_code('hospital.department') or 'New'
-        return super().create(vals)
+        if vals.get('sequence', 'New') == 'New':
+            vals['sequence'] = self.env['ir.sequence'].next_by_code('hospital.department') or 'New'
+        rec = super().create(vals)
+        # Update dashboard immediately
+        self.env['hospital.department.dashboard'].with_context(from_department=True).update_department_dashboard(rec)
+        return rec
 
-    # ===== أزرار الفوتر =====
+    def write(self, vals):
+        res = super().write(vals)
+        for rec in self:
+            self.env['hospital.department.dashboard'].with_context(from_department=True).update_department_dashboard(rec)
+        return res
+
+    def unlink(self):
+        for rec in self:
+            # delete dashboard record without raising error
+            dash = self.env['hospital.department.dashboard'].with_context(from_department=True).search([('department_id', '=', rec.id)])
+            dash.unlink()
+        return super().unlink()
+
+    # ================== Action Buttons ==================
     def action_open_doctors(self):
         self.ensure_one()
         return {

@@ -29,6 +29,7 @@
     <record id="view_hospital_staff_list" model="ir.ui.view">
         <field name="name">hospital.staff.list</field>
         <field name="model">hospital.staff</field>
+        <field name="priority" eval="20"/>
         <field name="arch" type="xml">
             <list string="Hospital Staff">
                 <field name="staff_id"/>

@@ -17,3 +17,8 @@ from . import driver
 from . import donor
 from . import blood_bag
 from . import transfusion
+from . import hospital_dashboard
+from . import room_dashboard
+from . import department_dashboard
+from . import pharmacy_dashboard
+from . import blood_bank_dashboard

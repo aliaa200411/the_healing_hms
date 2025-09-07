@@ -47,6 +47,7 @@ class HospitalRoom(models.Model):
             ))
             room.available_beds = total_beds - booked_beds
             room.state = 'occupied' if booked_beds == total_beds else 'available'
+
     @api.onchange('department_id')
     def _onchange_department(self):
         if self.department_id:
@@ -54,7 +55,7 @@ class HospitalRoom(models.Model):
             self.wing = self.department_id.wing
         else:
             self.floor = False
-            self.wing = False        
+            self.wing = False
 
     def action_open_bookings(self):
         return {
@@ -64,6 +65,25 @@ class HospitalRoom(models.Model):
             'view_mode': 'tree,form',
             'domain': [('bed_id.room_id', '=', self.id)],
         }
+
+    # ================== Auto-update dashboard ==================
+    def _update_dashboard(self):
+        for rec in self:
+            self.env['hospital.room.dashboard'].update_room_dashboard(rec.department_id)
+
+    def create(self, vals):
+        rec = super().create(vals)
+        rec._update_dashboard()
+        return rec
+
+    def write(self, vals):
+        res = super().write(vals)
+        self._update_dashboard()
+        return res
+
+    def unlink(self):
+        self._update_dashboard()
+        return super().unlink()
 
 
 class HospitalBed(models.Model):
@@ -80,3 +100,23 @@ class HospitalBed(models.Model):
     def _compute_is_occupied(self):
         for bed in self:
             bed.is_occupied = any(b.state == 'confirmed' for b in bed.booking_ids)
+
+    # ================== Auto-update dashboard ==================
+    def _update_dashboard(self):
+        for rec in self:
+            if rec.room_id and rec.room_id.department_id:
+                self.env['hospital.room.dashboard'].update_room_dashboard(rec.room_id.department_id)
+
+    def create(self, vals):
+        rec = super().create(vals)
+        rec._update_dashboard()
+        return rec
+
+    def write(self, vals):
+        res = super().write(vals)
+        self._update_dashboard()
+        return res
+
+    def unlink(self):
+        self._update_dashboard()
+        return super().unlink()

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- ================== Hospital Dashboards Root Menu ================== -->
+    <menuitem id="menu_hospital_dashboard_root" name="Hospital Dashboards" sequence="10"/>
+
+    <!-- ================== Department Dashboard Action ================== -->
+    <record id="action_hospital_department_dashboard" model="ir.actions.act_window">
+        <field name="name">Department Dashboard</field>
+        <field name="res_model">hospital.department.dashboard</field>
+        <field name="view_mode">kanban,graph,list,form</field>
+        <field name="view_id" eval="False"/>
+    </record>
+
+    <!-- ================== Department Dashboard Menu ================== -->
+    <menuitem id="menu_hospital_department_dashboard" 
+              name="Department Dashboard" 
+              parent="menu_hospital_dashboard_root" 
+              action="action_hospital_department_dashboard" 
+              sequence="1"/>
+
+    <!-- ================== Kanban View ================== -->
+    <record id="view_hospital_department_dashboard_kanban" model="ir.ui.view">
+        <field name="name">hospital.department.dashboard.kanban</field>
+        <field name="model">hospital.department.dashboard</field>
+        <field name="arch" type="xml">
+            <kanban create="false" edit="false" delete="false">
+                <field name="department_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record">
+                            <div><strong>Department:</strong> <field name="department_id"/></div>
+                            <div><strong>Total Doctors:</strong> <field name="total_doctors"/></div>
+                            <div><strong>Total Rooms:</strong> <field name="total_rooms"/></div>
+                            <div><strong>Total Capacity:</strong> <field name="total_capacity"/></div>
+                            <div><strong>Occupied Rooms:</strong> <field name="occupied_rooms"/></div>
+                            <div><strong>Available Rooms:</strong> <field name="available_rooms"/></div>
+                            <div><strong>Doctors Available:</strong> <field name="doctor_available"/></div>
+                            <div><strong>Doctors Busy:</strong> <field name="doctor_busy"/></div>
+                            <div><strong>Month:</strong> <field name="month"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ================== Graph View ================== -->
+    <record id="view_hospital_department_dashboard_graph" model="ir.ui.view">
+        <field name="name">hospital.department.dashboard.graph</field>
+        <field name="model">hospital.department.dashboard</field>
+        <field name="arch" type="xml">
+            <graph string="Department KPIs" type="bar">
+                <field name="department_id" type="row"/>
+                <field name="total_doctors" type="measure"/>
+                <field name="total_rooms" type="measure"/>
+                <field name="total_capacity" type="measure"/>
+                <field name="occupied_rooms" type="measure"/>
+                <field name="available_rooms" type="measure"/>
+                <field name="doctor_available" type="measure"/>
+                <field name="doctor_busy" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ================== List View ================== -->
+    <record id="view_hospital_department_dashboard_list" model="ir.ui.view">
+        <field name="name">hospital.department.dashboard.list</field>
+        <field name="model">hospital.department.dashboard</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" delete="false">
+                <field name="department_id"/>
+                <field name="total_doctors"/>
+                <field name="total_rooms"/>
+                <field name="total_capacity"/>
+                <field name="occupied_rooms"/>
+                <field name="available_rooms"/>
+                <field name="doctor_available"/>
+                <field name="doctor_busy"/>
+                <field name="month"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ================== Form View ================== -->
+    <record id="view_hospital_department_dashboard_form" model="ir.ui.view">
+        <field name="name">hospital.department.dashboard.form</field>
+        <field name="model">hospital.department.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Department Dashboard" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <field name="department_id"/>
+                        <field name="total_doctors"/>
+                        <field name="total_rooms"/>
+                        <field name="total_capacity"/>
+                        <field name="occupied_rooms"/>
+                        <field name="available_rooms"/>
+                        <field name="doctor_available"/>
+                        <field name="doctor_busy"/>
+                        <field name="month"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

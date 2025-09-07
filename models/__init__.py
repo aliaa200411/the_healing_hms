@@ -1,5 +1,4 @@
 # custom_addons/hospital_departments/models/__init__.py
-from . import doctor
 from . import department
 from . import patient
 from . import hospital_room
@@ -12,9 +11,11 @@ from . import hospital_pharmacy
 from . import hospital_insurance
 from . import ambulance
 from . import ambulance_request
-from . import driver
 from . import donor
 from . import blood_bag
 from . import transfusion
 from . import prescription
 from . import patient_history_wizard
+from . import lab_test_type
+from . import lab_request
+from . import lab_result

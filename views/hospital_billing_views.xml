@@ -8,7 +8,7 @@
             <list string="Patient Bills">
                 <field name="name"/>
                 <field name="patient_id"/>
-                <field name="doctor_id"/>
+                <field name="doctor_id" domain="[('job_title','=','doctor')]"/>
                 <field name="date"/>
                 <field name="insurance_company_id"/>
                 <field name="insurance_discount"/>
@@ -51,7 +51,7 @@
                             <field name="name" readonly="1"/>
                             <field name="date"/>
                             <field name="patient_id"/>
-                            <field name="doctor_id"/>
+                            <field name="doctor_id" domain="[('job_title','=','doctor')]"/>
                         </group>
                         <group>
                             <field name="currency_id"/>

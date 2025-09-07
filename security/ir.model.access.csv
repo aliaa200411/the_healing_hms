@@ -1,5 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_hospital_doctor,Access Hospital Doctor,model_hospital_doctor,base.group_user,1,1,1,1
 access_hospital_patient,Access Hospital Patient,model_hospital_patient,base.group_user,1,1,1,1
 access_hospital_department,Access Hospital Department,model_hospital_department,base.group_user,1,1,1,1
 access_hospital_room,Access Hospital Room,model_hospital_room,base.group_user,1,1,1,1
@@ -7,21 +6,25 @@ access_hospital_bed,Access Hospital Bed,model_hospital_bed,base.group_user,1,1,1
 access_hospital_booking,Access Hospital Booking,model_hospital_booking,base.group_user,1,1,1,1
 access_hospital_specialization,Access Hospital Specialization,model_hospital_specialization,base.group_user,1,1,1,1
 access_hospital_staff,Access Hospital Staff,model_hospital_staff,base.group_user,1,1,1,1
+access_hospital_pharmacist,Access Hospital Pharmacist,model_hospital_staff,base.group_user,1,0,0,0
+access_emergency_driver,Access Emergency Driver,model_hospital_staff,base.group_user,1,0,0,0
 access_hospital_billing,Access Hospital Billing,model_hospital_billing,base.group_user,1,1,1,1
 access_hospital_billing_line,Access Hospital Billing Line,model_hospital_billing_line,base.group_user,1,1,1,1
 access_hospital_appointment,Access Hospital Appointment,model_hospital_appointment,base.group_user,1,1,1,1
 access_hospital_medicine,Access Hospital Medicine,model_hospital_medicine,base.group_user,1,1,1,1
 access_hospital_pharmacy_order,Access Hospital Pharmacy Order,model_hospital_pharmacy_order,base.group_user,1,1,1,1
 access_hospital_pharmacy_category,Access Hospital Pharmacy Category,model_hospital_pharmacy_category,base.group_user,1,1,1,1
-access_hospital_pharmacist,Access Hospital Pharmacist,model_hospital_pharmacist,base.group_user,1,1,1,1
 access_hospital_pharmacy_order_line,Access Pharmacy Order Line,model_hospital_pharmacy_order_line,base.group_user,1,1,1,1
 access_hospital_insurance,Access Hospital Insurance,model_hospital_insurance,base.group_user,1,1,1,1
 access_blood_bag,Access Blood Bag,model_blood_bank_bag,base.group_user,1,1,1,1
 access_blood_donor,Access Blood Donor,model_blood_bank_donor,base.group_user,1,1,1,1
 access_blood_transfusion,Access Blood Transfusion,model_blood_bank_transfusion,base.group_user,1,1,1,1
 access_emergency_ambulance,Access Emergency Ambulance,model_healing_hms_ambulance,base.group_user,1,1,1,1
-access_emergency_driver,Access Emergency Driver,model_healing_hms_emergency_driver,base.group_user,1,1,1,1
 access_hospital_prescription,Access Hospital Prescription,model_hospital_prescription,base.group_user,1,1,1,1
 access_prescription_line,Access Prescription Line,model_hospital_prescription_line,base.group_user,1,1,1,1
 access_emergency_ambulance_request,Access Emergency Ambulance Request,model_emergency_ambulance_request,base.group_user,1,1,1,1
 access_patient_history_wizard,Access Patient History Wizard,model_patient_history_wizard,base.group_user,1,1,1,1
+access_lab_test_type,access_lab_test_type,model_hospital_lab_test_type,,1,1,1,1
+access_lab_request,access_lab_request,model_hospital_lab_request,,1,1,1,1
+access_lab_result,access_lab_result,model_hospital_lab_result,,1,1,1,1
+access_hospital_lab_result_line,hospital.lab.result.line,model_hospital_lab_result_line,,1,1,1,1

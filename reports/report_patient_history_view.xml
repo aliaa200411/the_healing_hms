@@ -78,6 +78,33 @@
                             </div>
                         </t>
 
+                        <!-- Lab Results -->
+                        <h2 style="color:#1F618D; border-bottom:1px solid #ccc; padding-bottom:5px; margin-top:20px;">Lab Results</h2>
+                        <t t-foreach="wiz.lab_result_ids" t-as="lab">
+                            <div style="margin-bottom:15px; padding:10px; border:1px solid #ccc; border-radius:5px; background:#FDF5E6;">
+                                <p><strong>Lab Test:</strong> <t t-esc="lab.test_name or 'N/A'"/></p>
+                                <p><strong>Request Date:</strong> <t t-esc="lab.request_date or 'N/A'"/></p>
+                                <p><strong>Doctor:</strong> <t t-esc="lab.doctor_name or 'N/A'"/></p>
+
+                                <table style="width:100%; border:1px solid #ccc; border-collapse: collapse; margin-top:5px;">
+                                    <thead style="background-color:#FDEBD0;">
+                                        <tr>
+                                            <th style="border:1px solid #ccc; padding:5px;">Test</th>
+                                            <th style="border:1px solid #ccc; padding:5px;">Result</th>
+                                            <th style="border:1px solid #ccc; padding:5px;">Unit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="lab.result_line_ids" t-as="line">
+                                            <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.test_name or 'N/A'"/></td>
+                                            <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.result_value or 'N/A'"/></td>
+                                            <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.unit or 'N/A'"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </t>
+
                         <!-- Appointments -->
                         <h2 style="color:#1F618D; border-bottom:1px solid #ccc; padding-bottom:5px; margin-top:20px;">Appointments </h2>
                         <t t-foreach="wiz.patient_id.appointment_ids" t-as="app">

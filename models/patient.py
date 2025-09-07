@@ -28,7 +28,7 @@ class Patient(models.Model):
     # ==== Relationships ====
     appointment_ids = fields.One2many("hospital.appointment", "patient_id", string="Appointments")
     diagnosis = fields.Text(string='Diagnosis')
-    doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
+    doctor_id = fields.Many2one('hospital.staff', string="Doctor", domain=[('job_title','=','doctor')])
     partner_id = fields.Many2one('res.partner', string='Related Partner')
     prescription_ids = fields.One2many("hospital.prescription", "patient_id", string="Prescriptions")
 

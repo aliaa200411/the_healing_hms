@@ -16,7 +16,7 @@ class HospitalBilling(models.Model):
         tracking=True
     )
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True, tracking=True)
-    doctor_id = fields.Many2one('hospital.doctor', string='Doctor', tracking=True)
+    doctor_id = fields.Many2one('hospital.staff', string='Doctor', domain="[('job_title','=','doctor')]", tracking=True)
     date = fields.Datetime(string='Bill Date', default=fields.Datetime.now, tracking=True)
 
     # -------- Insurance fields --------
@@ -157,6 +157,7 @@ class HospitalBillingLine(models.Model):
     currency_id = fields.Many2one(related='billing_id.currency_id', store=True, readonly=True)
     tax_ids = fields.Many2many('account.tax', string='Taxes', domain=[('type_tax_use', '=', 'sale')])
     price_subtotal = fields.Monetary(string='Subtotal', compute='_compute_subtotal', store=True)
+    lab_request_id = fields.Many2one('hospital.lab.request', string='Lab Request')
 
     @api.depends('price_unit', 'quantity', 'tax_ids')
     def _compute_subtotal(self):

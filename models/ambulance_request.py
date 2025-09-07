@@ -1,7 +1,6 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
-
 class AmbulanceRequest(models.Model):
     _name = 'emergency.ambulance.request'
     _description = 'Ambulance Request'
@@ -18,9 +17,9 @@ class AmbulanceRequest(models.Model):
     )
 
     assigned_driver_id = fields.Many2one(
-        'healing_hms.emergency_driver',
+        'hospital.staff',
         string='Assigned Driver',
-        domain="[('ambulance_id', '=', assigned_ambulance_id), ('status', '=', 'available')]"
+        domain="[('ambulance_id','=',assigned_ambulance_id),('status','=','available'),('job_title','=','ambulance')]"
     )
 
     status = fields.Selection([
@@ -32,14 +31,14 @@ class AmbulanceRequest(models.Model):
 
     notes = fields.Text(string='Notes')
 
-    #==== Onchange ====#
+    # ==== Onchange Ambulance ====
     @api.onchange('assigned_ambulance_id')
     def _onchange_ambulance(self):
-        """لما تختار سيارة: نجيب سائقها المتاح ونضبط الحالة."""
         if self.assigned_ambulance_id:
-            driver = self.env['healing_hms.emergency_driver'].search([
+            driver = self.env['hospital.staff'].search([
                 ('ambulance_id', '=', self.assigned_ambulance_id.id),
-                ('status', '=', 'available')
+                ('status', '=', 'available'),
+                ('job_title', '=', 'ambulance')
             ], limit=1)
             if driver:
                 self.assigned_driver_id = driver
@@ -55,52 +54,47 @@ class AmbulanceRequest(models.Model):
             'domain': {
                 'assigned_driver_id': [
                     ('ambulance_id', '=', self.assigned_ambulance_id.id if self.assigned_ambulance_id else False),
-                    ('status', '=', 'available')
+                    ('status', '=', 'available'),
+                    ('job_title', '=', 'ambulance')
                 ]
             }
         }
 
+    # ==== Onchange Driver ====
     @api.onchange('assigned_driver_id')
     def _onchange_driver(self):
-        """لو اخترت سائق مخالف لسيارة الإسعاف، نفرغه وننبه."""
-        if self.assigned_driver_id and self.assigned_ambulance_id:
-            if self.assigned_driver_id.ambulance_id != self.assigned_ambulance_id:
-                self.assigned_driver_id = False
+        if self.assigned_driver_id:
+            # تحديد السيارة تلقائياً حسب السائق
+            self.assigned_ambulance_id = self.assigned_driver_id.ambulance_id
+            if self.assigned_driver_id.status != 'available':
                 return {
                     'warning': {
-                        'title': _('Driver mismatch'),
-                        'message': _('Please choose a driver that belongs to the selected ambulance.')
+                        'title': _('Driver not available'),
+                        'message': _('Selected driver is not available.')
                     }
                 }
-
-        if self.assigned_driver_id and self.assigned_ambulance_id:
             self.status = 'assigned'
         elif not self.assigned_driver_id or not self.assigned_ambulance_id:
             self.status = 'pending'
 
-    #==== Default ====#
+    # ==== Default Get ====
     @api.model
     def default_get(self, fields_list):
         res = super().default_get(fields_list)
-
         ambulance = self.env['healing_hms.ambulance'].search([('status', '=', 'available')], limit=1)
         if ambulance:
             res['assigned_ambulance_id'] = ambulance.id
-            driver = self.env['healing_hms.emergency_driver'].search([
+            driver = self.env['hospital.staff'].search([
                 ('ambulance_id', '=', ambulance.id),
-                ('status', '=', 'available')
+                ('status', '=', 'available'),
+                ('job_title', '=', 'ambulance')
             ], limit=1)
             if driver:
                 res['assigned_driver_id'] = driver.id
                 res['status'] = 'assigned'
-            else:
-                res['status'] = 'pending'
-        else:
-            res['status'] = 'pending'
-
         return res
 
-    #==== Constraint ====#
+    # ==== Constraint ====
     @api.constrains('assigned_ambulance_id', 'assigned_driver_id')
     def _check_driver_belongs_to_ambulance(self):
         for rec in self:
@@ -108,58 +102,48 @@ class AmbulanceRequest(models.Model):
                 if rec.assigned_driver_id.ambulance_id != rec.assigned_ambulance_id:
                     raise ValidationError(_('Selected driver does not belong to the selected ambulance.'))
 
-    #==== Create / Write ====#
+    # ==== Create / Write ====
     @api.model_create_multi
     def create(self, vals_list):
         records = super().create(vals_list)
         for rec in records:
             if rec.status == 'assigned':
-                if rec.assigned_ambulance_id and rec.assigned_ambulance_id.status == 'available':
+                if rec.assigned_ambulance_id:
                     rec.assigned_ambulance_id.status = 'busy'
-                if rec.assigned_driver_id and rec.assigned_driver_id.status == 'available':
+                if rec.assigned_driver_id:
                     rec.assigned_driver_id.status = 'on_duty'
         return records
 
     def write(self, vals):
-        before = {
-            rec.id: {
-                'ambulance': rec.assigned_ambulance_id,
-                'driver': rec.assigned_driver_id,
-                'status': rec.status,
-            } for rec in self
-        }
-
+        before = {rec.id: {'ambulance': rec.assigned_ambulance_id,
+                           'driver': rec.assigned_driver_id,
+                           'status': rec.status} for rec in self}
         res = super().write(vals)
-
         for rec in self:
             old = before[rec.id]
             old_amb = old['ambulance']
             old_drv = old['driver']
             old_status = old['status']
 
-            # حرر الموارد القديمة إذا تغيرت
             if old_amb and old_amb != rec.assigned_ambulance_id and old_status == 'assigned':
                 old_amb.status = 'available'
             if old_drv and old_drv != rec.assigned_driver_id and old_status == 'assigned':
                 old_drv.status = 'available'
 
-            # ثبّت الموارد الجديدة
             if rec.status == 'assigned':
-                if rec.assigned_ambulance_id and rec.assigned_ambulance_id.status != 'busy':
+                if rec.assigned_ambulance_id:
                     rec.assigned_ambulance_id.status = 'busy'
-                if rec.assigned_driver_id and rec.assigned_driver_id.status != 'on_duty':
+                if rec.assigned_driver_id:
                     rec.assigned_driver_id.status = 'on_duty'
 
-            # إذا خلص/اتلغى → رجّع الموارد
             if old_status == 'assigned' and rec.status in ('completed', 'cancelled'):
                 if rec.assigned_ambulance_id:
                     rec.assigned_ambulance_id.status = 'available'
                 if rec.assigned_driver_id:
                     rec.assigned_driver_id.status = 'available'
-
         return res
 
-    #==== Actions ====#
+    # ==== Actions ====
     def action_complete(self):
         for rec in self:
             rec.status = 'completed'

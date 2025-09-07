@@ -78,7 +78,7 @@
                             <field name="prescription_ids">
                                 <list string="Prescriptions">
                                     <field name="name"/>
-                                    <field name="doctor_id"/>
+                                    <field name="doctor_id" domain="[('job_title','=','doctor')]"/>
                                     <field name="date"/>
                                     <field name="state"/>
                                 </list>

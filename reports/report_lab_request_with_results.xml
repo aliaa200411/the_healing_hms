@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_lab_request_with_results_document">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page" style="padding:25px; font-family:Arial, Helvetica, sans-serif;">
+
+                    <!-- Header -->
+                    <div style="text-align:center; margin-bottom:30px;">
+                        <h1 style="color:#194f5bff; font-size:28px; margin:0;">Laboratory Report</h1>
+                        <hr style="border:2px solid #194f5bff; width:80px; margin:10px auto;"/>
+                    </div>
+
+                    <!-- معلومات الطلب -->
+                    <div style="margin-bottom:25px; line-height:1.6; font-size:14px; color:#333;">
+                        <p><strong style="color:#135e6eff;">Request Reference:</strong>
+                            <t t-esc="doc.name or 'N/A'"/>
+                        </p>
+                        <p><strong style="color:#135e6eff;">Lab Test:</strong>
+                            <t t-esc="doc.test_type_id.name or 'N/A'"/>
+                        </p>
+                        <p><strong style="color:#135e6eff;">Patient:</strong>
+                            <t t-esc="doc.patient_id.name or 'N/A'"/>
+                        </p>
+                        <p><strong style="color:#135e6eff;">Doctor:</strong>
+                            <t t-esc="doc.doctor_id.name or 'N/A'"/>
+                        </p>
+                        <p><strong style="color:#135e6eff;">Date:</strong>
+                            <t t-esc="doc.request_date or 'N/A'"/>
+                        </p>
+                    </div>
+
+                    <!-- جدول النتائج -->
+                    <table style="width:100%; border-collapse:collapse; font-size:14px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                        <thead>
+                            <tr style="background-color:#135e6eff; color:#fff; text-align:left;">
+                                <th style="padding:10px; border:1px solid #ddd;">Test</th>
+                                <th style="padding:10px; border:1px solid #ddd;">Result</th>
+                                <th style="padding:10px; border:1px solid #ddd;">Unit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- نمر على كل نتائج المختبر المرتبطة بالطلب -->
+                            <t t-foreach="doc.lab_result_ids" t-as="result">
+                                <t t-foreach="result.result_line_ids.sorted(key='sequence')" t-as="line">
+                                    <tr style="background-color:#f9f9f9;">
+                                        <td style="padding:8px; border:1px solid #ddd; color:#333;"><t t-esc="line.test_name or 'N/A'"/></td>
+                                        <td style="padding:8px; border:1px solid #ddd; color:#135e6eff; font-weight:bold;"><t t-esc="line.result_value or 'N/A'"/></td>
+                                        <td style="padding:8px; border:1px solid #ddd; color:#333;"><t t-esc="line.unit or 'N/A'"/></td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <!-- Footer -->
+                    <div style="margin-top:40px; text-align:center; color:#666; font-size:13px;">
+                        <hr style="border:1px solid #ddd; margin:20px 0;"/>
+                        <p>Thank you for choosing <span style="color:#4B0082; font-weight:bold;">our laboratory</span> services</p>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- Report from Request including results -->
+    <record id="action_report_lab_request_with_results" model="ir.actions.report">
+        <field name="name">Lab Report (Request with Results)</field>
+        <field name="model">hospital.lab.request</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">the_healing_hms.report_lab_request_with_results_document</field>
+        <field name="report_file">the_healing_hms.report_lab_request_with_results_document</field>
+        <field name="print_report_name">"LabReport-%s" % (object.name)</field>
+    </record>
+</odoo>

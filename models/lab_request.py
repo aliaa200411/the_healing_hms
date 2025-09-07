@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models, api
+from odoo import fields, models, api, _
+from odoo.exceptions import UserError
 
 class LabRequest(models.Model):
     _name = 'hospital.lab.request'
@@ -40,20 +41,22 @@ class LabRequest(models.Model):
         for rec in self:
             rec.price = rec.test_type_id.price if rec.test_type_id else 0.0
 
-    # ---------------- Override create/write to store price ----------------
+    # ---------------- Override create to store price and generate reference ----------------
     @api.model
     def create(self, vals):
-        # تحديث السعر إذا كان في test_type_id
-        if vals.get('test_type_id'):
-            test = self.env['hospital.lab.test.type'].browse(vals['test_type_id'])
-            vals['price'] = test.price
+        if isinstance(vals, dict):
+            # تحديث السعر إذا كان في test_type_id
+            if vals.get('test_type_id'):
+                test = self.env['hospital.lab.test.type'].browse(vals['test_type_id'])
+                vals['price'] = test.price
 
-        # توليد الرقم المرجعي من sequence
-        if vals.get('name', 'New') == 'New':
-            vals['name'] = self.env['ir.sequence'].next_by_code('hospital.lab.request') or 'New'
+            # توليد الرقم المرجعي من sequence
+            if vals.get('name', 'New') == 'New':
+                vals['name'] = self.env['ir.sequence'].next_by_code('hospital.lab.request') or 'New'
 
         return super().create(vals)
 
+    # ---------------- Override write to update price if test_type_id changes ----------------
     def write(self, vals):
         if vals.get('test_type_id'):
             test = self.env['hospital.lab.test.type'].browse(vals['test_type_id'])

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- ================== Room Dashboard Action ================== -->
+    <record id="action_hospital_room_dashboard" model="ir.actions.act_window">
+        <field name="name">Room Dashboard</field>
+        <field name="res_model">hospital.room.dashboard</field>
+        <field name="view_mode">kanban,graph,list,form</field>
+        <field name="view_id" eval="False"/>
+        <field name="target">current</field>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_manager'))]"/>
+    </record>
+
+    <!-- ================== Room Dashboard Menu ================== -->
+    <menuitem id="menu_hospital_room_dashboard"
+              name="Room Dashboard"
+              parent="menu_hospital_dashboard_root"
+              action="action_hospital_room_dashboard"
+              sequence="2"
+              groups="the_healing_hms.group_hospital_manager"/>
+
+    <!-- ================== Kanban View ================== -->
+    <record id="view_hospital_room_dashboard_kanban" model="ir.ui.view">
+        <field name="name">hospital.room.dashboard.kanban</field>
+        <field name="model">hospital.room.dashboard</field>
+        <field name="arch" type="xml">
+            <kanban create="false" edit="false" delete="false">
+                <field name="department_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record">
+                            <div><strong>Department:</strong> <field name="department_id"/></div>
+                            <div><strong>Total Rooms:</strong> <field name="total_rooms"/></div>
+                            <div><strong>Occupied Rooms:</strong> <field name="occupied_rooms"/></div>
+                            <div><strong>Available Rooms:</strong> <field name="available_rooms"/></div>
+                            <div><strong>Total Beds:</strong> <field name="total_beds"/></div>
+                            <div><strong>Occupied Beds:</strong> <field name="occupied_beds"/></div>
+                            <div><strong>Available Beds:</strong> <field name="available_beds"/></div>
+                            <div><strong>Total Bookings:</strong> <field name="total_bookings"/></div>
+                            <div><strong>Confirmed:</strong> <field name="confirmed_bookings"/></div>
+                            <div><strong>Cancelled:</strong> <field name="cancelled_bookings"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ================== Graph View ================== -->
+    <record id="view_hospital_room_dashboard_graph" model="ir.ui.view">
+        <field name="name">hospital.room.dashboard.graph</field>
+        <field name="model">hospital.room.dashboard</field>
+        <field name="arch" type="xml">
+            <graph string="Room KPIs" type="bar">
+                <field name="department_id" type="row"/>
+                <field name="total_rooms" type="measure"/>
+                <field name="available_rooms" type="measure"/>
+                <field name="occupied_rooms" type="measure"/>
+                <field name="total_beds" type="measure"/>
+                <field name="available_beds" type="measure"/>
+                <field name="occupied_beds" type="measure"/>
+                <field name="total_bookings" type="measure"/>
+                <field name="confirmed_bookings" type="measure"/>
+                <field name="cancelled_bookings" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ================== List View ================== -->
+   <record id="view_hospital_room_dashboard_list" model="ir.ui.view">
+    <field name="name">hospital.room.dashboard.list</field>
+    <field name="model">hospital.room.dashboard</field>
+    <field name="arch" type="xml">
+        <list create="false" edit="false" delete="false">
+            <field name="department_id"/>
+            <field name="total_rooms"/>
+            <field name="occupied_rooms"/>
+            <field name="available_rooms"/>
+            <field name="total_beds"/>
+            <field name="occupied_beds"/>
+            <field name="available_beds"/>
+            <field name="total_bookings"/>
+            <field name="confirmed_bookings"/>
+            <field name="cancelled_bookings"/>
+        </list>
+    </field>
+</record>
+
+    <!-- ================== Form View ================== -->
+    <record id="view_hospital_room_dashboard_form" model="ir.ui.view">
+        <field name="name">hospital.room.dashboard.form</field>
+        <field name="model">hospital.room.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Room Dashboard" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <field name="department_id"/>
+                        <field name="total_rooms"/>
+                        <field name="occupied_rooms"/>
+                        <field name="available_rooms"/>
+                        <field name="total_beds"/>
+                        <field name="occupied_beds"/>
+                        <field name="available_beds"/>
+                        <field name="total_bookings"/>
+                        <field name="confirmed_bookings"/>
+                        <field name="cancelled_bookings"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

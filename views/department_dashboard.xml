@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ================== Hospital Dashboards Root Menu for Manager ================== -->
+    <menuitem id="menu_hospital_dashboard_manager_root" 
+              name="Hospital Dashboards" 
+              sequence="10" 
+              groups="the_healing_hms.group_hospital_manager"/>
+
+    <!-- ================== Department Dashboard Action ================== -->
+    <record id="action_hospital_department_dashboard_manager" model="ir.actions.act_window">
+        <field name="name">Department Dashboard</field>
+        <field name="res_model">hospital.department.dashboard</field>
+        <field name="view_mode">kanban,graph,list,form</field>
+        <field name="view_id" eval="False"/>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_manager'))]"/>
+    </record>
+
+    <!-- ================== Department Dashboard Menu ================== -->
+    <menuitem id="menu_hospital_department_dashboard_manager" 
+              name="Department Dashboard" 
+              parent="menu_hospital_dashboard_manager_root" 
+              action="action_hospital_department_dashboard_manager" 
+              sequence="1"
+              groups="the_healing_hms.group_hospital_manager"/>
+
+    <!-- ================== Kanban View ================== -->
+    <record id="view_hospital_department_dashboard_kanban_manager" model="ir.ui.view">
+        <field name="name">hospital.department.dashboard.kanban.manager</field>
+        <field name="model">hospital.department.dashboard</field>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_manager'))]"/>
+        <field name="arch" type="xml">
+            <kanban create="false" edit="false" delete="false">
+                <field name="department_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record">
+                            <div><strong>Department:</strong> <field name="department_id"/></div>
+                            <div><strong>Total Doctors:</strong> <field name="total_doctors"/></div>
+                            <div><strong>Total Rooms:</strong> <field name="total_rooms"/></div>
+                            <div><strong>Total Capacity:</strong> <field name="total_capacity"/></div>
+                            <div><strong>Occupied Rooms:</strong> <field name="occupied_rooms"/></div>
+                            <div><strong>Available Rooms:</strong> <field name="available_rooms"/></div>
+                            <div><strong>Doctors Available:</strong> <field name="doctor_available"/></div>
+                            <div><strong>Doctors Busy:</strong> <field name="doctor_busy"/></div>
+                            <div><strong>Month:</strong> <field name="month"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ================== Graph View ================== -->
+    <record id="view_hospital_department_dashboard_graph_manager" model="ir.ui.view">
+        <field name="name">hospital.department.dashboard.graph.manager</field>
+        <field name="model">hospital.department.dashboard</field>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_manager'))]"/>
+        <field name="arch" type="xml">
+            <graph string="Department KPIs" type="bar">
+                <field name="department_id" type="row"/>
+                <field name="total_doctors" type="measure"/>
+                <field name="total_rooms" type="measure"/>
+                <field name="total_capacity" type="measure"/>
+                <field name="occupied_rooms" type="measure"/>
+                <field name="available_rooms" type="measure"/>
+                <field name="doctor_available" type="measure"/>
+                <field name="doctor_busy" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ================== List View ================== -->
+    <record id="view_hospital_department_dashboard_list_manager" model="ir.ui.view">
+        <field name="name">hospital.department.dashboard.list.manager</field>
+        <field name="model">hospital.department.dashboard</field>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_manager'))]"/>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" delete="false">
+                <field name="department_id"/>
+                <field name="total_doctors"/>
+                <field name="total_rooms"/>
+                <field name="total_capacity"/>
+                <field name="occupied_rooms"/>
+                <field name="available_rooms"/>
+                <field name="doctor_available"/>
+                <field name="doctor_busy"/>
+                <field name="month"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ================== Form View ================== -->
+    <record id="view_hospital_department_dashboard_form_manager" model="ir.ui.view">
+        <field name="name">hospital.department.dashboard.form.manager</field>
+        <field name="model">hospital.department.dashboard</field>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_manager'))]"/>
+        <field name="arch" type="xml">
+            <form string="Department Dashboard" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <field name="department_id"/>
+                        <field name="total_doctors"/>
+                        <field name="total_rooms"/>
+                        <field name="total_capacity"/>
+                        <field name="occupied_rooms"/>
+                        <field name="available_rooms"/>
+                        <field name="doctor_available"/>
+                        <field name="doctor_busy"/>
+                        <field name="month"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

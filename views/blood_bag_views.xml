@@ -51,5 +51,18 @@
         <field name="res_model">blood.bank.bag</field>
         <field name="view_mode">list,form</field>
     </record>
+    <odoo>
+    <data noupdate="1">
+        <record id="seq_blood_bank_bag" model="ir.sequence">
+            <field name="name">Blood Bag</field>
+            <field name="code">blood.bank.bag</field>
+            <field name="prefix">BB-</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+    </data>
+</odoo>
+
 
 </odoo>

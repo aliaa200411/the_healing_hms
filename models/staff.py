@@ -83,19 +83,22 @@ class HospitalStaff(models.Model):
 
     # ===== تعديل job_title يحدث Staff ID + الجروب =====
     def write(self, vals):
-        if 'job_title' in vals and vals['job_title'] != self.job_title:
-            vals = self._update_staff_id(vals)
-        res = super().write(vals)
         if 'job_title' in vals:
             for rec in self:
-                rec._update_user_groups()
-        return res
+                updated_vals = rec._update_staff_id(vals.copy())
+                super(HospitalStaff, rec).write(updated_vals)
+            return True
+        return super().write(vals)
 
     # ===== توليد Staff ID =====
     def _update_staff_id(self, vals):
+        if not isinstance(vals, dict):
+            vals = {}
+
         job_title = vals.get('job_title')
         if not job_title:
             return vals
+
         code_map = {
             'manager': 'hospital.staff.manager',
             'doctor': 'hospital.staff.doctor',
@@ -106,6 +109,7 @@ class HospitalStaff(models.Model):
             'ambulance': 'hospital.staff.driver',
             'lab': 'hospital.staff.lab',
         }
+
         seq_code = code_map.get(job_title)
         if seq_code:
             seq_obj = self.env['ir.sequence'].sudo().search([('code', '=', seq_code)], limit=1)

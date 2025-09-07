@@ -58,28 +58,31 @@ class BloodTransfusion(models.Model):
 
     notes = fields.Text(string='Notes')
 
+    # ===== إنشاء سجل =====
     @api.model_create_multi
     def create(self, vals_list):
         records = super().create(vals_list)
         for rec in records:
             if not rec.name or rec.name in (None, '', 'New'):
                 rec.name = self.env['ir.sequence'].next_by_code('blood.bank.transfusion') or 'New'
+        rec._update_dashboard()
         return records
 
+    # ===== عند اختيار كيس دم =====
     @api.onchange('bag_id')
     def _onchange_bag_id(self):
-        """When a blood bag is selected, mark it as used automatically."""
         for rec in self:
             if rec.bag_id:
                 if rec.bag_id.status == 'available':
                     rec.bag_id.status = 'used'
                     rec.bag_id.transfusion_id = rec.id
                     rec.request_status = 'done'
+                    rec._update_dashboard()
             else:
                 rec.request_status = 'waiting'
 
+    # ===== التحقق من توافر أكياس الدم =====
     def action_check_availability(self):
-        """Check for available blood bags only."""
         Bag = self.env['blood.bank.bag']
         for rec in self:
             if rec.request_status == 'done':
@@ -99,9 +102,10 @@ class BloodTransfusion(models.Model):
                 rec.bag_id = False
                 rec.request_status = 'waiting'
                 rec.message_post(body=_("No available blood bags for %s%s. Waiting for donor...") % (rec.blood_type, rec.rh))
+            rec._update_dashboard()
 
+    # ===== اكتمال نقل الدم =====
     def action_mark_used(self):
-        """Complete the transfusion and mark the bag as used."""
         for rec in self:
             if not rec.bag_id:
                 raise ValidationError(_("Please select a blood bag before marking as done."))
@@ -110,7 +114,9 @@ class BloodTransfusion(models.Model):
             rec.bag_id.transfusion_id = rec.id
             rec.request_status = 'done'
             rec.message_post(body=_("Transfusion completed. Bag %s marked as used.") % rec.bag_id.name)
+            rec._update_dashboard()
 
+    # ===== طريقة عرض الاسم =====
     def name_get(self):
         result = []
         for rec in self:
@@ -124,3 +130,16 @@ class BloodTransfusion(models.Model):
                 display = "%s (%s)" % (display, ' - '.join(parts))
             result.append((rec.id, display))
         return result
+
+    # ===== تعديل سجل =====
+    def write(self, vals):
+        res = super().write(vals)
+        self._update_dashboard()
+        return res
+
+    # ===== تحديث داشبورد بنك الدم =====
+    def _update_dashboard(self):
+        dashboard = self.env['blood.bank.dashboard'].sudo().search([], limit=1)
+        if dashboard:
+            dashboard._compute_kpis()
+            dashboard._compute_blood_type_percent()

@@ -10,7 +10,7 @@
                                options="{'no_open': False, 'no_create': False, 'create': True}" 
                                placeholder="Select or create a patient"/>
                         <field name="department_id"/>
-                        <field name="doctor_id"/>
+                        <field name="doctor_id" domain="[('job_title','=','doctor')]"/>
                         <field name="appointment_date"/>
                         <field name="reason"/>
                     </group>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- ================== List View ================== -->
+    <!-- ================== Department List View ================== -->
     <record id="view_hospital_department_list" model="ir.ui.view">
         <field name="name">hospital.department.list</field>
         <field name="model">hospital.department</field>
@@ -19,7 +19,7 @@
         </field>
     </record>
 
-    <!-- ================== Form View ================== -->
+    <!-- ================== Department Form View ================== -->
     <record id="view_hospital_department_form" model="ir.ui.view">
         <field name="name">hospital.department.form</field>
         <field name="model">hospital.department</field>
@@ -34,14 +34,14 @@
                         <field name="sequence" readonly="1"/>
                         <field name="name"/>
                         <field name="phone"/>
-                        <field name="head_doctor_id"/>
+                        <field name="head_doctor_id" domain="[('job_title','=','doctor')]"/>
                         <field name="floor"/>
                         <field name="wing"/>
                         <field name="description"/>
                     </group>
                     <notebook>
                         <page string="Doctors">
-                            <field name="doctor_ids">
+                            <field name="doctor_ids" domain="[('job_title','=','doctor')]">
                                 <list editable="bottom">
                                     <field name="user_id"/>
                                     <field name="specialization_id"/>
@@ -74,32 +74,37 @@
     <!-- ================== Doctor Views ================== -->
     <record id="view_hospital_doctor_list" model="ir.ui.view">
         <field name="name">hospital.doctor.list</field>
-        <field name="model">hospital.doctor</field>
+        <field name="model">hospital.staff</field>
         <field name="arch" type="xml">
             <list string="Doctors">
+                <field name="name"/>
                 <field name="user_id"/>
                 <field name="specialization_id"/>
                 <field name="experience_years"/>
                 <field name="department_id"/>
+                <field name="is_available"/>
             </list>
         </field>
     </record>
 
     <record id="view_hospital_doctor_form" model="ir.ui.view">
         <field name="name">hospital.doctor.form</field>
-        <field name="model">hospital.doctor</field>
+        <field name="model">hospital.staff</field>
+        <field name="priority" eval="20"/>
         <field name="arch" type="xml">
             <form string="Doctor">
                 <sheet>
                     <group>
+                        <field name="name"/>
                         <field name="user_id"/>
+                        <field name="job_title" readonly="1"/>
                         <field name="specialization_id"/>
                         <field name="experience_years"/>
-                        <field name="department_id"/>
                         <field name="working_hours"/>
                         <field name="is_available"/>
                         <field name="hire_date"/>
                         <field name="salary"/>
+                        <field name="department_id"/>
                     </group>
                 </sheet>
             </form>
@@ -107,6 +112,22 @@
     </record>
 
     <!-- ================== Room Views ================== -->
+    <record id="view_hospital_room_list" model="ir.ui.view">
+        <field name="name">hospital.room.list</field>
+        <field name="model">hospital.room</field>
+        <field name="arch" type="xml">
+            <list string="Rooms">
+                <field name="room_number"/>
+                <field name="room_type"/>
+                <field name="capacity"/>
+                <field name="state"/>
+                <field name="floor"/>
+                <field name="wing"/>
+                <field name="department_id"/>
+            </list>
+        </field>
+    </record>
+
     <record id="view_hospital_room_form" model="ir.ui.view">
         <field name="name">hospital.room.form</field>
         <field name="model">hospital.room</field>

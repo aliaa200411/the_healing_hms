@@ -1,0 +1,72 @@
+<odoo>
+    <!-- Form View -->
+    <record id="view_lab_result_form" model="ir.ui.view">
+        <field name="name">hospital.lab.result.form</field>
+        <field name="model">hospital.lab.result</field>
+        <field name="arch" type="xml">
+            <form string="Lab Result">
+                <header>
+                    <button name="action_done" type="object" string="Validate Result"
+                            class="btn-success" invisible="state != 'waiting'"/>
+                    <button name="action_print_results" type="object" string="Print Results"
+                            class="btn-secondary" invisible="state != 'done'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="waiting,done"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <field name="request_id" readonly="1"/>
+                        <field name="test_name" readonly="1"/>
+                        <field name="patient_name" readonly="1"/>
+                        <field name="doctor_name" readonly="1" />
+                    </group>
+                    <notebook>
+                        <page string="Results">
+                            <field name="result_line_ids">
+                                <list editable="bottom">
+                                    <field name="test_name"/>
+                                    <field name="result_value"/>
+                                    <field name="unit"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_lab_result_list" model="ir.ui.view">
+        <field name="name">hospital.lab.result.list</field>
+        <field name="model">hospital.lab.result</field>
+        <field name="arch" type="xml">
+            <list string="Lab Results">
+                <field name="request_id"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_lab_result_search" model="ir.ui.view">
+        <field name="name">hospital.lab.result.search</field>
+        <field name="model">hospital.lab.result</field>
+        <field name="arch" type="xml">
+            <search string="Lab Results">
+                <field name="request_id"/>
+                <field name="state"/>
+                <filter string="Waiting" name="filter_waiting" domain="[('state','=','waiting')]"/>
+                <filter string="Done" name="filter_done" domain="[('state','=','done')]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_lab_result" model="ir.actions.act_window">
+        <field name="name">Lab Results</field>
+        <field name="res_model">hospital.lab.result</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

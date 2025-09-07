@@ -42,19 +42,17 @@ class LabRequest(models.Model):
 
     # ---------------- Override create/write to store price ----------------
     @api.model
-    def create(self, vals_list):
-        for vals in vals_list:
-            # تحديث السعر إذا كان في test_type_id
-            if vals.get('test_type_id'):
-                test = self.env['hospital.lab.test.type'].browse(vals['test_type_id'])
-                vals['price'] = test.price
+    def create(self, vals):
+        # تحديث السعر إذا كان في test_type_id
+        if vals.get('test_type_id'):
+            test = self.env['hospital.lab.test.type'].browse(vals['test_type_id'])
+            vals['price'] = test.price
 
-            # توليد الرقم المرجعي من sequence
-            if vals.get('name', 'New') == 'New':
-                vals['name'] = self.env['ir.sequence'].next_by_code('hospital.lab.request') or 'New'
+        # توليد الرقم المرجعي من sequence
+        if vals.get('name', 'New') == 'New':
+            vals['name'] = self.env['ir.sequence'].next_by_code('hospital.lab.request') or 'New'
 
-        return super().create(vals_list)
-
+        return super().create(vals)
 
     def write(self, vals):
         if vals.get('test_type_id'):
@@ -106,15 +104,10 @@ class LabRequest(models.Model):
         for rec in self:
             if rec.state == 'sample_collected':
                 # إنشاء نتيجة جديدة مرتبطة بالطلب
-                result = self.env['hospital.lab.result'].create({
+                self.env['hospital.lab.result'].create({
                     'request_id': rec.id,
                 })
                 rec.state = 'in_progress'
-
-    # def action_done(self):
-    #     for rec in self:
-    #         if rec.state == 'in_progress':
-    #             rec.state = 'done'
 
     def action_cancel(self):
         for rec in self:
@@ -130,7 +123,6 @@ class LabRequest(models.Model):
                 # تغيير الحالة إلى 'cancelled'
                 rec.state = 'cancelled'
 
-
     def action_reset_to_draft(self):
         for rec in self:
             if rec.state == 'cancelled':
@@ -138,4 +130,4 @@ class LabRequest(models.Model):
 
     # ---------------- Print Lab Report ----------------    
     def action_print_results(self):
-      return self.env.ref('the_healing_hms.action_report_lab_request_with_results').report_action(self)
+        return self.env.ref('the_healing_hms.action_report_lab_request_with_results').report_action(self)

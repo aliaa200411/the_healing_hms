@@ -107,7 +107,7 @@ class LabRequest(models.Model):
         for rec in self:
             if rec.state == 'sample_collected':
                 # إنشاء نتيجة جديدة مرتبطة بالطلب
-                result = self.env['hospital.lab.result'].create({
+                self.env['hospital.lab.result'].create({
                     'request_id': rec.id,
                 })
                 rec.state = 'in_progress'

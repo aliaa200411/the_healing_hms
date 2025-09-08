@@ -12,6 +12,7 @@
     "author": "The Healing Coders (Aliaa, Mariam, Lama)",
     'depends': ['base', 'mail', 'account', 'product'],
     'data': [
+        'security/groups.xml', 
         'security/ir.model.access.csv', 
         'views/hospital_menu.xml', 
         'views/hospital_dashboard_menu.xml',

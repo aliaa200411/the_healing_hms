@@ -76,5 +76,7 @@
               name="Prescriptions"
               parent="menu_hospital_root"
               action="action_prescription_patient"
-              sequence="1"/>
+              sequence="1"
+            groups="the_healing_hms.group_hospital_manager,the_healing_hms.group_hospital_doctor"/>
+
 </odoo>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!-- ================== Root Menu ================== -->
-    <menuitem id="menu_hospital_dashboard_root" name="Hospital Dashboards" sequence="10"/>
+    <menuitem id="menu_hospital_dashboard_root" name="Hospital Dashboards" sequence="10"
+              groups="the_healing_hms.group_hospital_manager"/>
 
     <!-- ================== Medicine Dashboard Action ================== -->
     <record id="action_hospital_medicine_dashboard" model="ir.actions.act_window">
@@ -10,17 +11,19 @@
         <field name="view_mode">kanban,graph,list,form</field>
         <field name="view_id" eval="False"/>
         <field name="target">current</field>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_manager'))]"/>
     </record>
 
     <!-- ================== Medicine Dashboard Menu ================== -->
     <menuitem id="menu_hospital_medicine_dashboard"
-              name="Medicine Dashboard"
+              name="Medicine List"
               parent="menu_hospital_dashboard_root"
               action="action_hospital_medicine_dashboard"
-              sequence="3"/>
+              sequence="3"
+              groups="the_healing_hms.group_hospital_manager"/>
 
     <!-- ================== Kanban View ================== -->
-   <record id="view_hospital_medicine_dashboard_kanban" model="ir.ui.view">
+    <record id="view_hospital_medicine_dashboard_kanban" model="ir.ui.view">
         <field name="name">hospital.medicine.dashboard.kanban</field>
         <field name="model">hospital.medicine.dashboard</field>
         <field name="arch" type="xml">
@@ -46,9 +49,6 @@
         </field>
     </record>
 
-
-
-
     <!-- ================== Graph View ================== -->
     <record id="view_hospital_medicine_dashboard_graph" model="ir.ui.view">
         <field name="name">hospital.medicine.dashboard.graph</field>
@@ -63,7 +63,7 @@
         </field>
     </record>
 
-    <!-- ================== List / Tree View ================== -->
+    <!-- ================== List View ================== -->
     <record id="view_hospital_medicine_dashboard_list" model="ir.ui.view">
         <field name="name">hospital.medicine.dashboard.list</field>
         <field name="model">hospital.medicine.dashboard</field>

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
+
 
 class HospitalStaff(models.Model):
     _name = 'hospital.staff'
@@ -19,15 +21,22 @@ class HospitalStaff(models.Model):
         ('lab', 'Lab Technician'),
     ], string="Job Title", required=True)
 
-    user_id = fields.Many2one('res.users', string="Related User")
+    user_id = fields.Many2one(
+        'res.users', string="Related User", readonly=True, ondelete='cascade'
+    )
     department_id = fields.Many2one('hospital.department', string="Department")
     phone = fields.Char(string="Phone")
-    email = fields.Char(string="Email")
+    email = fields.Char(string="Email", required=True)
     hire_date = fields.Date(string="Hire Date")
     salary = fields.Float(string="Salary")
     active = fields.Boolean(string="Active", default=True)
 
-    # ===== حقول إضافية حسب نوع الموظف =====
+    # ===== تحقق من uniqueness =====
+    _sql_constraints = [
+        ('unique_staff_email', 'unique(email)', 'Email must be unique for each staff member!'),
+    ]
+
+    # ===== حقول إضافية =====
     experience_years = fields.Integer(string="Experience (Years)", default=0)
     working_hours = fields.Float(string="Working Hours", default=0.0)
     management = fields.Integer(string="Management", default=0)
@@ -39,7 +48,7 @@ class HospitalStaff(models.Model):
         ('off', 'Off Duty')
     ], string="Driver Status", default='available')
 
-    # ===== حقول خاصة بالطبيب =====
+    # ===== خاص بالطبيب =====
     specialization_id = fields.Many2one('hospital.specialization', string="Specialization")
     patient_ids = fields.One2many('hospital.patient', 'doctor_id', string="Patients")
     patient_count = fields.Integer(
@@ -53,7 +62,7 @@ class HospitalStaff(models.Model):
         for rec in self:
             rec.patient_count = len(rec.patient_ids) if rec.job_title == 'doctor' else 0
 
-    # ===== Staff ID ديناميكي حسب الوظيفة =====
+    # ===== Staff ID =====
     staff_id = fields.Char(
         string="Staff ID",
         required=True,
@@ -62,13 +71,17 @@ class HospitalStaff(models.Model):
         default='NEW'
     )
 
-    # ===== توليد Staff ID عند الإنشاء =====
+    # ===== توليد Staff ID عند الإنشاء + إنشاء يوزر تلقائي =====
     @api.model
     def create(self, vals):
+        if not vals.get('email'):
+            raise ValidationError(_("Email is required for staff and must be unique."))
         vals = self._update_staff_id(vals)
-        return super().create(vals)
+        staff = super().create(vals)
+        staff._create_user_from_staff()
+        return staff
 
-    # ===== توليد Staff ID عند تعديل job_title =====
+    # ===== تعديل job_title يحدث Staff ID + الجروب =====
     def write(self, vals):
         if 'job_title' in vals:
             for rec in self:
@@ -77,7 +90,7 @@ class HospitalStaff(models.Model):
             return True
         return super().write(vals)
 
-    # ===== دالة مساعدة لتوليد Staff ID =====
+    # ===== توليد Staff ID =====
     def _update_staff_id(self, vals):
         if not isinstance(vals, dict):
             vals = {}
@@ -99,7 +112,63 @@ class HospitalStaff(models.Model):
 
         seq_code = code_map.get(job_title)
         if seq_code:
-            seq_obj = self.env['ir.sequence'].sudo().search([('code','=',seq_code)], limit=1)
+            seq_obj = self.env['ir.sequence'].sudo().search([('code', '=', seq_code)], limit=1)
             if seq_obj:
                 vals['staff_id'] = seq_obj.next_by_id() or 'NEW'
         return vals
+
+    # ===== إنشاء يوزر تلقائي للموظف =====
+    def _create_user_from_staff(self):
+        self.ensure_one()
+        if not self.user_id:
+            group_map = {
+                'manager': 'the_healing_hms.group_hospital_manager',
+                'doctor': 'the_healing_hms.group_hospital_doctor',
+                'nurse': 'the_healing_hms.group_hospital_nurse',
+                'receptionist': 'the_healing_hms.group_hospital_receptionist',
+                'accountant': 'the_healing_hms.group_hospital_accountant',
+                'pharmacist': 'the_healing_hms.group_hospital_pharmacist',
+                'ambulance': 'the_healing_hms.group_hospital_driver',
+                'lab': 'the_healing_hms.group_hospital_lab',
+            }
+            group_xml_id = group_map.get(self.job_title)
+            groups = []
+            if group_xml_id:
+                try:
+                    groups = [self.env.ref(group_xml_id).id]
+                except ValueError:
+                    pass
+
+            user_vals = {
+                'name': self.name,
+                'login': self.email,  # login = Email
+                'email': self.email,
+                'phone': self.phone,
+                'groups_id': [(6, 0, groups)],
+                'password': '1234',  # كلمة سر افتراضية
+            }
+            user = self.env['res.users'].sudo().create(user_vals)
+            self.user_id = user.id
+
+    # ===== تحديث جروبات اليوزر إذا تغيرت الوظيفة =====
+    def _update_user_groups(self):
+        self.ensure_one()
+        if self.user_id:
+            group_map = {
+                'manager': 'the_healing_hms.group_hospital_manager',
+                'doctor': 'the_healing_hms.group_hospital_doctor',
+                'nurse': 'the_healing_hms.group_hospital_nurse',
+                'receptionist': 'the_healing_hms.group_hospital_receptionist',
+                'accountant': 'the_healing_hms.group_hospital_accountant',
+                'pharmacist': 'the_healing_hms.group_hospital_pharmacist',
+                'ambulance': 'the_healing_hms.group_hospital_driver',
+                'lab': 'the_healing_hms.group_hospital_lab',
+            }
+            group_xml_id = group_map.get(self.job_title)
+            groups = []
+            if group_xml_id:
+                try:
+                    groups = [self.env.ref(group_xml_id).id]
+                except ValueError:
+                    pass
+            self.user_id.sudo().write({'groups_id': [(6, 0, groups)]})

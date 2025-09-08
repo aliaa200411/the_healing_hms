@@ -67,7 +67,7 @@
                                     </thead>
                                     <tbody>
                                         <tr t-foreach="presc.line_ids" t-as="line">
-                                            <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.medicine_id.name or 'N/A'"/></td>
+                                            <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.medicine_name or 'N/A'"/></td>
                                             <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.medicine_form or 'N/A'"/></td>
                                             <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.dosage or 'N/A'"/></td>
                                             <td style="border:1px solid #ccc; padding:5px;"><t t-esc="line.times_per_day or 'N/A'"/></td>

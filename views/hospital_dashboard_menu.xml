@@ -1,6 +1,9 @@
 <odoo>
     <!-- ================== Root Menu ================== -->
-    <menuitem id="menu_hospital_dashboard_root" name="Hospital Dashboards" sequence="10"/>
+    <menuitem id="menu_hospital_dashboard_root" 
+              name="Hospital Dashboards" 
+              sequence="10"
+              groups="the_healing_hms.group_hospital_manager"/>
 
     <!-- ================== Actions ================== -->
     <!-- Department Dashboard -->
@@ -8,6 +11,7 @@
         <field name="name">Department Dashboard</field>
         <field name="res_model">hospital.department.dashboard</field>
         <field name="view_mode">kanban,graph,list</field>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_manager'))]"/>
     </record>
 
     <!-- Room Dashboard -->
@@ -15,6 +19,7 @@
         <field name="name">Room Dashboard</field>
         <field name="res_model">hospital.room.dashboard</field>
         <field name="view_mode">kanban,graph,list</field>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_manager'))]"/>
     </record>
 
     <!-- Medicine Dashboard -->
@@ -22,6 +27,7 @@
         <field name="name">Medicine Dashboard</field>
         <field name="res_model">hospital.medicine.dashboard</field>
         <field name="view_mode">kanban,graph,list,form</field>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_manager'))]"/>
     </record>
 
     <!-- Blood Bank Dashboard -->
@@ -29,6 +35,7 @@
         <field name="name">Blood Bank Dashboard</field>
         <field name="res_model">blood.bank.dashboard</field>
         <field name="view_mode">kanban,graph,list,form</field>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_manager'))]"/>
     </record>
 
     <!-- ================== Menu Items ================== -->
@@ -36,23 +43,27 @@
               name="Department Dashboard"
               parent="menu_hospital_dashboard_root"
               action="action_hospital_department_dashboard"
-              sequence="2"/>
+              sequence="2"
+              groups="the_healing_hms.group_hospital_manager"/>
 
     <menuitem id="menu_hospital_room_dashboard"
               name="Room Dashboard"
               parent="menu_hospital_dashboard_root"
               action="action_hospital_room_dashboard"
-              sequence="3"/>
+              sequence="3"
+              groups="the_healing_hms.group_hospital_manager"/>
 
     <menuitem id="menu_hospital_medicine_dashboard"
               name="Medicine Dashboard"
               parent="menu_hospital_dashboard_root"
               action="action_hospital_medicine_dashboard"
-              sequence="4"/>
+              sequence="4"
+              groups="the_healing_hms.group_hospital_manager"/>
 
     <menuitem id="menu_blood_bank_dashboard"
               name="Blood Bank Dashboard"
               parent="menu_hospital_dashboard_root"
               action="action_blood_bank_dashboard"
-              sequence="5"/>
+              sequence="5"
+              groups="the_healing_hms.group_hospital_manager"/>
 </odoo>

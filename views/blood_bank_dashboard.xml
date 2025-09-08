@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-   
+
+    <!-- ================== Blood Bank Dashboard Root Menu ================== -->
+    <menuitem id="menu_blood_bank_dashboard_root"
+              name="Blood Bank Dashboards"
+              sequence="10"
+              groups="the_healing_hms.group_hospital_manager"/>
+
+    <!-- ================== Blood Bank Dashboard Action ================== -->
+    <record id="action_blood_bank_dashboard" model="ir.actions.act_window">
+        <field name="name">Blood Bank Dashboard</field>
+        <field name="res_model">blood.bank.dashboard</field>
+        <field name="view_mode">kanban,graph,list,form</field>
+        <field name="view_id" eval="False"/>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_manager'))]"/>
+    </record>
+
+    <!-- ================== Blood Bank Dashboard Menu ================== -->
+    <menuitem id="menu_blood_bank_dashboard"
+              name="Blood Bank Dashboard"
+              parent="menu_hospital_dashboard_root"
+              action="action_blood_bank_dashboard"
+              sequence="6"
+              groups="the_healing_hms.group_hospital_manager"/>
+
     <!-- ================== Kanban View ================== -->
     <record id="view_blood_bank_dashboard_kanban" model="ir.ui.view">
         <field name="name">blood.bank.dashboard.kanban</field>
@@ -32,23 +55,22 @@
         </field>
     </record>
 
-    <!-- ================== Pie Graph View for Blood Types ================== -->
+    <!-- ================== Pie Graph View ================== -->
     <record id="view_blood_bank_dashboard_pie_graph" model="ir.ui.view">
         <field name="name">blood.bank.dashboard.pie.graph</field>
         <field name="model">blood.bank.dashboard</field>
         <field name="arch" type="xml">
             <graph string="Blood Types Distribution" type="pie">
-    <field name="name" type="row"/>
-    <field name="percent_A_pos" type="measure"/>
-    <field name="percent_A_neg" type="measure"/>
-    <field name="percent_B_pos" type="measure"/>
-    <field name="percent_B_neg" type="measure"/>
-    <field name="percent_AB_pos" type="measure"/>
-    <field name="percent_AB_neg" type="measure"/>
-    <field name="percent_O_pos" type="measure"/>
-    <field name="percent_O_neg" type="measure"/>
-</graph>
-
+                <field name="name" type="row"/>
+                <field name="percent_A_pos" type="measure"/>
+                <field name="percent_A_neg" type="measure"/>
+                <field name="percent_B_pos" type="measure"/>
+                <field name="percent_B_neg" type="measure"/>
+                <field name="percent_AB_pos" type="measure"/>
+                <field name="percent_AB_neg" type="measure"/>
+                <field name="percent_O_pos" type="measure"/>
+                <field name="percent_O_neg" type="measure"/>
+            </graph>
         </field>
     </record>
 
@@ -105,4 +127,5 @@
             </form>
         </field>
     </record>
+
 </odoo>

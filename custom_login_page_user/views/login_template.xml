@@ -1,0 +1,45 @@
+<odoo>
+    <template id="custom_login_template" name="Custom Login">
+        <t t-call="web.layout">
+            <t t-set="title">Login</t>
+            <div style="min-height:100vh;background:#000;display:flex;align-items:center;justify-content:center;">
+                <div style="background:#111;border-radius:16px;box-shadow:0 0 32px rgba(0,0,0,0.7);padding:40px 32px 24px 32px;width:350px;display:flex;flex-direction:column;align-items:center;">
+                    <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:32px;">
+<!--                        <span style="font-size:32px;margin-bottom:8px;">🖐11</span>-->
+                        <span style="font-size:2rem;font-weight:bold;color:#fff;letter-spacing:1px;">
+                            Odoo With<span style="color:#c6ff1a;">Vinay</span>
+                        </span>
+                    </div>
+                    <form action="/custom/do_login" method="post" style="width:100%;">
+                        <div style="position:relative;width:100%;margin-bottom:18px;">
+                            <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#888;font-size:1.1rem;">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <input type="text" name="login" placeholder="Enter username" required="required"
+                                style="width:85%;padding:10px 10px 10px 38px;background:#181818;border:none;border-radius:8px;color:#fff;font-size:1rem;outline:none;"/>
+                        </div>
+                        <div style="position:relative;width:100%;margin-bottom:18px;">
+                            <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#888;font-size:1.1rem;">
+                                <i class="fa fa-lock"></i>
+                            </span>
+                            <input type="password" name="password" placeholder="Enter password" required="required"
+                                style="width:85%;padding:10px 10px 10px 38px;background:#181818;border:none;border-radius:8px;color:#fff;font-size:1rem;outline:none;"/>
+                        </div>
+                        <button type="submit"
+                            style="width:100%;padding:12px 0;background:linear-gradient(90deg,#bfff1a 0%,#6aff1a 100%);color:#111;font-weight:bold;border:none;border-radius:8px;font-size:1.1rem;margin-top:8px;cursor:pointer;">
+                            Login
+                        </button>
+                        <t t-if="error">
+                            <div style="color:#ff4d4f;margin-top:10px;text-align:center;">
+                                <t t-esc="error"/>
+                            </div>
+                        </t>
+                    </form>
+                    <div style="color:#aaa;font-size:0.95rem;margin-top:24px;text-align:center;">
+                        Odoo with Vinay - Enterprise Platform
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

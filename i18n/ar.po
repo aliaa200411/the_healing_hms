@@ -1,0 +1,3194 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* the_healing_hms
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-08 23:31+0000\n"
+"PO-Revision-Date: 2025-09-08 23:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: the_healing_hms
+#: model:ir.actions.report,print_report_name:the_healing_hms.action_report_lab_request_with_results
+msgid "\"LabReport-%s\" % (object.name)"
+msgstr "\"labreport- ٪ s\" ٪ (object.name)"
+
+#. module: the_healing_hms
+#: model:ir.actions.report,print_report_name:the_healing_hms.action_report_lab_request_result
+msgid "\"LabReport-%s\" % (object.request_id.name)"
+msgstr "\"labreport- ٪ s\" ٪ (object.request_id.name)"
+
+#. module: the_healing_hms
+#: model:ir.actions.report,print_report_name:the_healing_hms.hospital_billing_report_action
+msgid "'Invoice-%s' % (object.name)"
+msgstr "\"الفاتورة- ٪ s '٪ (object.name)"
+
+#. module: the_healing_hms
+#: model:ir.actions.report,print_report_name:the_healing_hms.action_report_patient_history
+msgid "'Patient_History_%s' % (object.patient_id.name)"
+msgstr "'fative_history_ ٪ s' ٪ (object.patient_id.name)"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_patient_dashboard__month__10
+msgid "10"
+msgstr "10"
+#. module: the_healing_hms
+#: model:ir.actions.report,print_report_name:the_healing_hms.action_report_patient_history
+msgid "'Patient_History_%s' % (object.patient_id.name)"
+msgstr "'تاريخ_المريض_%s' % (object.patient_id.name)"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_patient_dashboard__month__11
+msgid "11"
+msgstr "11"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_patient_dashboard__month__12
+msgid "12"
+msgstr "12"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_result_document
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_with_results_document
+msgid "<strong style=\"color:#135e6eff;\">Date:</strong>"
+msgstr "<strong style = \"color:#135e6eff ؛\"> التاريخ: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_result_document
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_with_results_document
+msgid "<strong style=\"color:#135e6eff;\">Doctor:</strong>"
+msgstr "<strong style = \"color:#135e6eff ؛\"> Doctor: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_result_document
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_with_results_document
+msgid "<strong style=\"color:#135e6eff;\">Lab Test:</strong>"
+msgstr "<strong style = \"color:#135e6eff ؛\"> اختبار المختبر: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_result_document
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_with_results_document
+msgid "<strong style=\"color:#135e6eff;\">Patient:</strong>"
+msgstr "<strong style = \"color:#135e6eff ؛\"> المريض: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_result_document
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_with_results_document
+msgid "<strong style=\"color:#135e6eff;\">Request Reference:</strong>"
+msgstr "<strong style = \"color:#135e6eff ؛\"> request request: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Address:</strong>"
+msgstr "<strong> العنوان: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Blood Type:</strong>"
+msgstr "<strong> نوع الدم: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>DOB:</strong>"
+msgstr "<strong> DOB: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Date And Time:</strong>"
+msgstr "<strong> التاريخ والوقت: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Date:</strong>"
+msgstr "<strong> التاريخ: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Doctor:</strong>"
+msgstr "<strong> الطبيب: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Email:</strong>"
+msgstr "<strong> البريد الإلكتروني: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Full Name:</strong>"
+msgstr "<strong> الاسم الكامل: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Gender:</strong>"
+msgstr "<strong> الجنس: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Lab Test:</strong>"
+msgstr "<strong> اختبار المختبر: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Nationality:</strong>"
+msgstr "<strong> الجنسية: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Patient Code:</strong>"
+msgstr "<strong> رمز المريض: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Phone:</strong>"
+msgstr "<strong> الهاتف: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Prescription:</strong>"
+msgstr "<strong> وصفة طبية: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Request Date:</strong>"
+msgstr "<strong> تاريخ الطلب: </strong>"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "<strong>Status:</strong>"
+msgstr "<strong> الحالة: </strong>"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_bag__blood_type__ab
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_donor__blood_type__ab
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_transfusion__blood_type__ab
+msgid "AB"
+msgstr "أب"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__percent_AB_pos
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_patient__blood_type__ab+
+msgid "AB+"
+msgstr "AB+"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__percent_AB_neg
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_patient__blood_type__ab-
+msgid "AB-"
+msgstr "أب"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_staff__job_title__accountant
+#: model:res.groups,name:the_healing_hms.group_hospital_accountant
+msgid "Accountant"
+msgstr "محاسب"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_staff_search
+msgid "Accountants"
+msgstr "المحاسبين"
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_accounting
+msgid "Accounting"
+msgstr "محاسبة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__message_needaction
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__message_needaction
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__message_needaction
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__message_needaction
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__message_needaction
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__message_needaction
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__message_needaction
+msgid "Action Needed"
+msgstr "العمل اللازم"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__active
+msgid "Active"
+msgstr "نشيط"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__activity_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__activity_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__activity_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__activity_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__activity_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__activity_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__activity_ids
+msgid "Activities"
+msgstr "أنشطة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__activity_exception_decoration
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__activity_exception_decoration
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__activity_exception_decoration
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__activity_exception_decoration
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__activity_exception_decoration
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__activity_exception_decoration
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "استثناء النشاط الديكور"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__activity_state
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__activity_state
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__activity_state
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__activity_state
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__activity_state
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__activity_state
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__activity_state
+msgid "Activity State"
+msgstr "حالة النشاط"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__activity_type_icon
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__activity_type_icon
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__activity_type_icon
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__activity_type_icon
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__activity_type_icon
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__activity_type_icon
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "أيقونة نوع النشاط"
+
+#. module: the_healing_hms
+#: model_terms:ir.actions.act_window,help:the_healing_hms.action_patient
+msgid "Add a new patient record here."
+msgstr "أضف سجل مريض جديد هنا."
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/billing.py:0
+msgid "Add at least one line before confirming the bill."
+msgstr "أضف سطرًا واحدًا على الأقل قبل تأكيد الفاتورة."
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/prescription.py:0
+msgid "Add at least one medicine line before confirming the prescription."
+msgstr "أضف خط دواء واحد على الأقل قبل تأكيد الوصفة الطبية."
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__address
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__address
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__address
+msgid "Address"
+msgstr "عنوان"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__age
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__age
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__age
+msgid "Age"
+msgstr "عمر"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__allergies
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__allergies
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__allergies
+msgid "Allergies"
+msgstr "الحساسية"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_healing_hms_ambulance
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__ambulance_id
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_ambulance_form
+msgid "Ambulance"
+msgstr "سيارة إسعاف"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_staff__job_title__ambulance
+#: model:res.groups,name:the_healing_hms.group_hospital_driver
+msgid "Ambulance Driver"
+msgstr "سائق الإسعاف"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_staff_search
+msgid "Ambulance Drivers"
+msgstr "سائقي الإسعاف"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_healing_hms_ambulance__name
+msgid "Ambulance ID"
+msgstr "معرف الإسعاف"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_emergency_ambulance_request
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_ambulance_request_form
+msgid "Ambulance Request"
+msgstr "طلب الإسعاف"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_ambulance_request
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_ambulance_request_list
+msgid "Ambulance Requests"
+msgstr "طلبات الإسعاف"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_ambulance
+#: model:ir.ui.menu,name:the_healing_hms.menu_emergency_ambulance
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_ambulance_list
+msgid "Ambulances"
+msgstr "سيارات الإسعاف"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_billing_form
+msgid "Amounts"
+msgstr "المبالغ"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_billing_form
+msgid "Any notes or additional info..."
+msgstr "أي ملاحظات أو معلومات إضافية ..."
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_appointment_form
+msgid "Appointment"
+msgstr "ميعاد"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_appointment__appointment_date
+msgid "Appointment Date"
+msgstr "تاريخ التعيين"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_appointment
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__appointment_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__appointment_ids
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_appointment
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_appointment_tree
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_history_wizard
+msgid "Appointments"
+msgstr "المواعيد"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_pharmacy_order_form
+msgid "Are you sure to dispense?"
+msgstr "هل أنت متأكد من الاستغناء؟"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__emergency_ambulance_request__status__assigned
+msgid "Assigned"
+msgstr "مُكَلَّف"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__assigned_ambulance_id
+msgid "Assigned Ambulance"
+msgstr "مخصص للسيارة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__assigned_driver_id
+msgid "Assigned Driver"
+msgstr "سائق مخصص"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__message_attachment_count
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__message_attachment_count
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__message_attachment_count
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__message_attachment_count
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__message_attachment_count
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__message_attachment_count
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__is_available
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_bag__status__available
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__healing_hms_ambulance__status__available
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_room__state__available
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_staff__status__available
+msgid "Available"
+msgstr "متاح"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__available_bags
+msgid "Available Bags"
+msgstr "الحقائب المتاحة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__available_beds
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__available_beds
+msgid "Available Beds"
+msgstr "الأسرة المتاحة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__doctor_available
+msgid "Available Doctors"
+msgstr "الأطباء المتاحين"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__available_qty
+msgid "Available Qty"
+msgstr "متاح Qty"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__available_rooms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__available_rooms
+msgid "Available Rooms"
+msgstr "الغرف المتاحة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__name
+msgid "Bag Reference"
+msgstr "مرجع الحقيبة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_billing__payment_method__transfer
+msgid "Bank Transfer"
+msgstr "التحويل المصرفي"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__bed_id
+msgid "Bed"
+msgstr "سرير"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_bed__name
+msgid "Bed Name"
+msgstr "اسم السرير"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__bed_ids
+msgid "Beds"
+msgstr "أسرة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__billing_id
+msgid "Bill"
+msgstr "فاتورة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__date
+msgid "Bill Date"
+msgstr "تاريخ فاتورة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__line_ids
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_billing_form
+msgid "Bill Lines"
+msgstr "خطوط فاتورة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__name
+msgid "Bill Number"
+msgstr "رقم فاتورة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__billing_ids
+msgid "Billing"
+msgstr "الفواتير"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__billing_ids
+msgid "Billings"
+msgstr "الفواتير"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_blood_bank_bag
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_blood_bag_form
+msgid "Blood Bag"
+msgstr "كيس الدم"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_blood_bag
+#: model:ir.ui.menu,name:the_healing_hms.menu_blood_bag
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_blood_bag_list
+msgid "Blood Bags"
+msgstr "أكياس الدم"
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_blood_bank_root
+msgid "Blood Bank"
+msgstr "بنك الدم"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_blood_bank_dashboard
+#: model:ir.model,name:the_healing_hms.model_blood_bank_dashboard
+#: model:ir.ui.menu,name:the_healing_hms.menu_blood_bank_dashboard
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_blood_bank_dashboard_form
+msgid "Blood Bank Dashboard"
+msgstr "لوحة معلومات بنك الدم"
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_blood_bank_dashboard_root
+msgid "Blood Bank Dashboards"
+msgstr "لوحات المعلومات بنك الدم"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_blood_bank_dashboard_graph
+msgid "Blood Bank Overview"
+msgstr "نظرة عامة على بنك الدم"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_blood_bank_donor
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_blood_donor_form
+msgid "Blood Donor"
+msgstr "المتبرع بالدم"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_blood_donor
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_blood_donor_list
+msgid "Blood Donors"
+msgstr "المتبرعون بالدم"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_blood_bank_transfusion
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_blood_transfusion_form
+msgid "Blood Transfusion Request"
+msgstr "طلب نقل الدم"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__blood_type
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__blood_type
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__blood_type
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__blood_type
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__blood_type
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__blood_type
+msgid "Blood Type"
+msgstr "نوع الدم"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/transfusion.py:0
+msgid "Blood bag %s is available for this request."
+msgstr "حقيبة الدم ٪ S متاحة لهذا الطلب."
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_bed__booking_ids
+msgid "Bookings"
+msgstr "الحجوزات"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__is_breastfeeding
+msgid "Breastfeeding"
+msgstr "الرضاعة الطبيعية"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/donor.py:0
+msgid "Breastfeeding donors are not eligible to donate."
+msgstr "المانحون للرضاعة الطبيعية ليسوا مؤهلين للتبرع."
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__healing_hms_ambulance__status__busy
+msgid "Busy"
+msgstr "مشغول"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__doctor_busy
+msgid "Busy Doctors"
+msgstr "أطباء مشغولون"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_ambulance_request_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_appointment_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_billing_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_booking_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_pharmacy_order_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_form
+msgid "Cancel"
+msgstr "يلغي"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_pharmacy_order_form
+msgid "Cancel this order?"
+msgstr "إلغاء هذا الطلب؟"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__emergency_ambulance_request__status__cancelled
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_appointment__state__cancelled
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_billing__state__cancelled
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_booking__state__cancelled
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_lab_request__state__cancelled
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_pharmacy_order__state__cancel
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_search
+msgid "Cancelled"
+msgstr "ألغى"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__cancelled_bookings
+msgid "Cancelled Bookings"
+msgstr "الحجوزات الملغاة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_healing_hms_ambulance__capacity
+msgid "Capacity"
+msgstr "سعة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_billing__payment_method__card
+msgid "Card"
+msgstr "بطاقة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_billing__payment_method__cash
+msgid "Cash"
+msgstr "نقدي"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__category_id
+msgid "Category"
+msgstr "فئة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_category__name
+msgid "Category Name"
+msgstr "اسم الفئة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__city
+msgid "City"
+msgstr "مدينة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_blood_donor_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_history_wizard
+msgid "Close"
+msgstr "يغلق"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__code
+msgid "Code"
+msgstr "شفرة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_form
+msgid "Collect Sample"
+msgstr "جمع العينة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_ambulance_request_form
+msgid "Complete"
+msgstr "مكتمل"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__emergency_ambulance_request__status__completed
+msgid "Completed"
+msgstr "مكتمل"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_appointment_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_billing_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_booking_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_prescription_form
+msgid "Confirm"
+msgstr "يتأكد"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_appointment__state__confirmed
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_billing__state__confirmed
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_booking__state__confirmed
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_prescription__state__confirmed
+msgid "Confirmed"
+msgstr "مؤكد"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__confirmed_bookings
+msgid "Confirmed Bookings"
+msgstr "حجوزات مؤكدة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_form
+msgid "Contact And Demographics"
+msgstr "الاتصال والتركيبة السكانية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__country_id
+msgid "Country"
+msgstr "دولة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__insurance_coverage
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__insurance_coverage
+msgid "Coverage (%)"
+msgstr "التغطية (٪)"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_booking_form
+msgid "Create Invoice"
+msgstr "إنشاء فاتورة"
+
+#. module: the_healing_hms
+#: model_terms:ir.actions.act_window,help:the_healing_hms.action_hospital_billing
+msgid "Create patient bills and register payments."
+msgstr "إنشاء فواتير المريض وتسجيل المدفوعات."
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_healing_hms_ambulance__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_appointment__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_bed__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result_line__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_category__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order_line__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription_line__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_specialization__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__create_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__create_uid
+msgid "Created by"
+msgstr "تم إنشاؤها بواسطة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_healing_hms_ambulance__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_appointment__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_bed__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result_line__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_category__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order_line__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription_line__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_specialization__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__create_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__create_date
+msgid "Created on"
+msgstr "تم إنشاؤها على"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__currency_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__currency_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__currency_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__currency_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order_line__currency_id
+msgid "Currency"
+msgstr "عملة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__partner_id
+msgid "Customer"
+msgstr "عميل"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__name
+msgid "Dashboard"
+msgstr "لوحة القيادة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__date
+msgid "Date"
+msgstr "تاريخ"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__dob
+msgid "Date of Birth"
+msgstr "تاريخ الميلاد"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_prescription_qweb
+msgid "Date:"
+msgstr "تاريخ:"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__days
+msgid "Days"
+msgstr "أيام"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__days_left
+msgid "Days Left"
+msgstr "تبقى الأيام"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__discount_percentage
+msgid "Default Coverage (%)"
+msgstr "التغطية الافتراضية (٪)"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_appointment__department_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__department_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__department_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__department_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__department_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__department_id
+msgid "Department"
+msgstr "قسم"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_department_dashboard
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_department_dashboard_manager
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_department_dashboard
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_department_dashboard_manager
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_department_dashboard_form_manager
+msgid "Department Dashboard"
+msgstr "لوحة معلومات القسم"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_department_dashboard_graph_manager
+msgid "Department KPIs"
+msgstr "قسم مؤشرات الأداء الرئيسية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__name
+msgid "Department Name"
+msgstr "اسم القسم"
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_department
+msgid "Departments"
+msgstr "الإدارات"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__description
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__description
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_category__description
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+msgid "Description"
+msgstr "وصف"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__diagnosis
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__diagnosis
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__diagnosis
+msgid "Diagnosis"
+msgstr "تشخبص"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__insurance_discount
+msgid "Discount (%)"
+msgstr "تخفيض (٪)"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_pharmacy_order_form
+msgid "Dispense"
+msgstr "الاستغناء"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_pharmacy_order__state__dispensed
+msgid "Dispensed"
+msgstr "موزع"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_healing_hms_ambulance__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_appointment__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_bed__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result_line__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_category__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order_line__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription_line__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_specialization__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__display_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_appointment__doctor_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__doctor_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result__doctor_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__doctor_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__doctor_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__doctor_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__doctor_id
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_staff__job_title__doctor
+#: model:res.groups,name:the_healing_hms.group_hospital_doctor
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_doctor_form
+msgid "Doctor"
+msgstr "طبيب"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/appointment.py:0
+msgid "Doctor %s already has another appointment at this time."
+msgstr "Doctor ٪ S لديه بالفعل موعد آخر في هذا الوقت."
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_specialization
+msgid "Doctor Specialization"
+msgstr "تخصص الطبيب"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_prescription_qweb
+msgid "Doctor:"
+msgstr "طبيب:"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__doctor_ids
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_department_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_doctor_list
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_staff_search
+msgid "Doctors"
+msgstr "الأطباء"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_blood_donor_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_blood_donor_list
+msgid "Donate"
+msgstr "يتبرع"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__donation_date
+msgid "Donation Date"
+msgstr "تاريخ التبرع"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_appointment__state__done
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_lab_request__state__done
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_appointment_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_search
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_result_search
+msgid "Done"
+msgstr "منتهي"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/donor.py:0
+msgid "Donor must weigh at least 50 kg."
+msgstr "يجب أن يزن المانح 50 كجم على الأقل."
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__donor_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__partner_id
+msgid "Donor's Name"
+msgstr "اسم المتبرع"
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_blood_donor
+msgid "Donors"
+msgstr "المانحون"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription_line__dosage
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_prescription_qweb
+msgid "Dosage"
+msgstr "جرعة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription_line__dosage_unit
+msgid "Dosage Unit"
+msgstr "وحدة الجرعة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_prescription_line__dosage
+msgid "Dosage per intake"
+msgstr "جرعة لكل كمية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_room__room_type__double
+msgid "Double (2 Beds)"
+msgstr "مزدوج (2 سرير)"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_appointment__state__draft
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_billing__state__draft
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_booking__state__draft
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_lab_request__state__draft
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_pharmacy_order__state__draft
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_prescription__state__draft
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_booking_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_search
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__status
+msgid "Driver Status"
+msgstr "حالة السائق"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/ambulance_request.py:0
+msgid "Driver not available"
+msgstr "السائق غير متوفر"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_healing_hms_ambulance__driver_ids
+msgid "Drivers"
+msgstr "السائقين"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription_line__duration
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_prescription_qweb
+msgid "Duration"
+msgstr "مدة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_prescription_line__duration
+msgid "Duration of treatment. Example: 5 days, 2 weeks, 3 times/week"
+msgstr "مدة العلاج.مثال: 5 أيام ، أسبوعين ، 3 مرات/أسبوع"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__email
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__email
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__email
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__email
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__email
+msgid "Email"
+msgstr "بريد إلكتروني"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/staff.py:0
+msgid "Email is required for staff and must be unique."
+msgstr "البريد الإلكتروني مطلوب للموظفين ويجب أن يكون فريدًا."
+
+#. module: the_healing_hms
+#: model:ir.model.constraint,message:the_healing_hms.constraint_hospital_staff_unique_staff_email
+msgid "Email must be unique for each staff member!"
+msgstr "يجب أن يكون البريد الإلكتروني فريدًا لكل موظف!"
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_emergency_root
+msgid "Emergency Department"
+msgstr "قسم الطوارئ"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__duration_hours
+msgid "Estimated Duration (hours)"
+msgstr "المدة المقدرة (ساعات)"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__experience_years
+msgid "Experience (Years)"
+msgstr "الخبرة (سنوات)"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_bag__status__expired
+msgid "Expired"
+msgstr "منتهي الصلاحية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__expired_bags
+msgid "Expired Bags"
+msgstr "أكياس منتهية الصلاحية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__expiry_date
+msgid "Expiry Date"
+msgstr "تاريخ انتهاء الصلاحية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_donor__gender__female
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_patient__gender__female
+msgid "Female"
+msgstr "أنثى"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/donor.py:0
+msgid "Female donors must have at least 12.5 g/dL hemoglobin."
+msgstr "يجب أن يكون لدى المانحين على الأقل 12.5 جم/دل."
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__first_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__first_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__first_name
+msgid "First Name"
+msgstr "الاسم الأول"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__floor
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__floor
+msgid "Floor"
+msgstr "أرضية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__message_follower_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__message_follower_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__message_follower_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__message_follower_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__message_follower_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__message_follower_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__message_follower_ids
+msgid "Followers"
+msgstr "أتباع"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__message_partner_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__message_partner_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__message_partner_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__message_partner_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__message_partner_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__message_partner_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "أتباع (شركاء)"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_bag__activity_type_icon
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_donor__activity_type_icon
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_transfusion__activity_type_icon
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_billing__activity_type_icon
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_lab_request__activity_type_icon
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_pharmacy_order__activity_type_icon
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_prescription__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "الرمز الرائع على سبيل المثالFA-TASKS"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "Form"
+msgstr "استمارة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_prescription_line__times_per_day__4
+msgid "Four times a day"
+msgstr "أربع مرات في اليوم"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__date_from
+msgid "From"
+msgstr "من"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__name
+msgid "Full Name"
+msgstr "الاسم الكامل"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__gender
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__gender
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__gender
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__gender
+msgid "Gender"
+msgstr "جنس"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_booking__room_type__general
+msgid "General"
+msgstr "عام"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__has_insurance_int
+msgid "Has Insurance (Int)"
+msgstr "لديه تأمين (int)"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__has_insurance
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__has_insurance
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__has_insurance
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__has_insurance
+msgid "Has Insurance?"
+msgstr "لديه التأمين؟"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__has_message
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__has_message
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__has_message
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__has_message
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__has_message
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__has_message
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__has_message
+msgid "Has Message"
+msgstr "لديه رسالة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__head_doctor_id
+msgid "Head Doctor"
+msgstr "دكتور رئيس"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__hemoglobin_level
+msgid "Hemoglobin (g/dL)"
+msgstr "الهيموغلوبين (ز/دل)"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__hire_date
+msgid "Hire Date"
+msgstr "تاريخ استئجار"
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_root
+msgid "Hospital"
+msgstr "مستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_bed
+msgid "Hospital Bed"
+msgstr "سرير المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_billing_line
+msgid "Hospital Billing Line"
+msgstr "خط الفواتير في المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_dashboard_manager_root
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_dashboard_root
+msgid "Hospital Dashboards"
+msgstr "لوحات معلومات المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_department
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_department_form
+msgid "Hospital Department"
+msgstr "قسم المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_department_dashboard
+msgid "Hospital Department Dashboard"
+msgstr "لوحة معلومات دائرة المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_department
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_department_list
+msgid "Hospital Departments"
+msgstr "أقسام المستشفيات"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+msgid "Hospital Invoice"
+msgstr "فاتورة المستشفى"
+
+#. module: the_healing_hms
+#: model:res.groups,name:the_healing_hms.group_hospital_manager
+msgid "Hospital Manager"
+msgstr "مدير المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_medicine
+msgid "Hospital Medicine"
+msgstr "طب المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_medicine_dashboard
+msgid "Hospital Medicine Dashboard"
+msgstr "لوحة معلومات الطب في المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_patient
+msgid "Hospital Patient"
+msgstr "مريض المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_billing
+msgid "Hospital Patient Bill"
+msgstr "فاتورة مريض المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_patient_dashboard
+msgid "Hospital Patient Dashboard"
+msgstr "لوحة معلومات المريض في المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_room
+msgid "Hospital Room"
+msgstr "غرفة المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_booking
+msgid "Hospital Room Booking"
+msgstr "حجز غرفة المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_room_dashboard
+msgid "Hospital Room Dashboard"
+msgstr "لوحة معلومات غرفة المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_room
+msgid "Hospital Rooms"
+msgstr "غرف المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_staff
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_staff_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_staff_list
+msgid "Hospital Staff"
+msgstr "موظفي المستشفى"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_booking__room_type__icu
+msgid "ICU"
+msgstr "وحدة العناية المركزة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_healing_hms_ambulance__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_appointment__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_bed__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result_line__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_category__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order_line__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription_line__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_specialization__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__id
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__id
+msgid "ID"
+msgstr "بطاقة تعريف"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__activity_exception_icon
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__activity_exception_icon
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__activity_exception_icon
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__activity_exception_icon
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__activity_exception_icon
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__activity_exception_icon
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__activity_exception_icon
+msgid "Icon"
+msgstr "رمز"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_bag__activity_exception_icon
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_donor__activity_exception_icon
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_transfusion__activity_exception_icon
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_billing__activity_exception_icon
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_lab_request__activity_exception_icon
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_pharmacy_order__activity_exception_icon
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_prescription__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "أيقونة للإشارة إلى نشاط استثناء."
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_bag__message_needaction
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_donor__message_needaction
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_transfusion__message_needaction
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_billing__message_needaction
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_lab_request__message_needaction
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_pharmacy_order__message_needaction
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_prescription__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "إذا تم التحقق منها ، تتطلب رسائل جديدة انتباهك."
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_bag__message_has_error
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_bag__message_has_sms_error
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_donor__message_has_error
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_donor__message_has_sms_error
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_transfusion__message_has_error
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_transfusion__message_has_sms_error
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_billing__message_has_error
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_billing__message_has_sms_error
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_lab_request__message_has_error
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_lab_request__message_has_sms_error
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_pharmacy_order__message_has_error
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_pharmacy_order__message_has_sms_error
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_prescription__message_has_error
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_prescription__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "إذا تم التحقق منها ، فإن بعض الرسائل لديها خطأ في التسليم."
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_lab_request__state__in_progress
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_search
+msgid "In Progress"
+msgstr "في تَقَدم"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_prescription_line__medicine_form__injection
+msgid "Injection"
+msgstr "حقن"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_billing__payment_method__insurance
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_history_wizard
+msgid "Insurance"
+msgstr "تأمين"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__insurance_discount
+msgid "Insurance (%)"
+msgstr "تأمين (٪)"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_insurance
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_insurance
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_insurance_list
+msgid "Insurance Companies"
+msgstr "شركات التأمين"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_insurance
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__insurance_company_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__insurance_company
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__insurance_company
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__insurance_company
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_insurance_form
+msgid "Insurance Company"
+msgstr "شركة التأمين"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__amount_discount
+msgid "Insurance Discount"
+msgstr "خصم التأمين"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__insurance_discount
+msgid "Insurance Discount (%)"
+msgstr "خصم التأمين (٪)"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_billing_form
+msgid "Insurance Info"
+msgstr "معلومات التأمين"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_form
+msgid "Insurance Information"
+msgstr "معلومات التأمين"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+msgid "Invoice #:"
+msgstr "فاتورة #:"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_booking__state__invoiced
+msgid "Invoiced"
+msgstr "فاتورة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_history_wizard
+msgid "Invoices"
+msgstr "فواتير"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__message_is_follower
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__message_is_follower
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__message_is_follower
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__message_is_follower
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__message_is_follower
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__message_is_follower
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__message_is_follower
+msgid "Is Follower"
+msgstr "هو أتباع"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__job_title
+msgid "Job Title"
+msgstr "مسمى وظيفي"
+
+#. module: the_healing_hms
+#: model:ir.actions.report,name:the_healing_hms.action_report_lab_request_with_results
+msgid "Lab Report (Request with Results)"
+msgstr "تقرير المختبر (طلب مع النتائج)"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__lab_request_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result__request_id
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_form
+msgid "Lab Request"
+msgstr "طلب المختبر"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_lab_request
+#: model:ir.ui.menu,name:the_healing_hms.menu_lab_request
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_list
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_search
+msgid "Lab Requests"
+msgstr "طلبات المختبر"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result_line__result_id
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_result_form
+msgid "Lab Result"
+msgstr "نتيجة المختبر"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_lab_result_line
+msgid "Lab Result Line"
+msgstr "خط نتيجة المختبر"
+
+#. module: the_healing_hms
+#: model:ir.actions.report,name:the_healing_hms.action_report_lab_request_result
+msgid "Lab Result Report"
+msgstr "تقرير نتيجة المختبر"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_lab_result
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__lab_result_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__lab_result_ids
+#: model:ir.ui.menu,name:the_healing_hms.menu_lab_results
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_result_list
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_result_search
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_history_wizard
+msgid "Lab Results"
+msgstr "نتائج المختبر"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_staff__job_title__lab
+#: model:res.groups,name:the_healing_hms.group_hospital_lab
+msgid "Lab Technician"
+msgstr "فني المختبر"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__test_type_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result__test_name
+msgid "Lab Test"
+msgstr "اختبار المختبر"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_test_type_form
+msgid "Lab Test Type"
+msgstr "نوع الاختبار المعملي"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_lab_test_type
+#: model:ir.ui.menu,name:the_healing_hms.menu_lab_test_type
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_test_type_list
+msgid "Lab Test Types"
+msgstr "أنواع الاختبار المعملي"
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_lab_root
+msgid "Laboratory"
+msgstr "معمل"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_result_document
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_with_results_document
+msgid "Laboratory Report"
+msgstr "تقرير المختبر"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_lab_request
+msgid "Laboratory Request"
+msgstr "طلب المختبر"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_lab_result
+msgid "Laboratory Result"
+msgstr "نتيجة المختبر"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_lab_test_type
+msgid "Laboratory Test Type"
+msgstr "نوع الاختبار المعملي"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_healing_hms_ambulance__last_maintenance_date
+msgid "Last Maintenance"
+msgstr "الصيانة الأخيرة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__last_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__last_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__last_name
+msgid "Last Name"
+msgstr "اسم العائلة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_healing_hms_ambulance__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_appointment__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_bed__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result_line__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_category__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order_line__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription_line__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_specialization__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__write_uid
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_healing_hms_ambulance__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_appointment__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_bed__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result_line__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_category__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order_line__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription_line__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_specialization__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__write_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث على"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_healing_hms_ambulance__license_plate
+msgid "License Plate"
+msgstr "لوحة الترخيص"
+
+#. module: the_healing_hms
+#: model:ir.model.constraint,message:the_healing_hms.constraint_healing_hms_ambulance_license_plate_uniq
+msgid "License Plate must be unique!"
+msgstr "يجب أن تكون لوحة الترخيص فريدة من نوعها!"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_insurance_form
+msgid "Linked Patients"
+msgstr "المرضى المرتبطين"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_room_form
+msgid "Location & Status"
+msgstr "الموقع والحالة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_donor__gender__male
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_patient__gender__male
+msgid "Male"
+msgstr "ذكر"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/donor.py:0
+msgid "Male donors must have at least 13 g/dL hemoglobin."
+msgstr "يجب أن يكون لدى المانحين الذكور ما لا يقل عن 13 جم/دل هيموغلوبين."
+
+#. module: the_healing_hms
+#: model_terms:ir.actions.act_window,help:the_healing_hms.action_ambulance
+msgid "Manage Ambulances and their status"
+msgstr "إدارة سيارات الإسعاف ووضعها"
+
+#. module: the_healing_hms
+#: model_terms:ir.actions.act_window,help:the_healing_hms.action_blood_bag
+msgid "Manage Blood Bags in the Blood Bank"
+msgstr "إدارة أكياس الدم في ضفة الدم"
+
+#. module: the_healing_hms
+#: model_terms:ir.actions.act_window,help:the_healing_hms.action_blood_transfusion
+msgid "Manage Blood Transfusion Requests"
+msgstr "إدارة طلبات نقل الدم"
+
+#. module: the_healing_hms
+#: model_terms:ir.actions.act_window,help:the_healing_hms.action_blood_donor
+msgid "Manage Donor Registry"
+msgstr "إدارة سجل المانحين"
+
+#. module: the_healing_hms
+#: model_terms:ir.actions.act_window,help:the_healing_hms.action_ambulance_request
+msgid "Manage Emergency Ambulance Requests"
+msgstr "إدارة طلبات الإسعاف في حالات الطوارئ"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__management
+msgid "Management"
+msgstr "إدارة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_staff__job_title__manager
+msgid "Manager"
+msgstr "مدير"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_billing_form
+msgid "Mark as Paid"
+msgstr "مارك كما هو"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__bag_id
+msgid "Matched Blood Bag"
+msgstr "حقيبة دم متطابقة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_history_wizard
+msgid "Medical Details"
+msgstr "التفاصيل الطبية"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_form
+msgid "Medical Info"
+msgstr "معلومات طبية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__medical_notes
+msgid "Medical Notes"
+msgstr "ملاحظات طبية"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_prescription
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_prescription_qweb
+msgid "Medical Prescription"
+msgstr "وصفة طبية"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_patient
+msgid "Medical Record"
+msgstr "السجل الطبي"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__medicine_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__medicine_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order_line__medicine_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription_line__medicine_name
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_prescription_qweb
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_medicine_form
+msgid "Medicine"
+msgstr "الدواء"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_pharmacy_category_list
+msgid "Medicine Categories"
+msgstr "فئات الطب"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_pharmacy_category
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_pharmacy_category_form
+msgid "Medicine Category"
+msgstr "فئة الطب"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__code
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__code
+msgid "Medicine Code"
+msgstr "رمز الطب"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_medicine_dashboard
+msgid "Medicine Dashboard"
+msgstr "لوحة معلومات الطب"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription_line__medicine_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_prescription_qweb
+msgid "Medicine Form"
+msgstr "شكل الطب"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_medicine_dashboard_graph
+msgid "Medicine KPIs"
+msgstr "الطب KPIs"
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_medicine_dashboard
+msgid "Medicine List"
+msgstr "قائمة الطب"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__medicine_name
+msgid "Medicine Name"
+msgstr "اسم الطب"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_medicine
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__line_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__line_ids
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_medicines
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_medicine_list
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_pharmacy_order_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_prescription_form
+msgid "Medicines"
+msgstr "الأدوية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__message_has_error
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__message_has_error
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__message_has_error
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__message_has_error
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__message_has_error
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__message_has_error
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ تسليم الرسائل"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__message_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__message_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__message_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__message_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__message_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__message_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__message_ids
+msgid "Messages"
+msgstr "رسائل"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__month
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__month
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__month
+msgid "Month"
+msgstr "شهر"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__most_needed_blood_type
+msgid "Most Needed Blood Type"
+msgstr "أكثر أنواع الدم التي تشتد الحاجة إليها"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__my_activity_date_deadline
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__my_activity_date_deadline
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__my_activity_date_deadline
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__my_activity_date_deadline
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__my_activity_date_deadline
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__my_activity_date_deadline
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "الموعد النهائي للنشط"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_specialization__name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__name
+msgid "Name"
+msgstr "اسم"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__nationality
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__nationality
+msgid "Nationality"
+msgstr "جنسية"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/ambulance.py:0
+#: code:addons/the_healing_hms/models/billing.py:0
+#: code:addons/the_healing_hms/models/blood_bag.py:0
+#: code:addons/the_healing_hms/models/hospital_pharmacy.py:0
+#: code:addons/the_healing_hms/models/patient.py:0
+#: code:addons/the_healing_hms/models/prescription.py:0
+#: code:addons/the_healing_hms/models/transfusion.py:0
+msgid "New"
+msgstr "جديد"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/patient.py:0
+msgid "New Prescription"
+msgstr "وصفة طبية جديدة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__activity_date_deadline
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__activity_date_deadline
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__activity_date_deadline
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__activity_date_deadline
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__activity_date_deadline
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__activity_date_deadline
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "الموعد النهائي للنشاط التالي"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__activity_summary
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__activity_summary
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__activity_summary
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__activity_summary
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__activity_summary
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__activity_summary
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__activity_summary
+msgid "Next Activity Summary"
+msgstr "ملخص النشاط التالي"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__activity_type_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__activity_type_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__activity_type_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__activity_type_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__activity_type_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__activity_type_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__activity_type_id
+msgid "Next Activity Type"
+msgstr "نوع النشاط التالي"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_healing_hms_ambulance__next_maintenance_date
+msgid "Next Maintenance"
+msgstr "الصيانة التالية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_donor__is_breastfeeding__no
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_donor__is_pregnant__no
+msgid "No"
+msgstr "لا"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/transfusion.py:0
+msgid "No available blood bags for %s%s. Waiting for donor..."
+msgstr "لا أكياس الدم المتاحة بنسبة ٪ s ٪ s.في انتظار المانح ..."
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/hospital_pharmacy.py:0
+msgid "Not enough stock for %s"
+msgstr "لا يكفي الأسهم للنسبة المئوية S"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__notes
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__notes
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__notes
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__notes
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__notes
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__notes
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__notes
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__description
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__notes
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__note
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_blood_transfusion_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_billing_form
+msgid "Notes"
+msgstr "ملحوظات"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_prescription_qweb
+msgid "Notes:"
+msgstr "ملحوظات:"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__message_needaction_counter
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__message_needaction_counter
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__message_needaction_counter
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__message_needaction_counter
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__message_needaction_counter
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__message_needaction_counter
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__capacity
+msgid "Number of Beds"
+msgstr "عدد الأسرة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__doctor_count
+msgid "Number of Doctors"
+msgstr "عدد الأطباء"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__patient_count
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__patient_count
+msgid "Number of Patients"
+msgstr "عدد المرضى"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__room_count
+msgid "Number of Rooms"
+msgstr "عدد الغرف"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_bag__days_left
+msgid "Number of days until expiry (negative if already expired)."
+msgstr "عدد الأيام حتى انتهاء الصلاحية (سلبية إذا انتهت صلاحيتها بالفعل)."
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__message_has_error_counter
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__message_has_error_counter
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__message_has_error_counter
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__message_has_error_counter
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__message_has_error_counter
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__message_has_error_counter
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الأخطاء"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_bag__message_needaction_counter
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_donor__message_needaction_counter
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_transfusion__message_needaction_counter
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_billing__message_needaction_counter
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_lab_request__message_needaction_counter
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_pharmacy_order__message_needaction_counter
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_prescription__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "عدد الرسائل التي تتطلب إجراء"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_bag__message_has_error_counter
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_donor__message_has_error_counter
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_transfusion__message_has_error_counter
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_billing__message_has_error_counter
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_lab_request__message_has_error_counter
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_pharmacy_order__message_has_error_counter
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_prescription__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل ذات خطأ التسليم"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_staff__job_title__nurse
+#: model:res.groups,name:the_healing_hms.group_hospital_nurse
+msgid "Nurse"
+msgstr "ممرضة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_staff_search
+msgid "Nurses"
+msgstr "الممرضات"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_bed__is_occupied
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_room__state__occupied
+msgid "Occupied"
+msgstr "مشغول"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__occupied_beds
+msgid "Occupied Beds"
+msgstr "أسرة محتلة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__occupied_rooms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__occupied_rooms
+msgid "Occupied Rooms"
+msgstr "غرف محتلة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_staff__status__off
+msgid "Off Duty"
+msgstr "خارج الخدمة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_staff__status__on_duty
+msgid "On Duty"
+msgstr "في الخدمة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_prescription_line__times_per_day__1
+msgid "Once a day"
+msgstr "مرة واحدة في اليوم"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/blood_bag.py:0
+msgid "Only available bags can be marked as used. (Bag %s)"
+msgstr "يمكن تمييز الحقائب المتاحة فقط كما هو مستخدم.(حقيبة ٪ s)"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/appointment.py:0
+msgid "Only confirmed appointments can be set as done."
+msgstr "يمكن تعيين المواعيد المؤكدة فقط كما فعلت."
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/billing.py:0
+msgid "Only confirmed bills can be marked as paid."
+msgstr "يمكن تمييز الفواتير المؤكدة فقط على أنها مدفوعة."
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_billing__state__paid
+msgid "Paid"
+msgstr "مدفوع"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__patient_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__patient_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_appointment__patient_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__patient_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__patient_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__patient_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result__patient_name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__patient_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__patient_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__patient_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__patient_id
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_search
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_form
+msgid "Patient"
+msgstr "مريض"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_appointment
+msgid "Patient Appointment"
+msgstr "موعد المريض"
+
+#. module: the_healing_hms
+#: model:ir.actions.report,name:the_healing_hms.hospital_billing_report_action
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_billing_form
+msgid "Patient Bill"
+msgstr "فاتورة المريض"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_billing
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_billing
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_billing_list
+msgid "Patient Bills"
+msgstr "فواتير المريض"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__patient_code
+msgid "Patient Code"
+msgstr "رمز المريض"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_patient_dashboard_manager
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_patient_dashboard_manager
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_patient_dashboard_form_manager
+msgid "Patient Dashboard"
+msgstr "لوحة معلومات المريض"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/patient.py:0
+#: model:ir.actions.report,name:the_healing_hms.action_report_patient_history
+#: model:ir.model,name:the_healing_hms.model_patient_history_wizard
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_history_wizard
+msgid "Patient History"
+msgstr "تاريخ المريض"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "Patient History Report"
+msgstr "تقرير تاريخ المريض"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "Patient Info"
+msgstr "معلومات المريض"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_history_wizard
+msgid "Patient Information"
+msgstr "معلومات المريض"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__patient_location
+msgid "Patient Location"
+msgstr "موقع المريض"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__patient_name
+msgid "Patient Name"
+msgstr "اسم المريض"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_prescription_qweb
+msgid "Patient:"
+msgstr "مريض:"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__patient_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__patient_ids
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_insurance_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_tree
+msgid "Patients"
+msgstr "مرضى"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_patient
+#: model:ir.ui.menu,name:the_healing_hms.menu_hms_patient_action
+msgid "Patients "
+msgstr "مرضى"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_patient_dashboard_graph_manager
+msgid "Patients Overview"
+msgstr "نظرة عامة على المرضى"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__payment_date
+msgid "Payment Date"
+msgstr "تاريخ الدفع"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__payment_method
+msgid "Payment Method"
+msgstr "طريقة الدفع"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+msgid "Payment Method:"
+msgstr "طريقة الدفع:"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__emergency_ambulance_request__status__pending
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_patient__insurance_coverage
+#: model:ir.model.fields,help:the_healing_hms.field_patient_history_wizard__insurance_coverage
+msgid "Percentage of insurance coverage"
+msgstr "النسبة المئوية للتغطية التأمينية"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_form
+msgid "Personal Information"
+msgstr "معلومات شخصية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__pharmacist_id
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_staff__job_title__pharmacist
+#: model:res.groups,name:the_healing_hms.group_hospital_pharmacist
+msgid "Pharmacist"
+msgstr "صيدلي"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_staff_search
+msgid "Pharmacists"
+msgstr "الصيادلة"
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_pharmacy
+msgid "Pharmacy"
+msgstr "صيدلية"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_pharmacy_order
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_pharmacy_order_form
+msgid "Pharmacy Order"
+msgstr "أمر الصيدلة"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_pharmacy_order_line
+msgid "Pharmacy Order Line"
+msgstr "خط أوامر الصيدلة"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_pharmacy_order
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_orders
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_pharmacy_order_list
+msgid "Pharmacy Orders"
+msgstr "أوامر الصيدلة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__phone
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__phone
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__phone
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__phone
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__phone
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__phone
+msgid "Phone"
+msgstr "هاتف"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/hospital_pharmacy.py:0
+msgid "Please add at least one medicine line."
+msgstr "الرجاء إضافة خط دواء واحد على الأقل."
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/billing.py:0
+msgid "Please select a Payment Method first."
+msgstr "الرجاء تحديد طريقة الدفع أولاً."
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/transfusion.py:0
+msgid "Please select a blood bag before marking as done."
+msgstr "يرجى اختيار حقيبة دم قبل العلامات كما فعلت."
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__is_pregnant
+msgid "Pregnant"
+msgstr "حامل"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/donor.py:0
+msgid "Pregnant donors are not eligible to donate."
+msgstr "المانحون الحوامل ليسوا مؤهلين للتبرع."
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__doctor_id
+msgid "Prescribed By"
+msgstr "المنصوص عليه"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order_line__order_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription_line__prescription_id
+msgid "Prescription"
+msgstr "روشتة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__date
+msgid "Prescription Date"
+msgstr "تاريخ وصفة طبية"
+
+#. module: the_healing_hms
+#: model:ir.model,name:the_healing_hms.model_hospital_prescription_line
+msgid "Prescription Line"
+msgstr "خط وصفة طبية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__name
+msgid "Prescription Ref"
+msgstr "وصفة طبية"
+
+#. module: the_healing_hms
+#: model:ir.actions.report,name:the_healing_hms.action_report_prescription
+msgid "Prescription Report"
+msgstr "تقرير وصفة طبية"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_prescription_form
+msgid "Prescription 💊"
+msgstr "وصفة طبية 💊"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/patient.py:0
+#: model:ir.actions.act_window,name:the_healing_hms.action_prescription_patient
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__prescription_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__prescription_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_patient_history_wizard__prescription_ids
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_prescription
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_history_wizard
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_prescription_tree
+msgid "Prescriptions"
+msgstr "الوصفات الطبية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__price
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__price
+msgid "Price"
+msgstr "سعر"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_billing_form
+msgid "Print Invoice"
+msgstr "فاتورة طباعة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_result_form
+msgid "Print Results"
+msgstr "نتائج الطباعة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "Printed on"
+msgstr "مطبوعة على"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__product_id
+msgid "Product"
+msgstr "منتج"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+msgid "Product / Service"
+msgstr "المنتج / الخدمة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__quantity
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order_line__quantity
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+msgid "Qty"
+msgstr "كتي"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__quantity_available
+msgid "Quantity in Stock"
+msgstr "الكمية في المخزون"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_appointment__reason
+msgid "Reason for Visit"
+msgstr "سبب الزيارة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_staff__job_title__receptionist
+#: model:res.groups,name:the_healing_hms.group_hospital_receptionist
+msgid "Receptionist"
+msgstr "موظف الاستقبال"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_staff_search
+msgid "Receptionists"
+msgstr "موظفو الاستقبال"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__partner_id
+msgid "Related Partner"
+msgstr "شريك ذي صلة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__product_id
+msgid "Related Product"
+msgstr "المنتج ذي الصلة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__user_id
+msgid "Related User"
+msgstr "المستخدم ذي الصلة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_history_wizard
+msgid "Request"
+msgstr "طلب"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__request_date
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result__request_date
+msgid "Request Date"
+msgstr "تاريخ الطلب"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__name
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__name
+msgid "Request Reference"
+msgstr "طلب مرجع"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__request_status
+msgid "Request Status"
+msgstr "طلب الحالة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__doctor_id
+msgid "Requested By"
+msgstr "طلب من قبل"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__requested_time
+msgid "Requested Time"
+msgstr "الوقت المطلوب"
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_emergency_request
+msgid "Requests"
+msgstr "الطلبات"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_billing_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_form
+msgid "Reset to Draft"
+msgstr "إعادة تعيين لصياغة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__activity_user_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__activity_user_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__activity_user_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__activity_user_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__activity_user_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__activity_user_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم المسؤول"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result_line__result_value
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_result_document
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_with_results_document
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "Result"
+msgstr "نتيجة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result__result_line_ids
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_result_form
+msgid "Results"
+msgstr "نتائج"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__rh
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__rh
+msgid "Rh"
+msgstr "RH"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__rh
+msgid "Rh Factor"
+msgstr "عامل RH"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_bed__room_id
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__room_id
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_room_form
+msgid "Room"
+msgstr "غرفة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__booking_id
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_reception
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_booking_form
+msgid "Room Booking"
+msgstr "حجز الغرف"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_booking
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_room_booking
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_booking_list
+msgid "Room Bookings"
+msgstr "حجوزات الغرف"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_room_dashboard
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_room_dashboard
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_room_dashboard_form
+msgid "Room Dashboard"
+msgstr "لوحة معلومات الغرفة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_room_form
+msgid "Room Details"
+msgstr "تفاصيل الغرفة"
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_room_list
+msgid "Room List"
+msgstr "قائمة الغرف"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__room_number
+msgid "Room Number"
+msgstr "رقم الغرفة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__room_type
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__room_type
+msgid "Room Type"
+msgstr "نوع الغرفة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__room_ids
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_department_form
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_room_list
+msgid "Rooms"
+msgstr "غرف"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__message_has_sms_error
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__message_has_sms_error
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__message_has_sms_error
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__message_has_sms_error
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__message_has_sms_error
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__message_has_sms_error
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "خطأ تسليم الرسائل القصيرة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__salary
+msgid "Salary"
+msgstr "مرتب"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_lab_request__state__sample_collected
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_search
+msgid "Sample Collected"
+msgstr "تم جمع عينة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_hospital_staff_search
+msgid "Search Staff"
+msgstr "موظفي البحث"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__selected_blood_types
+msgid "Select Blood Types"
+msgstr "حدد أنواع الدم"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_appointment_form
+msgid "Select or create a patient"
+msgstr "حدد أو إنشاء مريض"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/ambulance_request.py:0
+msgid "Selected driver does not belong to the selected ambulance."
+msgstr "لا ينتمي برنامج التشغيل المحدد إلى سيارة الإسعاف المحددة."
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/ambulance_request.py:0
+msgid "Selected driver is not available."
+msgstr "برنامج التشغيل المحدد غير متوفر."
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_request_form
+msgid "Send to Lab"
+msgstr "أرسل إلى المختبر"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result_line__sequence
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__sequence
+msgid "Sequence"
+msgstr "تسلسل"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__sequence
+msgid "Serial Number"
+msgstr "رقم سري"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__product_id
+msgid "Service / Product"
+msgstr "الخدمة / المنتج"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_appointment_form
+msgid "Set to Draft"
+msgstr "ضبط على المسودة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__show_female_fields
+msgid "Show Female Fields"
+msgstr "إظهار الحقول الإناث"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_prescription_qweb
+msgid "Signature: ____________________"
+msgstr "إمضاء: ____________________"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_room__room_type__single
+msgid "Single (1 Bed)"
+msgstr "واحد (سرير واحد)"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__specialization_id
+msgid "Specialization"
+msgstr "التخصص"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_specialization__code
+msgid "Specialization ID"
+msgstr "معرف التخصص"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_hospital_staff
+#: model:ir.ui.menu,name:the_healing_hms.menu_hospital_staff
+msgid "Staff"
+msgstr "طاقم عمل"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__staff_id
+msgid "Staff ID"
+msgstr "معرف الموظفين"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__state
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__state
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__state
+msgid "State"
+msgstr "ولاية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__status
+#: model:ir.model.fields,field_description:the_healing_hms.field_emergency_ambulance_request__status
+#: model:ir.model.fields,field_description:the_healing_hms.field_healing_hms_ambulance__status
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_appointment__state
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__state
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__state
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result__state
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__state
+msgid "Status"
+msgstr "حالة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_bag__activity_state
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_donor__activity_state
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_transfusion__activity_state
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_billing__activity_state
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_lab_request__activity_state
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_pharmacy_order__activity_state
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_prescription__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"الحالة بناءً على الأنشطة\n"
+"متأخر: تم تمرير تاريخ الاستحقاق بالفعل\n"
+"اليوم: تاريخ النشاط اليوم\n"
+"المخطط: الأنشطة المستقبلية."
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_insurance__street
+msgid "Street"
+msgstr "شارع"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__price_subtotal
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+msgid "Subtotal"
+msgstr "نطاق فرعي"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_prescription_line__medicine_form__syrup
+msgid "Syrup / Liquid"
+msgstr "شراب / سائل"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_prescription_line__medicine_form__tablet
+msgid "Tablet / Capsule"
+msgstr "قرص / كبسولة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+msgid "Tax"
+msgstr "ضريبة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__amount_tax
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__tax_ids
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+msgid "Taxes"
+msgstr "الضرائب"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result_line__test_name
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_result_document
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_with_results_document
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "Test"
+msgstr "امتحان"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_test_type__name
+msgid "Test Name"
+msgstr "اسم الاختبار"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_result_document
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_with_results_document
+msgid ""
+"Thank you for choosing <span style=\"color:#4B0082; font-weight:bold;\">our "
+"laboratory</span> services"
+msgstr "شكرًا لك على اختيار <span style = \"color:#4B0082 ؛ Font-Weight: Bold ؛\""
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+msgid ""
+"Thank you for choosing our hospital. If you have any questions regarding "
+"this invoice, please contact our billing department."
+msgstr ""
+"شكرا لك لاختيار المستشفى لدينا.إذا كان لديك أي أسئلة بخصوص هذه الفاتورة ، "
+"فيرجى الاتصال بقسم الفواتير الخاص بنا."
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_prescription_qweb
+msgid "The Healing Coders Hospital"
+msgstr "مستشفى المبرمجين الشفاء"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "The Healing Hospital"
+msgstr "مستشفى الشفاء"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_lab_result__state__done
+msgid "The result is done"
+msgstr "يتم النتيجة"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/transfusion.py:0
+msgid "This request is already completed."
+msgstr "تم الانتهاء من هذا الطلب بالفعل."
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_prescription_line__times_per_day__3
+msgid "Three times a day"
+msgstr "ثلاث مرات في اليوم"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription_line__times_per_day
+msgid "Times per Day"
+msgstr "مرات في اليوم"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_prescription_qweb
+msgid "Times/Day"
+msgstr "مرات/يوم"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__date_to
+msgid "To"
+msgstr "ل"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__amount_total
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+msgid "Total"
+msgstr "المجموع"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__total_bags
+msgid "Total Bags"
+msgstr "أكياس إجمالية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__total_beds
+msgid "Total Beds"
+msgstr "إجمالي الأسرة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__total_bookings
+msgid "Total Bookings"
+msgstr "إجمالي الحجوزات"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__total_capacity
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__total_capacity
+msgid "Total Capacity"
+msgstr "إجمالي السعة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient__total_count
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_patient_dashboard__total_count
+msgid "Total Count"
+msgstr "العد الكلي"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__total_doctors
+msgid "Total Doctors"
+msgstr "إجمالي الأطباء"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__total_qty
+msgid "Total Ordered"
+msgstr "إجمالي أمر"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_booking__price
+msgid "Total Price"
+msgstr "إجمالي السعر"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department_dashboard__total_rooms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room_dashboard__total_rooms
+msgid "Total Rooms"
+msgstr "إجمالي الغرف"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__total_value
+msgid "Total Value"
+msgstr "القيمة الإجمالية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_transfusion__request_status__done
+msgid "Transfused"
+msgstr "تم نقله"
+
+#. module: the_healing_hms
+#: model:ir.actions.act_window,name:the_healing_hms.action_blood_transfusion
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_blood_transfusion_list
+msgid "Transfusion Requests"
+msgstr "طلبات نقل الدم"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/transfusion.py:0
+msgid "Transfusion completed. Bag %s marked as used."
+msgstr "الانتهاء الانتقال.حقيبة ٪ s ملحوظ كما هو مستخدم."
+
+#. module: the_healing_hms
+#: model:ir.ui.menu,name:the_healing_hms.menu_blood_transfusion
+msgid "Transfusions"
+msgstr "عمليات النقل"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_prescription_line__times_per_day__2
+msgid "Twice a day"
+msgstr "مرتين في اليوم"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_bag__activity_exception_decoration
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_donor__activity_exception_decoration
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_transfusion__activity_exception_decoration
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_billing__activity_exception_decoration
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_lab_request__activity_exception_decoration
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_pharmacy_order__activity_exception_decoration
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_prescription__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "نوع نشاط الاستثناء المسجل."
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_room__state__unavailable
+msgid "Unavailable"
+msgstr "غير متاح"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__healing_hms_ambulance__status__maintenance
+msgid "Under Maintenance"
+msgstr "تحت الصيانة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_result_line__unit
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_result_document
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_lab_request_with_results_document
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "Unit"
+msgstr "وحدة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing_line__price_unit
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine__price_unit
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_medicine_dashboard__unit_price
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order_line__price_unit
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+msgid "Unit Price"
+msgstr "سعر الوحدة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__units
+msgid "Units (ml)"
+msgstr "الوحدات (مل)"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/donor.py:0
+msgid "Unnamed Donor"
+msgstr "متبرع لم يكشف عن اسمه"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__amount_untaxed
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_hospital_billing
+msgid "Untaxed Amount"
+msgstr "كمية غير خاضية"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_bag__status__used
+msgid "Used"
+msgstr "مستخدم"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_dashboard__used_bags
+msgid "Used Bags"
+msgstr "الحقائب المستخدمة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__transfusion_id
+msgid "Used in Transfusion"
+msgstr "تستخدم في نقل الدم"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_booking__room_type__vip
+msgid "VIP"
+msgstr "كبار الشخصيات"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_result_form
+msgid "Validate Result"
+msgstr "النتيجة التحقق من صحة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_form
+msgid "View Patient History"
+msgstr "عرض تاريخ المريض"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_lab_result_search
+msgid "Waiting"
+msgstr "منتظر"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_transfusion__request_status__waiting
+msgid "Waiting for donor"
+msgstr "في انتظار المانح"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_lab_result__state__waiting
+msgid "Waiting for the result"
+msgstr "في انتظار النتيجة"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__hospital_room__room_type__ward
+msgid "Ward (7 Beds)"
+msgstr "وارد (7 أسرة)"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_bag__website_message_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__website_message_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_transfusion__website_message_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_billing__website_message_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_lab_request__website_message_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_pharmacy_order__website_message_ids
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_prescription__website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_bag__website_message_ids
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_donor__website_message_ids
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_transfusion__website_message_ids
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_billing__website_message_ids
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_lab_request__website_message_ids
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_pharmacy_order__website_message_ids
+#: model:ir.model.fields,help:the_healing_hms.field_hospital_prescription__website_message_ids
+msgid "Website communication history"
+msgstr "تاريخ اتصال الموقع"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_blood_bank_donor__weight
+msgid "Weight (kg)"
+msgstr "الوزن (كجم)"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_department__wing
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_room__wing
+msgid "Wing"
+msgstr "الجناح"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,field_description:the_healing_hms.field_hospital_staff__working_hours
+msgid "Working Hours"
+msgstr "ساعات العمل"
+
+#. module: the_healing_hms
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_donor__is_breastfeeding__yes
+#: model:ir.model.fields.selection,name:the_healing_hms.selection__blood_bank_donor__is_pregnant__yes
+msgid "Yes"
+msgstr "نعم"
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/hospital_pharmacy.py:0
+msgid "You cannot cancel a dispensed order."
+msgstr "لا يمكنك إلغاء أمر موزع."
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/billing.py:0
+msgid "You cannot cancel a paid bill."
+msgstr "لا يمكنك إلغاء فاتورة مدفوعة."
+
+#. module: the_healing_hms
+#. odoo-python
+#: code:addons/the_healing_hms/models/appointment.py:0
+msgid "You cannot cancel an appointment that is already done."
+msgstr "لا يمكنك إلغاء موعد تم القيام به بالفعل."
+
+#. module: the_healing_hms
+#: model:ir.actions.report,print_report_name:the_healing_hms.action_report_prescription
+msgid "object.patient_id.name if object.patient_id else 'Prescription'"
+msgstr "Object.patient_id.name if object.patient_id آخر \"وصفة طبية\""
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.report_patient_history_view
+msgid "| Page <span class=\"page\"/>"
+msgstr "|الصفحة <span class = \"page\"/>"
+
+#. module: the_healing_hms
+#: model:ir.model.fields,help:the_healing_hms.field_blood_bank_dashboard__selected_blood_types
+msgid "اختر زمرة أو أكثر من الزمر لعرضها في النسب المئوية"
+msgstr "خtr زmerة أo أكثr mn chnmr"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_patient_history_wizard
+msgid "🖨 Print History"
+msgstr "🖨 تاريخ الطباعة"
+
+#. module: the_healing_hms
+#: model_terms:ir.ui.view,arch_db:the_healing_hms.view_prescription_form
+msgid "🖨️ Print Prescription"
+msgstr "print وصفة طبية"

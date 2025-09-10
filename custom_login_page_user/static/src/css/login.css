@@ -1,4 +1,157 @@
-.login-card {
-  border-radius: 12px;
-  background-color: #f8f9fa;
+/* Custom Green & Blue Login Page for Odoo - مع التعديلات المطلوبة */
+
+/* Primary Colors */
+:root {
+    --medical-primary: #0d7377;
+    /* Medical teal */
+    --medical-secondary: #14a085;
+    /* Healthcare green */
+    --medical-accent: #2c5282;
+    /* Professional blue */
+    --medical-dark: #1a202c;
+    /* Dark navy */
+    --medical-light: #e2e8f0;
+    /* Light gray */
+    --medical-white: #ffffff;
+    --medical-bg: #f7fafc;
+    /* Very light blue-gray */
+    --medical-red: #e53e3e;
+    /* Emergency red */
+    --medical-orange: #dd6b20;
+    /* Warning orange */
+
+    --gradient-medical: linear-gradient(135deg, #0d7377 0%, #14a085 100%);
+    --glass-medical: rgba(13, 115, 119, 0.05);
+    --glass-border: rgba(13, 115, 119, 0.15);
+    --shadow-light: 0 2px 8px rgba(13, 115, 119, 0.1);
+    --shadow-medium: 0 4px 16px rgba(13, 115, 119, 0.15);
+}
+
+/* Background Styling - خلفية بيضاء كما طُلب */
+.bg-100 {
+    background: #ffffff !important;
+}
+
+/* Card Body - نفس الكود الأصلي مع حواف دائرية أكثر */
+.card-body {
+    background: var(--medical-primary) !important;
+    box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.5) !important;
+    border-radius: 20px !important;
+    /* حواف دائرية أكثر كما طُلب */
+    border-color: var(--medical-primary) !important;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: var(--list-group-item-padding-y) var(--list-group-item-padding-x);
+    color: var(--list-group-color);
+    background-color: #b1c1b4;
+    border: var(--list-group-border-width) solid var(--list-group-border-color);
+}
+
+/* Form Container - نفس الشادو الأصلي مع حواف دائرية أكثر */
+.oe_single_form {
+    border-radius: 25px !important;
+    /* حواف دائرية أكثر */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    /* نفس الشادو الأصلي */
+    padding: 40px !important;
+}
+
+/* Primary Button - نفس الكود الأصلي مع حواف دائرية أكثر */
+.btn.btn-primary {
+    background: linear-gradient(45deg, #50adb1, #1d4030) !important;
+    border: none !important;
+    border-radius: 15px !important;
+    /* حواف دائرية أكثر */
+    padding: 12px 24px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    color: #fff !important;
+    transition: all 0.3s ease-in-out !important;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* تأثير عند المرور - نفس الكود الأصلي */
+.btn.btn-primary:hover {
+    background: linear-gradient(45deg, #1d4030, #50adb1) !important;
+    transform: scale(1.05) !important;
+}
+
+/* تأثير عند الضغط - نفس الكود الأصلي */
+.btn.btn-primary:active {
+    background: linear-gradient(45deg, #1d4030, #468470) !important;
+    transform: scale(0.98) !important;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4) inset !important;
+}
+
+/* حقول الإدخال - بالتعديل المطلوب */
+.form-control {
+    border: 2px solid rgba(13, 115, 119, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    transition: all 0.3s ease !important;
+    background: rgb(220, 238, 238) !important;
+    /* خلفية مشابهة للـ bg-100 القديم */
+}
+
+.form-control:focus {
+    border-color: var(--medical-primary) !important;
+    box-shadow: 0 0 0 3px rgba(13, 115, 119, 0.1) !important;
+    background: var(--medical-white) !important;
+}
+
+/* إخفاء صورة أودو الافتراضية */
+.text-center.pb-3.border-bottom.mb-4 img {
+    display: none !important;
+}
+
+/* إضافة صورة مخصصة كـ background للـ div */
+.text-center.pb-3.border-bottom.mb-4 {
+    background-image: url('../img/logo.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center -10px !important;
+    height: 120px !important;
+    margin-bottom: 1rem !important;
+    bottom: 20px;
+}
+
+.text-center.pb-3.border-bottom.mb-4 {
+    position: relative;
+    bottom: unset;
+    /* عشان نتحكم بمكان ::after */
+}
+
+.text-center.pb-3.border-bottom.mb-4::after {
+    content: "The Healing Hms";
+    position: absolute;
+    bottom: -3px;
+    /* ينزل النص تحت الـ div */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #ffffff;
+}
+
+
+
+.m-0 {
+    margin: 0 !important;
+    color: #ffffff !important;
+}
+
+.btn-sm,
+.btn-group-sm>.btn {
+    --btn-padding-y: 0.0625rem;
+    --btn-padding-x: 0.3125rem;
+    --btn-font-size: 0.75rem;
+    --btn-border-radius: var(--border-radius-sm);
+    color: #ffffff !important;
+}
+
+a {
+    color: rgb(255 255 255);
+    text-decoration: none;
 }

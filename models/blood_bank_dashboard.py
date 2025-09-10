@@ -30,12 +30,27 @@ class BloodBankDashboard(models.Model):
     percent_O_pos = fields.Float(string='O+', compute='_compute_blood_type_percent', store=True)
     percent_O_neg = fields.Float(string='O-', compute='_compute_blood_type_percent', store=True)
 
-    # ===== Many2many Select Blood Types for Graph =====
-    selected_blood_types = fields.Many2many(
-    'blood.bank.bag',  # بدل 'blood.bank'
-    string='Select Blood Types',
-    help="اختر زمرة أو أكثر من الزمر لعرضها في النسب المئوية",
-)
+    # ================== Compute Blood Type Percentages ==================
+    def _compute_blood_type_percent(self):
+        Bag = self.env['blood.bank.bag']
+        bags = Bag.search([])
+        total = len(bags)
+        counts = {bt: 0 for bt in ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']}
+
+        for b in bags:
+            key = (b.blood_type or '') + (b.rh or '')
+            if key in counts:
+                counts[key] += 1
+
+        for rec in self:
+            rec.percent_A_pos = counts['A+'] / total * 100 if total else 0
+            rec.percent_A_neg = counts['A-'] / total * 100 if total else 0
+            rec.percent_B_pos = counts['B+'] / total * 100 if total else 0
+            rec.percent_B_neg = counts['B-'] / total * 100 if total else 0
+            rec.percent_AB_pos = counts['AB+'] / total * 100 if total else 0
+            rec.percent_AB_neg = counts['AB-'] / total * 100 if total else 0
+            rec.percent_O_pos = counts['O+'] / total * 100 if total else 0
+            rec.percent_O_neg = counts['O-'] / total * 100 if total else 0
 
 
     # ================== Compute KPIs ==================
@@ -77,8 +92,8 @@ class BloodBankDashboard(models.Model):
                 counts[key] += 1
 
         for rec in self:
-            # إذا اختار زمر معينة، اعرضها بس، وإذا ما اختار اعرض الكل
-            selected = [bt.name for bt in rec.selected_blood_types] if rec.selected_blood_types else counts.keys()
+            # إذا اختار زمرة معينة اعرضها بس، وإذا ما اختار اعرض الكل
+            selected = [rec.selected_blood_types] if rec.selected_blood_types else counts.keys()
 
             rec.percent_A_pos = counts['A+'] / total * 100 if 'A+' in selected and total else 0
             rec.percent_A_neg = counts['A-'] / total * 100 if 'A-' in selected and total else 0

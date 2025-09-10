@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ================== Main Menu (Custom) ================== -->
+<menuitem id="menu_hospital_root_custom" 
+          name="Hospital"
+          groups="the_healing_hms.group_hospital_doctor,the_healing_hms.group_hospital_pharmacist,the_healing_hms.group_hospital_driver,the_healing_hms.group_hospital_nurse,the_healing_hms.group_hospital_receptionist,the_healing_hms.group_hospital_accountant,the_healing_hms.group_hospital_lab"/>
+
+
+    <!-- ================== Departments ================== -->
+    <record id="action_hospital_department_custom" model="ir.actions.act_window">
+        <field name="name">Departments</field>
+        <field name="res_model">hospital.department</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[]"/>
+    </record>
+
+    <menuitem id="menu_hospital_department_custom" 
+              name="Departments" 
+              parent="menu_hospital_root_custom" 
+              action="action_hospital_department_custom"/>
+
+    <!-- ================== Reception ================== -->
+    <menuitem id="menu_hospital_reception_custom"
+              name="Room Booking"
+              parent="menu_hospital_root_custom"
+              sequence="5"
+              groups="the_healing_hms.group_hospital_receptionist"/>
+
+    <!-- Appointment Action -->
+    <record id="action_hospital_appointment_custom" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_receptionist')),
+            (4, ref('the_healing_hms.group_hospital_doctor'))
+        ]"/>
+    </record>
+
+    <menuitem id="menu_hospital_appointment_custom"
+              name="Appointments"
+              parent="menu_hospital_root_custom"
+              action="action_hospital_appointment_custom"
+              sequence="1"
+              groups="the_healing_hms.group_hospital_receptionist,the_healing_hms.group_hospital_doctor"/>
+
+    <!-- Room List Action -->
+    <record id="action_hospital_room_custom" model="ir.actions.act_window">
+        <field name="name">Room List</field>
+        <field name="res_model">hospital.room</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_receptionist'))
+        ]"/>
+    </record>
+
+    <menuitem id="menu_hospital_room_list_custom"
+              name="Room List"
+              parent="menu_hospital_reception_custom"
+              action="action_hospital_room_custom"
+              sequence="2"
+              groups="the_healing_hms.group_hospital_receptionist"/>
+
+    <!-- Room Booking Action -->
+    <record id="action_hospital_booking_custom" model="ir.actions.act_window">
+        <field name="name">Room Bookings</field>
+        <field name="res_model">hospital.booking</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_receptionist'))
+        ]"/>
+    </record>
+
+    <menuitem id="menu_hospital_room_booking_custom"
+              name="Room Bookings"
+              parent="menu_hospital_reception_custom"
+              action="action_hospital_booking_custom"
+              sequence="3"
+              groups="the_healing_hms.group_hospital_receptionist"/>
+
+    <!-- ================== Pharmacy ================== -->
+    <record id="action_hospital_medicine_custom" model="ir.actions.act_window">
+        <field name="name">Medicines</field>
+        <field name="res_model">hospital.medicine</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_pharmacist'))]"/>
+    </record>
+
+    <record id="action_hospital_pharmacy_order_custom" model="ir.actions.act_window">
+        <field name="name">Pharmacy Orders</field>
+        <field name="res_model">hospital.pharmacy.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_pharmacist'))]"/>
+    </record>
+
+    <menuitem id="menu_hospital_pharmacy_custom" 
+              name="Pharmacy" 
+              parent="menu_hospital_root_custom"
+              groups="the_healing_hms.group_hospital_pharmacist"/>
+
+    <menuitem id="menu_hospital_medicines_custom" 
+              name="Medicines" 
+              parent="menu_hospital_pharmacy_custom"
+              action="action_hospital_medicine_custom"
+              groups="the_healing_hms.group_hospital_pharmacist"/>
+
+    <menuitem id="menu_hospital_orders_custom" 
+              name="Pharmacy Orders" 
+              parent="menu_hospital_pharmacy_custom"
+              action="action_hospital_pharmacy_order_custom"
+              groups="the_healing_hms.group_hospital_pharmacist"/>
+
+    <!-- ================== Patients ================== -->
+    <record id="action_patient_custom" model="ir.actions.act_window">
+        <field name="name">Patients </field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_doctor')),
+            (4, ref('the_healing_hms.group_hospital_nurse')),
+            (4, ref('the_healing_hms.group_hospital_receptionist'))
+        ]"/>
+    </record>
+
+    <menuitem id="menu_hms_patient_action_custom" 
+              parent="menu_hospital_root_custom" 
+              action="action_patient_custom"
+              groups="the_healing_hms.group_hospital_doctor,the_healing_hms.group_hospital_nurse,the_healing_hms.group_hospital_receptionist"/>
+
+    <!-- ================== Insurance ================== -->
+    <record id="action_insurance_custom" model="ir.actions.act_window">
+        <field name="name">Insurance Companies</field>
+        <field name="res_model">hospital.insurance</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_accountant')),
+            (4, ref('the_healing_hms.group_hospital_doctor'))
+        ]"/>
+    </record>
+
+    <menuitem id="menu_hospital_insurance_custom" 
+              name="Insurance Companies"
+              parent="menu_hospital_root_custom" 
+              action="action_insurance_custom"
+              sequence="20"
+              groups="the_healing_hms.group_hospital_accountant,the_healing_hms.group_hospital_doctor"/>
+
+    <!-- ================== Emergency Department ================== -->
+    <record id="action_ambulance_request_custom" model="ir.actions.act_window">
+        <field name="name">Ambulance Requests</field>
+        <field name="res_model">emergency.ambulance.request</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_receptionist')),(4, ref('the_healing_hms.group_hospital_driver'))]"/>
+    </record>
+
+    <menuitem id="menu_emergency_request_custom"
+              name="Requests"
+              parent="menu_hospital_root_custom"
+              action="action_ambulance_request_custom"
+              sequence="3"
+              groups="the_healing_hms.group_hospital_receptionist,the_healing_hms.group_hospital_driver"/>
+
+    <!-- ================== Blood Bank ================== -->
+    <menuitem id="menu_blood_bank_root_custom" 
+              name="Blood Bank" 
+              parent="menu_hospital_root_custom" 
+              sequence="30"
+              groups="the_healing_hms.group_hospital_lab"/>
+
+    <record id="action_blood_bag_custom" model="ir.actions.act_window">
+        <field name="name">Blood Bags</field>
+        <field name="res_model">blood.bank.bag</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_lab')),
+            (4, ref('the_healing_hms.group_hospital_doctor'))
+        ]"/>
+    </record>
+
+    <record id="action_blood_donor_custom" model="ir.actions.act_window">
+        <field name="name">Donors</field>
+        <field name="res_model">blood.bank.donor</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_lab')),
+            (4, ref('the_healing_hms.group_hospital_doctor'))
+        ]"/>
+    </record>
+
+    <record id="action_blood_transfusion_custom" model="ir.actions.act_window">
+        <field name="name">Transfusions</field>
+        <field name="res_model">blood.bank.transfusion</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_lab')),
+            (4, ref('the_healing_hms.group_hospital_doctor'))
+        ]"/>
+    </record>
+
+    <menuitem id="menu_blood_bag_custom" 
+              name="Blood Bags" 
+              parent="menu_blood_bank_root_custom" 
+              action="action_blood_bag_custom" 
+              sequence="1"
+              groups="the_healing_hms.group_hospital_lab,the_healing_hms.group_hospital_doctor"/>
+
+    <menuitem id="menu_blood_donor_custom" 
+              name="Donors" 
+              parent="menu_blood_bank_root_custom" 
+              action="action_blood_donor_custom" 
+              sequence="2"
+              groups="the_healing_hms.group_hospital_lab,the_healing_hms.group_hospital_doctor"/>
+
+    <menuitem id="menu_blood_transfusion_custom" 
+              name="Transfusions" 
+              parent="menu_blood_bank_root_custom" 
+              action="action_blood_transfusion_custom" 
+              sequence="3"
+              groups="the_healing_hms.group_hospital_lab,the_healing_hms.group_hospital_doctor"/>
+
+    <!-- ================== Hospital Lab Root Menu ================== -->
+    <menuitem id="menu_hospital_lab_root_custom" 
+              name="Laboratory" 
+              parent="menu_hospital_root_custom" 
+              sequence="50"
+              groups="the_healing_hms.group_hospital_lab"/>
+
+    <record id="action_lab_test_type_custom" model="ir.actions.act_window">
+        <field name="name">Lab Test Types</field>
+        <field name="res_model">hospital.lab.test.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_lab')),
+            (4, ref('the_healing_hms.group_hospital_doctor'))
+        ]"/>
+    </record>
+
+    <record id="action_lab_request_custom" model="ir.actions.act_window">
+        <field name="name">Lab Requests</field>
+        <field name="res_model">hospital.lab.request</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_lab')),
+            (4, ref('the_healing_hms.group_hospital_doctor'))
+        ]"/>
+    </record>
+
+    <record id="action_lab_result_custom" model="ir.actions.act_window">
+        <field name="name">Lab Results</field>
+        <field name="res_model">hospital.lab.result</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_lab')),
+            (4, ref('the_healing_hms.group_hospital_doctor'))
+        ]"/>
+    </record>
+
+    <menuitem id="menu_lab_request_custom" 
+              name="Lab Requests" 
+              parent="menu_hospital_lab_root_custom" 
+              action="action_lab_request_custom" 
+              sequence="1"
+              groups="the_healing_hms.group_hospital_lab,the_healing_hms.group_hospital_doctor"/>
+
+    <menuitem id="menu_lab_results_custom" 
+              name="Lab Results" 
+              parent="menu_hospital_lab_root_custom" 
+              action="action_lab_result_custom" 
+              sequence="2"
+              groups="the_healing_hms.group_hospital_lab,the_healing_hms.group_hospital_doctor"/>
+
+    <menuitem id="menu_lab_test_type_custom" 
+              name="Lab Test Types" 
+              parent="menu_hospital_lab_root_custom" 
+              action="action_lab_test_type_custom" 
+              sequence="3"
+              groups="the_healing_hms.group_hospital_lab,the_healing_hms.group_hospital_doctor"/>
+
+    <!-- ================== Billing ================== -->
+    <record id="action_hospital_billing_custom" model="ir.actions.act_window">
+        <field name="name">Patient Bills</field>
+        <field name="res_model">hospital.billing</field>
+        <field name="view_mode">list,form</field>
+        <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_accountant'))
+        ]"/>
+    </record>
+
+    <menuitem id="menu_hospital_billing_custom"
+     name="Patient Bills" 
+     parent="menu_hospital_root_custom" 
+     action="action_hospital_billing_custom"
+     sequence="10"
+    groups="the_healing_hms.group_hospital_accountant"/>
+
+<!-- Action -->
+<record id="action_prescription_patient_custom" model="ir.actions.act_window">
+    <field name="name">Prescriptions</field>
+    <field name="res_model">hospital.prescription</field>
+    <field name="view_mode">list,form</field>
+    <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_doctor'))]"/>
+</record>
+
+<!-- Menu -->
+<menuitem id="menu_hospital_prescription_custom"
+          name="Prescriptions"
+          parent="menu_hospital_root_custom"
+          action="action_prescription_patient_custom"
+          sequence="1"
+          groups="the_healing_hms.group_hospital_doctor"/>
+          <!-- ================== Ambulance Dashboards for Driver ================== -->
+<record id="action_ambulance_driver_custom" model="ir.actions.act_window">
+    <field name="name"> Ambulances</field>
+    <field name="res_model">healing_hms.ambulance</field>
+    <field name="view_mode">kanban,list,form</field>
+    <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_driver'))]"/>
+</record>
+
+
+<menuitem id="menu_emergency_ambulance_driver_custom"
+          name=" Ambulances"
+          parent="menu_hospital_root_custom"
+          action="action_ambulance_driver_custom"
+          sequence="1"
+          groups="the_healing_hms.group_hospital_driver"/>
+
+
+
+</odoo>

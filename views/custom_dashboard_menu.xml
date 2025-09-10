@@ -1,0 +1,94 @@
+<odoo>
+    <!-- ================== Main Menu Custom ================== -->
+    <menuitem id="menu_hospital_dashboard_root" 
+              name="Hospital Dashboards" 
+              groups="the_healing_hms.group_hospital_doctor,the_healing_hms.group_hospital_pharmacist,the_healing_hms.group_hospital_driver,the_healing_hms.group_hospital_nurse,the_healing_hms.group_hospital_receptionist,the_healing_hms.group_hospital_accountant,the_healing_hms.group_hospital_lab"/>
+
+    <!-- ================== Actions ================== -->
+    <!-- Department Dashboard -->
+   <record id="action_hospital_department_dashboard" model="ir.actions.act_window">
+        <field name="name">Department Dashboard</field>
+        <field name="res_model">hospital.department.dashboard</field>
+        <field name="view_mode">graph,list,form</field>
+          <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_receptionist'))
+        ]"/>
+    </record>
+
+        <record id="action_hospital_patient_dashboard" model="ir.actions.act_window">
+        <field name="name">Patient Dashboard</field>
+        <field name="res_model">hospital.patient.dashboard</field>
+        <field name="view_mode">graph,list,form</field>
+        <field name="view_id" eval="False"/>
+          <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_receptionist')),(4, ref('the_healing_hms.group_hospital_doctor')),(4, ref('the_healing_hms.group_hospital_nurse'))
+        ]"/>
+    </record>
+
+    <!-- Room Dashboard -->      
+        <record id="action_hospital_room_dashboard" model="ir.actions.act_window">
+        <field name="name">Room Dashboard</field>
+        <field name="res_model">hospital.room.dashboard</field>
+        <field name="view_mode">graph,list,form</field>
+         <field name="groups_id" eval="[
+            (4, ref('the_healing_hms.group_hospital_receptionist'))]"/>       
+         <field name="target">current</field>
+    </record>
+
+    <!-- Medicine Dashboard -->
+     <record id="action_hospital_medicine_dashboard" model="ir.actions.act_window">
+        <field name="name">Medicine Dashboard</field>
+        <field name="res_model">hospital.medicine.dashboard</field>
+        <field name="view_mode">graph,list,form</field>
+         <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_pharmacist'))]"/>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Blood Bank Dashboard -->
+     <record id="action_blood_bank_dashboard" model="ir.actions.act_window">
+        <field name="name">Blood Bank Dashboard</field>
+        <field name="res_model">blood.bank.dashboard</field>
+        <field name="view_mode">graph,list,form</field>
+        <field name="view_ids" eval="[(5,0,0)]"/>
+         <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_lab'))]"/>
+    </record>
+    
+
+    <!-- ================== Menu Items ================== -->
+    <menuitem id="menu_hospital_department_dashboard"
+              name="Department Dashboard"
+              parent="menu_hospital_dashboard_root"
+              action="action_hospital_department_dashboard"
+              sequence="2"
+              groups="the_healing_hms.group_hospital_receptionist"/>
+
+    <menuitem id="menu_hospital_room_dashboard"
+              name="Room Dashboard"
+              parent="menu_hospital_dashboard_root"
+              action="action_hospital_room_dashboard"
+              sequence="3"
+               groups="the_healing_hms.group_hospital_receptionist"/>
+
+<menuitem id="menu_hospital_medicine_dashboard"
+              name="Medicine List"
+              parent="menu_hospital_dashboard_root"
+              action="action_hospital_medicine_dashboard"
+             groups="the_healing_hms.group_hospital_pharmacist"
+              sequence="4"/>
+
+    <menuitem id="menu_blood_bank_dashboard"
+              name="Blood Bank Dashboard"
+              parent="menu_hospital_dashboard_root"
+              action="action_blood_bank_dashboard"
+              sequence="5"
+            groups="the_healing_hms.group_hospital_lab"/>
+
+    <menuitem id="menu_hospital_patient_dashboard" 
+              name="Patient Dashboard" 
+              parent="menu_hospital_dashboard_root" 
+              action="action_hospital_patient_dashboard" 
+              sequence="1"             
+              groups="the_healing_hms.group_hospital_receptionist,the_healing_hms.group_hospital_doctor,the_healing_hms.group_hospital_nurse"/>
+  
+
+</odoo>   

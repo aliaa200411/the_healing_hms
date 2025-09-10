@@ -10,11 +10,14 @@
     """,
     "category": "Healthcare",
     "author": "The Healing Coders (Aliaa, Mariam, Lama)",
-    'depends': ['base', 'mail', 'account', 'product'],
+'depends': ['base', 'contacts', 'product', 'mail', 'account'],
+
     'data': [
         'security/groups.xml', 
         'security/ir.model.access.csv', 
-        'views/hospital_menu.xml', 
+        'views/hospital_custom_menu.xml',
+        'views/custom_dashboard_menu.xml',
+         'views/hospital_menu.xml', 
         'views/hospital_dashboard_menu.xml',
         'views/room.xml',          
         'views/hospital_department_views.xml',

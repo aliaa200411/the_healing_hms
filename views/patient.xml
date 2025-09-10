@@ -24,6 +24,14 @@
         <field name="arch" type="xml">
             <form string="Patient ">
                 <sheet>
+                <header>
+                    <button name="action_view_patient_history" 
+                            type="object" 
+                            string="View Patient History" 
+                            class="btn-primary"
+                            />
+                </header>
+                
                     <div class="oe_button_box" name="button_box">
                         <!-- Smart Button Prescriptions -->
                         <button name="action_view_prescriptions"
@@ -86,13 +94,7 @@
                         </page>
                     </notebook>
                 </sheet>
-                <header>
-                    <button name="action_view_patient_history" 
-                            type="object" 
-                            string="View Patient History" 
-                            class="btn-primary"
-                            />
-                </header>
+            
 
             </form>
 

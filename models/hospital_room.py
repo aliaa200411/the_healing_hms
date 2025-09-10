@@ -32,22 +32,50 @@ class HospitalRoom(models.Model):
     bed_ids = fields.One2many('hospital.bed', 'room_id', string="Beds")
     available_beds = fields.Integer(string="Available Beds", compute="_compute_available_beds", store=True)
 
+    # ============= Capacity based on type =============
     @api.depends('room_type')
     def _compute_capacity(self):
         mapping = {'single': 1, 'double': 2, 'ward': 7}
         for room in self:
             room.capacity = mapping.get(room.room_type, 1)
 
+    # ============= Compute available beds & state =============
     @api.depends('bed_ids.booking_ids.state')
     def _compute_available_beds(self):
+        """
+        Rules:
+        - single: if any booking confirmed/invoiced -> unavailable
+        - double: 1 bed booked -> occupied, 2 booked -> unavailable, 0 -> available
+        - ward: 0 -> available, 1..capacity-1 -> occupied, capacity -> unavailable
+        """
+        occupied_states = ['confirmed', 'invoiced']
         for room in self:
             total_beds = len(room.bed_ids)
-            booked_beds = len(room.bed_ids.filtered(
-                lambda b: any(booking.state in ['confirmed', 'done'] for booking in b.booking_ids)
-            ))
-            room.available_beds = total_beds - booked_beds
-            room.state = 'occupied' if booked_beds == total_beds else 'available'
+            booked_beds = 0
+            for bed in room.bed_ids:
+                if any(b.state in occupied_states for b in bed.booking_ids):
+                    booked_beds += 1
 
+            room.available_beds = total_beds - booked_beds
+
+            if room.room_type == 'single':
+                room.state = 'unavailable' if booked_beds >= 1 else 'available'
+            elif room.room_type == 'double':
+                if booked_beds == 0:
+                    room.state = 'available'
+                elif booked_beds == 1:
+                    room.state = 'occupied'
+                else:
+                    room.state = 'unavailable'
+            else:  # ward
+                if booked_beds == 0:
+                    room.state = 'available'
+                elif booked_beds >= room.capacity:
+                    room.state = 'unavailable'
+                else:
+                    room.state = 'occupied'
+
+    # ============= Auto-fill floor & wing =============
     @api.onchange('department_id')
     def _onchange_department(self):
         if self.department_id:
@@ -57,6 +85,7 @@ class HospitalRoom(models.Model):
             self.floor = False
             self.wing = False
 
+    # ============= Smart button to view bookings =============
     def action_open_bookings(self):
         return {
             'name': 'Bookings',
@@ -66,7 +95,7 @@ class HospitalRoom(models.Model):
             'domain': [('bed_id.room_id', '=', self.id)],
         }
 
-    # ================== Auto-update dashboard ==================
+    # ============= Auto-update dashboard =============
     def _update_dashboard(self):
         for rec in self:
             self.env['hospital.room.dashboard'].update_room_dashboard(rec.department_id)
@@ -98,10 +127,11 @@ class HospitalBed(models.Model):
 
     @api.depends('booking_ids.state')
     def _compute_is_occupied(self):
+        occupied_states = ['confirmed', 'invoiced']
         for bed in self:
-            bed.is_occupied = any(b.state == 'confirmed' for b in bed.booking_ids)
+            bed.is_occupied = any(b.state in occupied_states for b in bed.booking_ids)
 
-    # ================== Auto-update dashboard ==================
+    # ============= Auto-update dashboard =============
     def _update_dashboard(self):
         for rec in self:
             if rec.room_id and rec.room_id.department_id:

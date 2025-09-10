@@ -1,53 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- ================== Root Menu ================== -->
-    <menuitem id="menu_hospital_dashboard_root" name="Hospital Dashboards" sequence="10"
-              groups="the_healing_hms.group_hospital_manager"/>
-
-    <!-- ================== Medicine Dashboard Action ================== -->
-    <record id="action_hospital_medicine_dashboard" model="ir.actions.act_window">
-        <field name="name">Medicine Dashboard</field>
-        <field name="res_model">hospital.medicine.dashboard</field>
-        <field name="view_mode">kanban,graph,list,form</field>
-        <field name="view_id" eval="False"/>
-        <field name="target">current</field>
-        <field name="groups_id" eval="[(4, ref('the_healing_hms.group_hospital_manager'))]"/>
-    </record>
-
-    <!-- ================== Medicine Dashboard Menu ================== -->
-    <menuitem id="menu_hospital_medicine_dashboard"
-              name="Medicine List"
-              parent="menu_hospital_dashboard_root"
-              action="action_hospital_medicine_dashboard"
-              sequence="3"
-              groups="the_healing_hms.group_hospital_manager"/>
-
-    <!-- ================== Kanban View ================== -->
-    <record id="view_hospital_medicine_dashboard_kanban" model="ir.ui.view">
-        <field name="name">hospital.medicine.dashboard.kanban</field>
-        <field name="model">hospital.medicine.dashboard</field>
-        <field name="arch" type="xml">
-            <kanban create="false" edit="false" delete="false">
-                <field name="medicine_name"/>
-                <field name="code"/>
-                <field name="total_qty"/>
-                <field name="available_qty"/>
-                <field name="used_qty"/>
-                <field name="total_value"/>
-                <templates>
-                    <t t-name="kanban-box">
-                        <div class="o_kanban_record">
-                            <div><strong>Medicine:</strong> <field name="medicine_name"/></div>
-                            <div><strong>Code:</strong> <field name="code"/></div>
-                            <div><strong>Total Ordered:</strong> <field name="total_qty"/></div>
-                            <div><strong>Available:</strong> <field name="available_qty"/></div>
-                            <div><strong>Total Value:</strong> <field name="total_value"/></div>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
-    </record>
 
     <!-- ================== Graph View ================== -->
     <record id="view_hospital_medicine_dashboard_graph" model="ir.ui.view">

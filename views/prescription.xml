@@ -74,9 +74,8 @@
     <!-- Menu -->
     <menuitem id="menu_hospital_prescription"
               name="Prescriptions"
-              parent="menu_hospital_root"
+              parent="menu_hms_patient_action"
               action="action_prescription_patient"
               sequence="1"
-            groups="the_healing_hms.group_hospital_manager,the_healing_hms.group_hospital_doctor"/>
-
+/>
 </odoo>

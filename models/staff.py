@@ -11,7 +11,6 @@ class HospitalStaff(models.Model):
     # ===== البيانات الأساسية =====
     name = fields.Char(string="Name", required=True)
     job_title = fields.Selection([
-        ('manager', 'Manager'),
         ('doctor', 'Doctor'),
         ('nurse', 'Nurse'),
         ('receptionist', 'Receptionist'),
@@ -87,6 +86,7 @@ class HospitalStaff(models.Model):
             for rec in self:
                 updated_vals = rec._update_staff_id(vals.copy())
                 super(HospitalStaff, rec).write(updated_vals)
+                rec._update_user_groups()
             return True
         return super().write(vals)
 
@@ -100,7 +100,6 @@ class HospitalStaff(models.Model):
             return vals
 
         code_map = {
-            'manager': 'hospital.staff.manager',
             'doctor': 'hospital.staff.doctor',
             'nurse': 'hospital.staff.nurse',
             'receptionist': 'hospital.staff.receptionist',
@@ -121,8 +120,11 @@ class HospitalStaff(models.Model):
     def _create_user_from_staff(self):
         self.ensure_one()
         if not self.user_id:
+            if not self.email:
+                raise ValidationError(_("Email must be provided by the admin to create a user."))
+
+            # Mapping job_title -> groups
             group_map = {
-                'manager': 'the_healing_hms.group_hospital_manager',
                 'doctor': 'the_healing_hms.group_hospital_doctor',
                 'nurse': 'the_healing_hms.group_hospital_nurse',
                 'receptionist': 'the_healing_hms.group_hospital_receptionist',
@@ -131,31 +133,50 @@ class HospitalStaff(models.Model):
                 'ambulance': 'the_healing_hms.group_hospital_driver',
                 'lab': 'the_healing_hms.group_hospital_lab',
             }
+
+            groups = [self.env.ref('base.group_user').id]  # Internal User by default
+
             group_xml_id = group_map.get(self.job_title)
-            groups = []
             if group_xml_id:
                 try:
-                    groups = [self.env.ref(group_xml_id).id]
+                    groups.append(self.env.ref(group_xml_id).id)
                 except ValueError:
                     pass
 
+            default_password = "1234"  # كلمة السر الافتراضية
+
             user_vals = {
                 'name': self.name,
-                'login': self.email,  # login = Email
+                'login': self.email,
                 'email': self.email,
                 'phone': self.phone,
                 'groups_id': [(6, 0, groups)],
-                'password': '1234',  # كلمة سر افتراضية
+                'password': default_password,  # تعيين كلمة سر افتراضية
             }
+
             user = self.env['res.users'].sudo().create(user_vals)
             self.user_id = user.id
+
+            # إرسال إيميل بكلمة السر
+            mail_values = {
+                'subject': _("Welcome to Hospital System"),
+                'body_html': _(
+                    "<p>Hello <b>%s</b>,</p>"
+                    "<p>Your account has been created in the Hospital Management System.</p>"
+                    "<p><b>Login:</b> %s</p>"
+                    "<p><b>Password:</b> %s</p>"
+                    "<p>Please login and change your password immediately.</p>"
+                ) % (self.name, self.email, default_password),
+                'email_to': self.email,
+                'email_from': self.env.user.email or 'admin@example.com',
+            }
+            self.env['mail.mail'].sudo().create(mail_values).send()
 
     # ===== تحديث جروبات اليوزر إذا تغيرت الوظيفة =====
     def _update_user_groups(self):
         self.ensure_one()
         if self.user_id:
             group_map = {
-                'manager': 'the_healing_hms.group_hospital_manager',
                 'doctor': 'the_healing_hms.group_hospital_doctor',
                 'nurse': 'the_healing_hms.group_hospital_nurse',
                 'receptionist': 'the_healing_hms.group_hospital_receptionist',
@@ -164,11 +185,14 @@ class HospitalStaff(models.Model):
                 'ambulance': 'the_healing_hms.group_hospital_driver',
                 'lab': 'the_healing_hms.group_hospital_lab',
             }
+
+            groups = [self.env.ref('base.group_user').id]  # Always internal user
+
             group_xml_id = group_map.get(self.job_title)
-            groups = []
             if group_xml_id:
                 try:
-                    groups = [self.env.ref(group_xml_id).id]
+                    groups.append(self.env.ref(group_xml_id).id)
                 except ValueError:
                     pass
+
             self.user_id.sudo().write({'groups_id': [(6, 0, groups)]})

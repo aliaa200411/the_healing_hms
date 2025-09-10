@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
-from odoo.exceptions import UserError
 
 # ================== Medicine Dashboard ==================
 class HospitalMedicineDashboard(models.Model):
@@ -19,7 +18,6 @@ class HospitalMedicineDashboard(models.Model):
 
     # ===== Quantities =====
     total_qty = fields.Float(string="Total Ordered", compute='_compute_kpis', store=True)
-    used_qty = fields.Float(string="Used / Sold", compute='_compute_kpis', store=True)
     available_qty = fields.Float(string="Available Qty", compute='_compute_kpis', store=True)
 
     # ===== Total Value =====
@@ -29,13 +27,13 @@ class HospitalMedicineDashboard(models.Model):
     @api.depends('medicine_id')
     def _compute_kpis(self):
         PharmacyOrderLine = self.env['hospital.pharmacy.order.line']
-        BillingLine = self.env['hospital.billing.line']
 
         for rec in self:
             med = rec.medicine_id
             if med:
-                rec.total_qty = sum(PharmacyOrderLine.search([('medicine_id', '=', med.id)]).mapped('quantity'))
-                rec.used_qty = sum(BillingLine.search([('medicine_id', '=', med.id)]).mapped('quantity'))
+                rec.total_qty = sum(
+                    PharmacyOrderLine.search([('medicine_id', '=', med.id)]).mapped('quantity')
+                )
                 rec.available_qty = med.quantity_available
                 rec.total_value = rec.available_qty * med.price_unit
 
